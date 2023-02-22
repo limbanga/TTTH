@@ -20,8 +20,9 @@ namespace TTTH.Models
         public string Address { get => address; set => address = value; }
         public int PermissionID { get => permissionID; set => permissionID = value; }
 
-        public ModelUser(string showName, string email, string phoneNumber, string address, int permissionID)
+        public ModelUser(int id, string showName, string email, string phoneNumber, string address, int permissionID)
         {
+            this.Id = id;
             this.ShowName = showName;
             this.Email = email;
             this.PhoneNumber = phoneNumber;

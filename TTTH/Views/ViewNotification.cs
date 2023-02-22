@@ -27,26 +27,28 @@ namespace TTTH.Views
         //-------------------------------------------------------------------------------
         private void ViewNotification_Load(object sender, EventArgs e)
         {
-            dataGridView.DataSource = Env.ReloadNotificatonList();
+            dataGridView.DataSource = Env.notificatonList;
         }
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int columnIndex = e.ColumnIndex;
             string columnName = dataGridView.Columns[columnIndex].Name;
+
             if (columnName.Equals("ViewDetail"))
             {
-                // get notìication id
-                ModelNotification notification = Env.NotificatonList[e.RowIndex];
-                int id = notification.Id;
-                // pass id to main form // phát đi sự kiện
-                SwtichToViewNotificationDetail?.Invoke(this, new IntArgs(id));
-
+                // get notification
+                 Env.notification = Env.notificatonList[e.RowIndex];
+                // public envent to main form
+                SwtichToViewNotificationDetail?.Invoke(this, new EventArgs());
             }
         }
-
         //-------------------------------------------------------------------------------
         // HELPER FUNCTIONS
         //-------------------------------------------------------------------------------
+        public void ReLoadNotification()
+        {
+            dataGridView.DataSource = Env.ReloadNotificatonList();
+        }
     }
 }

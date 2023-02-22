@@ -1,7 +1,7 @@
 ﻿using TTTH.Views;
 using TTTH.Args;
 using TTTH.Models;
-using TTTH.Args;
+
 
 
 namespace TTTH
@@ -31,6 +31,7 @@ namespace TTTH
         // Chuyển sang xem thông báo
         private void ToolStripMenuItemViewNotification_Click(object sender, EventArgs e)
         {
+            viewNotification.ReLoadNotification();
             ShowView(viewNotification);
         }
         // chuyển sang trang đăng thông báo
@@ -41,10 +42,14 @@ namespace TTTH
         // chuyển sang trang xem chi tiết thông báo, sự kiện bắt từ view xem thông báo
         private void ViewNotificationDetail_Click(object? sender, EventArgs e)
         {
-            IntArgs args = (IntArgs) e;
-            int notificationID = args.Value;
+            LoadNotificationDetailData();
             ShowView(viewNotificationDetail);
-            LoadNotificationDetailData(notificationID);
+        }
+        // chuyển sang trang xem danh sách khóa học
+        private void ToolStripMenuItemViewCourse_Click(object sender, EventArgs e)
+        {
+            viewCourse.ReLoadCourse();
+            ShowView(viewCourse);
         }
 
         //---------------------------------------------------------------------------------
@@ -132,17 +137,16 @@ namespace TTTH
             ToolStripMenuItemViewHideNotification.Visible= false;
         }
 
-        private void LoadNotificationDetailData(int notificationID)
+        private void LoadNotificationDetailData()
         {
             // fetch data // này chắc tui lấy trong cache vì ít khi thông báo được cập nhập
-            ModelNotification? notification = Env.NotificatonList.SingleOrDefault(n => n.Id.Equals(notificationID));
 
             string topic = "Không thể tìm thấy thông báo.";
             string content = "";
-            if (notification is not null)
+            if (Env.notification is not null)
             {
-                topic = notification.Topic;
-                content = notification.Content;
+                topic = Env.notification.Topic;
+                content = Env.notification.Content;
             }
 
             // bind data

@@ -32,6 +32,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemManage = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCourse = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemViewCourse = new System.Windows.Forms.ToolStripMenuItem();
+            this.thêmMớiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemClass = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTeacher = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemStudent = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,11 +46,12 @@
             this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.viewNotificationDetail = new TTTH.Views.ViewNotificationDetail();
-            this.viewPostNotification = new TTTH.Views.ViewPostNotification();
-            this.viewNotification = new TTTH.Views.ViewNotification();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelShowNow = new System.Windows.Forms.Label();
+            this.viewCourse = new TTTH.Views.ViewCourse();
+            this.viewPostNotification = new TTTH.Views.ViewPostNotification();
+            this.viewNotificationDetail = new TTTH.Views.ViewNotificationDetail();
+            this.viewNotification = new TTTH.Views.ViewNotification();
             this.menuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -58,7 +61,7 @@
             // 
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelWelcome.Location = new System.Drawing.Point(867, 0);
+            this.labelWelcome.Location = new System.Drawing.Point(1121, 0);
             this.labelWelcome.Name = "labelWelcome";
             this.labelWelcome.Size = new System.Drawing.Size(141, 20);
             this.labelWelcome.TabIndex = 0;
@@ -73,7 +76,7 @@
             this.tàiKhoảnToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1008, 28);
+            this.menuStrip.Size = new System.Drawing.Size(1262, 28);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -90,9 +93,25 @@
             // 
             // ToolStripMenuItemCourse
             // 
+            this.ToolStripMenuItemCourse.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemViewCourse,
+            this.thêmMớiToolStripMenuItem});
             this.ToolStripMenuItemCourse.Name = "ToolStripMenuItemCourse";
             this.ToolStripMenuItemCourse.Size = new System.Drawing.Size(162, 26);
             this.ToolStripMenuItemCourse.Text = "Khóa học";
+            // 
+            // ToolStripMenuItemViewCourse
+            // 
+            this.ToolStripMenuItemViewCourse.Name = "ToolStripMenuItemViewCourse";
+            this.ToolStripMenuItemViewCourse.Size = new System.Drawing.Size(159, 26);
+            this.ToolStripMenuItemViewCourse.Text = "Xem";
+            this.ToolStripMenuItemViewCourse.Click += new System.EventHandler(this.ToolStripMenuItemViewCourse_Click);
+            // 
+            // thêmMớiToolStripMenuItem
+            // 
+            this.thêmMớiToolStripMenuItem.Name = "thêmMớiToolStripMenuItem";
+            this.thêmMớiToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.thêmMớiToolStripMenuItem.Text = "Thêm mới";
             // 
             // ToolStripMenuItemClass
             // 
@@ -173,47 +192,26 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Info;
-            this.panel1.Controls.Add(this.viewNotificationDetail);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.viewCourse);
             this.panel1.Controls.Add(this.viewPostNotification);
+            this.panel1.Controls.Add(this.viewNotificationDetail);
             this.panel1.Controls.Add(this.viewNotification);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 575);
+            this.panel1.Size = new System.Drawing.Size(1262, 656);
             this.panel1.TabIndex = 2;
-            // 
-            // viewNotificationDetail
-            // 
-            this.viewNotificationDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewNotificationDetail.Location = new System.Drawing.Point(0, 0);
-            this.viewNotificationDetail.Name = "viewNotificationDetail";
-            this.viewNotificationDetail.Size = new System.Drawing.Size(1008, 575);
-            this.viewNotificationDetail.TabIndex = 4;
-            // 
-            // viewPostNotification
-            // 
-            this.viewPostNotification.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewPostNotification.Location = new System.Drawing.Point(0, 0);
-            this.viewPostNotification.Name = "viewPostNotification";
-            this.viewPostNotification.Size = new System.Drawing.Size(1008, 575);
-            this.viewPostNotification.TabIndex = 4;
-            // 
-            // viewNotification
-            // 
-            this.viewNotification.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewNotification.Location = new System.Drawing.Point(0, 0);
-            this.viewNotification.Name = "viewNotification";
-            this.viewNotification.Size = new System.Drawing.Size(1008, 575);
-            this.viewNotification.TabIndex = 0;
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel2.Controls.Add(this.labelShowNow);
             this.panel2.Controls.Add(this.labelWelcome);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 28);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1008, 24);
+            this.panel2.Size = new System.Drawing.Size(1262, 22);
             this.panel2.TabIndex = 3;
             // 
             // labelShowNow
@@ -226,15 +224,46 @@
             this.labelShowNow.TabIndex = 1;
             this.labelShowNow.Text = "19/02/2003";
             // 
+            // viewCourse
+            // 
+            this.viewCourse.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.viewCourse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewCourse.Location = new System.Drawing.Point(0, 0);
+            this.viewCourse.Name = "viewCourse";
+            this.viewCourse.Size = new System.Drawing.Size(1262, 656);
+            this.viewCourse.TabIndex = 4;
+            // 
+            // viewPostNotification
+            // 
+            this.viewPostNotification.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewPostNotification.Location = new System.Drawing.Point(0, 0);
+            this.viewPostNotification.Name = "viewPostNotification";
+            this.viewPostNotification.Size = new System.Drawing.Size(1262, 656);
+            this.viewPostNotification.TabIndex = 3;
+            // 
+            // viewNotificationDetail
+            // 
+            this.viewNotificationDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewNotificationDetail.Location = new System.Drawing.Point(0, 0);
+            this.viewNotificationDetail.Name = "viewNotificationDetail";
+            this.viewNotificationDetail.Size = new System.Drawing.Size(1262, 656);
+            this.viewNotificationDetail.TabIndex = 2;
+            // 
+            // viewNotification
+            // 
+            this.viewNotification.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewNotification.Location = new System.Drawing.Point(0, 0);
+            this.viewNotification.Name = "viewNotification";
+            this.viewNotification.Size = new System.Drawing.Size(1262, 656);
+            this.viewNotification.TabIndex = 3;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 603);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1262, 684);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FormMain";
             this.Text = "Quản lý trung tâm tin học";
@@ -269,8 +298,11 @@
         private Panel panel1;
         private Panel panel2;
         private Label labelShowNow;
+        private Views.ViewCourse viewCourse;
         private Views.ViewNotification viewNotification;
-        private Views.ViewPostNotification viewPostNotification;
         private Views.ViewNotificationDetail viewNotificationDetail;
+        private Views.ViewPostNotification viewPostNotification;
+        private ToolStripMenuItem ToolStripMenuItemViewCourse;
+        private ToolStripMenuItem thêmMớiToolStripMenuItem;
     }
 }

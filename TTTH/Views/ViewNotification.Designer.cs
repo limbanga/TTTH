@@ -71,7 +71,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(934, 418);
+            this.dataGridView.Size = new System.Drawing.Size(942, 423);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
@@ -135,7 +135,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(934, 125);
+            this.groupBox1.Size = new System.Drawing.Size(942, 125);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm thông báo";
@@ -233,7 +233,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 125);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(934, 418);
+            this.panel1.Size = new System.Drawing.Size(942, 423);
             this.panel1.TabIndex = 4;
             // 
             // ViewNotification
@@ -243,7 +243,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "ViewNotification";
-            this.Size = new System.Drawing.Size(934, 543);
+            this.Size = new System.Drawing.Size(942, 548);
             this.Load += new System.EventHandler(this.ViewNotification_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelNotificationBindingSource)).EndInit();

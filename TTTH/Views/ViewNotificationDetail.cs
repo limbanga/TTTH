@@ -17,5 +17,9 @@ namespace TTTH.Views
             InitializeComponent();
         }
 
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

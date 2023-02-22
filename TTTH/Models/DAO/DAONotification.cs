@@ -52,5 +52,38 @@ on n._user_id = u._id";
             }
             return list;
         }
+
+        public static bool Insert(string topic, string content, int user_id)
+        {
+            int rowsAffect = 0;
+            string query = @"insert into TTTH_notification(_topic, _content, _user_id)
+values (@topic, @content, @user_id)";
+
+            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@topic", topic);
+                        cmd.Parameters.AddWithValue("@content", content);
+                        cmd.Parameters.AddWithValue("@user_id", user_id);
+
+                        rowsAffect = cmd.ExecuteNonQuery();
+
+                        cmd.Dispose();
+                    }
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    //throw;
+                }
+            }
+
+            return rowsAffect > 0;
+        }
     }
 }

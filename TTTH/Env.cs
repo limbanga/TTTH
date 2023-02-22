@@ -18,25 +18,32 @@ namespace TTTH
         //------------------------------------------------------------------------
         // PHẦN THIẾT lẬP THÔNG TIN DỰ ÁN
         //------------------------------------------------------------------------
-
         public static string stringConnect = @"Data Source=TCS\SQLEXPRESS;Initial Catalog=TTTH;Integrated Security=True";
-
-        // ERROR MESSAGE 
+        // --------------------------ERROR MESSAGE--------------------------------
         public static string wrongPassMessage = "Thông tin tài khoản hoặc mật khẩu không chính xác";
 
         //------------------------------------------------------------------------
         // CÁC BIẾN TOÀN CỤC
         //------------------------------------------------------------------------
-
-        // current user
+        
+        //----------------------------------USER----------------------------------
         public static ModelUser? user;
-
-        public static List<ModelNotification> NotificatonList = DAONotification.GetAll();
-
+        
+        //------------------------------NOTIFICATION------------------------------
+        public static List<ModelNotification> notificatonList = DAONotification.GetAll();
+        public static ModelNotification? notification = null;
         public static List<ModelNotification> ReloadNotificatonList()
         {
-            return NotificatonList = DAONotification.GetAll();
+            return notificatonList = DAONotification.GetAll();
         }
+        //------------------------------NOTIFICATION------------------------------
+        public static List<ModelCourse> courseList = DAOCourse.GetAll();
+        public static ModelCourse? course = null;
+        public static List<ModelCourse> ReloadCourse()
+        {
+            return courseList = DAOCourse.GetAll();
+        }
+
 
     }
 }

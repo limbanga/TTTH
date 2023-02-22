@@ -41,7 +41,7 @@ where _user_name = @username and _pass_word = @password";
                             string address = reader.GetString(6);
                             int permitsGroup = reader.GetInt32(7);
 
-                            user = new ModelUser( showName, email, phoneNumber, address, permitsGroup);
+                            user = new ModelUser(id, showName, email, phoneNumber, address, permitsGroup);
                         }
                         reader.Close();
                         cmd.Dispose();
