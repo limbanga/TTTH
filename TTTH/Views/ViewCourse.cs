@@ -29,13 +29,18 @@ namespace TTTH.Views
             int columnIndex = e.ColumnIndex;
             string columnName = dataGridView.Columns[columnIndex].Name;
 
+            Env.course = Env.courseList[e.RowIndex];
             if (columnName.Equals("Update"))
             {
                 // get course
-                Env.course = Env.courseList[e.RowIndex];
                 // create new form to update
-                Form updateForm = new FormUpdateOrAddCourse(Env.course);
-                updateForm.ShowDialog();
+                DialogUpdateOrAddCourse updateDialog = new DialogUpdateOrAddCourse(Env.course);
+                updateDialog.ShowDialog();
+            }
+            else if(columnName.Equals("OpenClass"))
+            {
+                DialogOpenNewClass newClassDialog = new DialogOpenNewClass(Env.course);
+                newClassDialog.ShowDialog();
             }
         }
 

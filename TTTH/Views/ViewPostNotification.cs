@@ -29,7 +29,12 @@ namespace TTTH.Views
             // validate
 
             // insert
-            if (Env.user is null) { return; }
+            if (Env.user is null) 
+            {
+                MessageBox.Show("Hệ thống không thể xác thực bạn. Vui lòng đăng nhập lại.", "Lỗi");
+                Application.Exit();
+                return; 
+            }
             MessageBox.Show("Test 33"+ Env.user.Id);
             bool isSuccess = DAONotification.Insert(topic,content, Env.user.Id);
             if (isSuccess)

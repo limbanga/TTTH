@@ -118,7 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icon-notification-55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-notification-55.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-account-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-account-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meo-dan-55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\meo-dan-55.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-management-55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-management-55.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="meo-dan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\asset\meo-dan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-change-password" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-change-password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-change-password-55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-change-password-55.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-user-info-35" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-user-info-35.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-side-bar-55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-side-bar-55.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-logout-35" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\asset\icon-logout-35.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

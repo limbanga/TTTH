@@ -8,7 +8,7 @@ using TTTH.Models.DAO;
 
 namespace TTTH
 {
-    public class Env
+    public static class Env
     {
         /// <summary>
         /// Chứa cac biến toàn cục và cái thiết lập cho dự án.
@@ -43,7 +43,13 @@ namespace TTTH
         {
             return courseList = DAOCourse.GetAll();
         }
-
+        //------------------------------CLASS------------------------------
+        public static List<ModelClass> classList = DAOClass.GetAll();
+        public static ModelClass? modelClass = null;
+        public static List<ModelClass> ReloadClass() 
+        {
+            return classList = DAOClass.GetAll();
+        }
 
     }
 }

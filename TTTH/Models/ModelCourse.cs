@@ -23,5 +23,12 @@ namespace TTTH.Models
             this.Fee = fee;
             this.Duration = duration;
         }
+
+        public ModelCourse(string name, double fee, int duration)
+        {
+            this.name = name;
+            this.fee = fee;
+            this.duration = duration;
+        }
     }
 }

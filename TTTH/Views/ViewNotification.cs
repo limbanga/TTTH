@@ -17,6 +17,8 @@ namespace TTTH.Views
     public partial class ViewNotification : UserControl
     {
         public EventHandler? SwtichToViewNotificationDetail;
+        public EventHandler? SwtichToViewPostNotification;
+
         public ViewNotification()
         {
             InitializeComponent();
@@ -43,6 +45,11 @@ namespace TTTH.Views
                 SwtichToViewNotificationDetail?.Invoke(this, new EventArgs());
             }
         }
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            // public event to mainForm to handler
+            SwtichToViewPostNotification?.Invoke(this, new EventArgs());
+        }
         //-------------------------------------------------------------------------------
         // HELPER FUNCTIONS
         //-------------------------------------------------------------------------------
@@ -50,5 +57,7 @@ namespace TTTH.Views
         {
             dataGridView.DataSource = Env.ReloadNotificatonList();
         }
+
+
     }
 }

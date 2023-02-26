@@ -1,6 +1,6 @@
 ﻿namespace TTTH.Views.Dialog
 {
-    partial class FormUpdateOrAddCourse
+    partial class DialogUpdateOrAddCourse
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxFee = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelHeader = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +84,7 @@
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Lưu";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // textBoxID
             // 
@@ -153,29 +154,29 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Tên khóa học";
             // 
-            // label5
+            // labelHeader
             // 
-            this.label5.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(407, 99);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Bạn đang chọn khóa học";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelHeader.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelHeader.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelHeader.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelHeader.Location = new System.Drawing.Point(0, 0);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(407, 99);
+            this.labelHeader.TabIndex = 9;
+            this.labelHeader.Text = "Thêm mới khóa học";
+            this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // FormUpdateOrAddCourse
+            // DialogUpdateOrAddCourse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(407, 455);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "FormUpdateOrAddCourse";
+            this.Name = "DialogUpdateOrAddCourse";
             this.Text = "Thêm mới khóa học";
             this.Load += new System.EventHandler(this.FormUpdateOrAddCourse_Load);
             this.panel1.ResumeLayout(false);
@@ -197,6 +198,6 @@
         private TextBox textBoxName;
         private TextBox textBoxFee;
         private Label label3;
-        private Label label5;
+        private Label labelHeader;
     }
 }

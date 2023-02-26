@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelHeader = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxTopic = new System.Windows.Forms.TextBox();
@@ -36,52 +36,61 @@
             this.buttonPost = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // labelHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(328, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Đăng thông báo";
+            this.labelHeader.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.labelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelHeader.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelHeader.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelHeader.Location = new System.Drawing.Point(0, 0);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(1015, 75);
+            this.labelHeader.TabIndex = 0;
+            this.labelHeader.Text = "Đăng thông báo mới";
+            this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 74);
+            this.label2.Location = new System.Drawing.Point(25, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 20);
+            this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Tiêu đề";
+            this.label2.Text = "Tiêu đề:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 154);
+            this.label3.Location = new System.Drawing.Point(25, 151);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 20);
+            this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Nội dung";
+            this.label3.Text = "Nội dung:";
             // 
             // textBoxTopic
             // 
-            this.textBoxTopic.Location = new System.Drawing.Point(145, 74);
+            this.textBoxTopic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTopic.Location = new System.Drawing.Point(113, 100);
             this.textBoxTopic.Name = "textBoxTopic";
-            this.textBoxTopic.Size = new System.Drawing.Size(709, 27);
+            this.textBoxTopic.Size = new System.Drawing.Size(872, 27);
             this.textBoxTopic.TabIndex = 3;
             // 
             // richTextBoxContent
             // 
-            this.richTextBoxContent.Location = new System.Drawing.Point(145, 164);
+            this.richTextBoxContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxContent.Location = new System.Drawing.Point(113, 152);
             this.richTextBoxContent.Name = "richTextBoxContent";
-            this.richTextBoxContent.Size = new System.Drawing.Size(709, 360);
+            this.richTextBoxContent.Size = new System.Drawing.Size(872, 422);
             this.richTextBoxContent.TabIndex = 4;
             this.richTextBoxContent.Text = "";
             // 
             // buttonPost
             // 
             this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPost.Location = new System.Drawing.Point(854, 530);
+            this.buttonPost.Location = new System.Drawing.Point(891, 596);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(94, 29);
             this.buttonPost.TabIndex = 5;
@@ -98,9 +107,9 @@
             this.Controls.Add(this.textBoxTopic);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelHeader);
             this.Name = "ViewPostNotification";
-            this.Size = new System.Drawing.Size(980, 584);
+            this.Size = new System.Drawing.Size(1015, 649);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,7 +117,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label labelHeader;
         private Label label2;
         private Label label3;
         private TextBox textBoxTopic;

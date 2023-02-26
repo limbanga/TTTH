@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace TTTH.Models.DAO
 {
-    public class DAOCourse
+    public static class DAOClass
     {
-        private DAOCourse() { }
-
-        public static List<ModelCourse> GetAll()
+        public static List<ModelClass> GetAll()
         {
-            string query = @"select * from TTTH_course";
+            string query = @"select * from TTTH_class";
 
-            List<ModelCourse> list = new List<ModelCourse>();
+            List<ModelClass> list = new List<ModelClass>();
 
             using (SqlConnection connection = new SqlConnection(Env.stringConnect))
             {
@@ -30,13 +28,19 @@ namespace TTTH.Models.DAO
                             // parse
                             int id = reader.GetInt32(0);
                             string name = reader.GetString(1);
-                            double fee = reader.GetDouble(2);
-                            int duration = reader.GetInt32(3);
+                            DateTime start = reader.GetDateTime(2);
+                            DateTime end = reader.GetDateTime(3);
+                            int maxCapacity = reader.GetInt32(4);
+                            int shift = reader.GetInt32(7);
+                            string courseName = "Chua co";
+                            string roomName = "Chua co room";
+
                             // innit
-                            ModelCourse modelCourse =
-                                new ModelCourse(id, name, fee, duration);
+                            ModelClass modelClass = new ModelClass(id, name, start, end, maxCapacity, shift, courseName, roomName);
+
                             // assign
-                            list.Add(modelCourse);
+                            list.Add(modelClass);
+
                         }
                         reader.Close();
                         cmd.Dispose();
@@ -45,18 +49,18 @@ namespace TTTH.Models.DAO
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("48+couersdkah "+e.Message);
+                    MessageBox.Show("48+couersdkah " + e.Message);
                     //throw;
                 }
             }
             return list;
         }
 
-        public static bool Insert(string name, double fee, int duration)
+        public static bool Insert(string name, DateTime start, DateTime end, int maxCapacity, int shift, int courseId, int roomId)
         {
             int rowsAffect = 0;
-            string query = @"insert into TTTH_course (_course_name, _length, _price)
-values (@name, @duration, @fee)";
+            string query = @"insert into TTTH_class (_class_name, _start_day, _end_day, _capacity, _shift, _course_id, _room_id)
+values (@name, @start, @end, @maxCapacity, @shift, @courseId, @roomId)";
 
             using (SqlConnection connection = new SqlConnection(Env.stringConnect))
             {
@@ -66,8 +70,12 @@ values (@name, @duration, @fee)";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
-                        cmd.Parameters.AddWithValue("@fee", fee);
-                        cmd.Parameters.AddWithValue("@duration", duration);
+                        cmd.Parameters.AddWithValue("@start", start);
+                        cmd.Parameters.AddWithValue("@end", end);
+                        cmd.Parameters.AddWithValue("@maxCapacity", maxCapacity);
+                        cmd.Parameters.AddWithValue("@shift", shift);
+                        cmd.Parameters.AddWithValue("@courseId", courseId != -1? courseId: DBNull.Value);
+                        cmd.Parameters.AddWithValue("@roomId", roomId != -1? roomId: DBNull.Value);
 
                         rowsAffect = cmd.ExecuteNonQuery();
 
@@ -84,13 +92,9 @@ values (@name, @duration, @fee)";
 
             return rowsAffect > 0;
         }
-
-
-        public static bool Insert(ModelCourse c)
+        public static bool Insert(ModelClass c)
         {
-            return Insert(c.Name, c.Fee, c.Duration);
+            return Insert(c.Name, c.Start, c.End, c.MaxCapacity, c.Shift, c.CourseId, c.RoomId);
         }
-
-
     }
 }

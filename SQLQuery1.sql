@@ -1,1 +1,0 @@
-﻿select * from TTTH_course

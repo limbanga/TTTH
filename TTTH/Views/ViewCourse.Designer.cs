@@ -31,13 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.modelCourseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.durationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Update = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.OpenClass = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.modelCourseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelCourseBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -69,7 +70,8 @@
             this.nameDataGridViewTextBoxColumn,
             this.feeDataGridViewTextBoxColumn,
             this.durationDataGridViewTextBoxColumn,
-            this.Update});
+            this.Update,
+            this.OpenClass});
             this.dataGridView.DataSource = this.modelCourseBindingSource;
             this.dataGridView.Location = new System.Drawing.Point(23, 23);
             this.dataGridView.Name = "dataGridView";
@@ -78,29 +80,6 @@
             this.dataGridView.Size = new System.Drawing.Size(942, 450);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // modelCourseBindingSource
-            // 
-            this.modelCourseBindingSource.DataSource = typeof(TTTH.Models.ModelCourse);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(988, 64);
-            this.panel1.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataGridView);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 64);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(20);
-            this.panel2.Size = new System.Drawing.Size(988, 496);
-            this.panel2.TabIndex = 3;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -133,6 +112,38 @@
             this.Update.ToolTipText = "Chọn để sửa thông tin khóa học";
             this.Update.UseColumnTextForButtonValue = true;
             // 
+            // OpenClass
+            // 
+            this.OpenClass.HeaderText = "Mở lớp";
+            this.OpenClass.MinimumWidth = 6;
+            this.OpenClass.Name = "OpenClass";
+            this.OpenClass.ReadOnly = true;
+            this.OpenClass.Text = "Mở thêm lớp";
+            this.OpenClass.UseColumnTextForButtonValue = true;
+            // 
+            // modelCourseBindingSource
+            // 
+            this.modelCourseBindingSource.DataSource = typeof(TTTH.Models.ModelCourse);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(988, 64);
+            this.panel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataGridView);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 64);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(20);
+            this.panel2.Size = new System.Drawing.Size(988, 496);
+            this.panel2.TabIndex = 3;
+            // 
             // ViewCourse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -161,5 +172,6 @@
         private DataGridViewTextBoxColumn feeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn durationDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn Update;
+        private DataGridViewButtonColumn OpenClass;
     }
 }
