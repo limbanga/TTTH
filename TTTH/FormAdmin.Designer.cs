@@ -1,6 +1,6 @@
 ﻿namespace TTTH
 {
-    partial class MainForm__
+    partial class FormAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,7 @@
             this.pictureBoxNotification = new System.Windows.Forms.PictureBox();
             this.panelManageSubmenu = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelRoom = new System.Windows.Forms.Label();
             this.labelClass = new System.Windows.Forms.Label();
             this.labelCourse = new System.Windows.Forms.Label();
             this.panelManagement = new System.Windows.Forms.Panel();
@@ -58,6 +58,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxShowSidebar = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.viewStudent1 = new TTTH.Views.ViewStudent();
+            this.viewRoom1 = new TTTH.Views.ViewRoom();
             this.viewNotification1 = new TTTH.Views.ViewNotification();
             this.viewPostNotification1 = new TTTH.Views.ViewPostNotification();
             this.viewCourse2 = new TTTH.Views.ViewCourse();
@@ -300,7 +302,7 @@
             // panelManageSubmenu
             // 
             this.panelManageSubmenu.Controls.Add(this.label5);
-            this.panelManageSubmenu.Controls.Add(this.label4);
+            this.panelManageSubmenu.Controls.Add(this.labelRoom);
             this.panelManageSubmenu.Controls.Add(this.labelClass);
             this.panelManageSubmenu.Controls.Add(this.labelCourse);
             this.panelManageSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -321,18 +323,20 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Học viên";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // label4
+            // labelRoom
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.label4.Location = new System.Drawing.Point(0, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(247, 53);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Phòng học";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRoom.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelRoom.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelRoom.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.labelRoom.Location = new System.Drawing.Point(0, 106);
+            this.labelRoom.Name = "labelRoom";
+            this.labelRoom.Size = new System.Drawing.Size(247, 53);
+            this.labelRoom.TabIndex = 2;
+            this.labelRoom.Text = "Phòng học";
+            this.labelRoom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRoom.Click += new System.EventHandler(this.labelRoom_Click);
             // 
             // labelClass
             // 
@@ -433,6 +437,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.viewStudent1);
+            this.panel3.Controls.Add(this.viewRoom1);
             this.panel3.Controls.Add(this.viewNotification1);
             this.panel3.Controls.Add(this.viewPostNotification1);
             this.panel3.Controls.Add(this.viewCourse2);
@@ -442,6 +448,22 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1175, 1055);
             this.panel3.TabIndex = 2;
+            // 
+            // viewStudent1
+            // 
+            this.viewStudent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewStudent1.Location = new System.Drawing.Point(0, 0);
+            this.viewStudent1.Name = "viewStudent1";
+            this.viewStudent1.Size = new System.Drawing.Size(1175, 1055);
+            this.viewStudent1.TabIndex = 3;
+            // 
+            // viewRoom1
+            // 
+            this.viewRoom1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewRoom1.Location = new System.Drawing.Point(0, 0);
+            this.viewRoom1.Name = "viewRoom1";
+            this.viewRoom1.Size = new System.Drawing.Size(1175, 1055);
+            this.viewRoom1.TabIndex = 3;
             // 
             // viewNotification1
             // 
@@ -475,13 +497,13 @@
             this.viewClass1.Size = new System.Drawing.Size(1175, 1055);
             this.viewClass1.TabIndex = 4;
             // 
-            // MainForm__
+            // FormAdmin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1422, 1055);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelSideBar);
-            this.Name = "MainForm__";
+            this.Name = "FormAdmin";
             this.Text = "Quản lý trung tâm tin học";
             this.panelSideBar.ResumeLayout(false);
             this.paneSidebarContent.ResumeLayout(false);
@@ -521,7 +543,7 @@
         private Label labelManagement;
         private PictureBox pictureBoxManage;
         private Label labelClass;
-        private Label label4;
+        private Label labelRoom;
         private Label label5;
         private Panel panelAccount;
         private Label labelAccount;
@@ -543,5 +565,7 @@
         private Views.ViewCourse viewCourse2;
         private Views.ViewClass viewClass1;
         private Views.ViewNotification viewNotification1;
+        private Views.ViewRoom viewRoom1;
+        private Views.ViewStudent viewStudent1;
     }
 }

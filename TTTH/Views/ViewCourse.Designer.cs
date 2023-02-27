@@ -34,7 +34,7 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.durationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._Update = new System.Windows.Forms.DataGridViewButtonColumn();
             this.OpenClass = new System.Windows.Forms.DataGridViewButtonColumn();
             this.modelCourseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,7 +70,7 @@
             this.nameDataGridViewTextBoxColumn,
             this.feeDataGridViewTextBoxColumn,
             this.durationDataGridViewTextBoxColumn,
-            this.Update,
+            this._Update,
             this.OpenClass});
             this.dataGridView.DataSource = this.modelCourseBindingSource;
             this.dataGridView.Location = new System.Drawing.Point(23, 23);
@@ -102,15 +102,15 @@
             this.durationDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.durationDataGridViewTextBoxColumn.Name = "durationDataGridViewTextBoxColumn";
             // 
-            // Update
+            // _Update
             // 
-            this.Update.HeaderText = "Sửa";
-            this.Update.MinimumWidth = 6;
-            this.Update.Name = "Update";
-            this.Update.ReadOnly = true;
-            this.Update.Text = "Sửa";
-            this.Update.ToolTipText = "Chọn để sửa thông tin khóa học";
-            this.Update.UseColumnTextForButtonValue = true;
+            this._Update.HeaderText = "Sửa";
+            this._Update.MinimumWidth = 6;
+            this._Update.Name = "_Update";
+            this._Update.ReadOnly = true;
+            this._Update.Text = "Sửa";
+            this._Update.ToolTipText = "Chọn để sửa thông tin khóa học";
+            this._Update.UseColumnTextForButtonValue = true;
             // 
             // OpenClass
             // 
@@ -171,7 +171,7 @@
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn feeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn durationDataGridViewTextBoxColumn;
-        private DataGridViewButtonColumn Update;
+        private DataGridViewButtonColumn _Update;
         private DataGridViewButtonColumn OpenClass;
     }
 }

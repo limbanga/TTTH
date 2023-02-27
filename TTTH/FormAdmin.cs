@@ -1,8 +1,8 @@
 ﻿namespace TTTH
 {
-    public partial class MainForm__ : Form
+    public partial class FormAdmin : Form
     {
-        public MainForm__()
+        public FormAdmin()
         {
             InitializeComponent();
             viewNotification1.SwtichToViewPostNotification += SwtichToViewPostNotification;
@@ -49,6 +49,11 @@
         private void pictureBoxNotification_Click(object sender, EventArgs e)
         {
             ShowNotificationView();
+        }
+        private void labelRoom_Click(object sender, EventArgs e)
+        {
+            viewRoom1.ReLoadData();
+            ShowView(viewRoom1);
         }
         #endregion
 
@@ -161,5 +166,10 @@
             ShowView(viewPostNotification1);
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+            viewStudent1.ReloadData();
+            ShowView(viewStudent1);
+        }
     }
 }

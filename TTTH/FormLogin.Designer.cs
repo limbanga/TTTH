@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 81);
+            this.label1.Location = new System.Drawing.Point(25, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 20);
             this.label1.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(132, 81);
+            this.textBoxUserName.Location = new System.Drawing.Point(152, 87);
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(172, 27);
             this.textBoxUserName.TabIndex = 1;
@@ -59,18 +59,21 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(30, 227);
+            this.buttonLogin.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonLogin.Location = new System.Drawing.Point(25, 302);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(274, 29);
+            this.buttonLogin.Size = new System.Drawing.Size(299, 34);
             this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Text = "Đăng nhập";
-            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // checkBoxShowPass
             // 
             this.checkBoxShowPass.AutoSize = true;
-            this.checkBoxShowPass.Location = new System.Drawing.Point(30, 185);
+            this.checkBoxShowPass.Location = new System.Drawing.Point(25, 242);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
             this.checkBoxShowPass.Size = new System.Drawing.Size(127, 24);
             this.checkBoxShowPass.TabIndex = 3;
@@ -80,7 +83,7 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(132, 124);
+            this.textBoxPassword.Location = new System.Drawing.Point(152, 165);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(172, 27);
             this.textBoxPassword.TabIndex = 5;
@@ -90,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 127);
+            this.label2.Location = new System.Drawing.Point(25, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 4;
@@ -98,17 +101,20 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(30, 295);
+            this.button2.BackColor = System.Drawing.Color.Lime;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(25, 370);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(274, 29);
+            this.button2.Size = new System.Drawing.Size(299, 34);
             this.button2.TabIndex = 6;
             this.button2.Text = "Đăng ký";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(72, 259);
+            this.label3.Location = new System.Drawing.Point(82, 334);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(171, 20);
             this.label3.TabIndex = 7;
@@ -117,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(188, 186);
+            this.label4.Location = new System.Drawing.Point(208, 242);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 20);
             this.label4.TabIndex = 8;
@@ -125,19 +131,22 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(97, 24);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(131, 31);
+            this.label5.Size = new System.Drawing.Size(351, 65);
             this.label5.TabIndex = 9;
             this.label5.Text = "Đăng nhập";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 353);
+            this.ClientSize = new System.Drawing.Size(351, 433);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

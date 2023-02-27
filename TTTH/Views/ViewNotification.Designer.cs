@@ -34,7 +34,7 @@
             this.createddateDisplayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.getUserPostedNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewDetail = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Hide = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._Hide = new System.Windows.Forms.DataGridViewButtonColumn();
             this.modelNotificationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelHeader = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             this.createddateDisplayDataGridViewTextBoxColumn,
             this.getUserPostedNameDataGridViewTextBoxColumn,
             this.ViewDetail,
-            this.Hide});
+            this._Hide});
             this.dataGridView.DataSource = this.modelNotificationBindingSource;
             this.dataGridView.Location = new System.Drawing.Point(19, 258);
             this.dataGridView.Name = "dataGridView";
@@ -101,12 +101,12 @@
             // 
             // Hide
             // 
-            this.Hide.HeaderText = "Ẩn";
-            this.Hide.MinimumWidth = 6;
-            this.Hide.Name = "Hide";
-            this.Hide.ReadOnly = true;
-            this.Hide.Text = "Ẩn";
-            this.Hide.UseColumnTextForButtonValue = true;
+            this._Hide.HeaderText = "Ẩn";
+            this._Hide.MinimumWidth = 6;
+            this._Hide.Name = "Hide";
+            this._Hide.ReadOnly = true;
+            this._Hide.Text = "Ẩn";
+            this._Hide.UseColumnTextForButtonValue = true;
             // 
             // modelNotificationBindingSource
             // 
@@ -175,7 +175,7 @@
         private DataGridViewTextBoxColumn createddateDisplayDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn getUserPostedNameDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn ViewDetail;
-        private DataGridViewButtonColumn Hide;
+        private DataGridViewButtonColumn _Hide;
         private Button buttonAdd;
         private Label labelHeader;
     }

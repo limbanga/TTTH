@@ -50,6 +50,20 @@ namespace TTTH
         {
             return classList = DAOClass.GetAll();
         }
+        //------------------------------ROOM------------------------------
+        public static List<ModelRoom> roomList = DAORoom.GetAll();
+        public static ModelRoom? modelRoom = null;
+        public static List<ModelRoom> ReloadRoom()
+        {
+            return roomList = DAORoom.GetAll();
+        }
 
+        //------------------------------STUDENT------------------------------
+        public static List<ModelStudent> studentList = DAOStudent.GetAll();
+        public static ModelStudent? modelStudent = null;
+        public static List<ModelStudent> ReloadStudent()
+        {
+            return studentList = DAOStudent.GetAll();
+        }
     }
 }

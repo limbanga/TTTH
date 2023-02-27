@@ -37,7 +37,7 @@
             this.shiftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.courseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roomNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._Update = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.modelClassBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelHeader = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.shiftDataGridViewTextBoxColumn,
             this.courseNameDataGridViewTextBoxColumn,
             this.roomNameDataGridViewTextBoxColumn,
-            this.Update,
+            this._Update,
             this.Delete});
             this.dataGridView.DataSource = this.modelClassBindingSource;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -77,7 +77,7 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(1074, 459);
+            this.dataGridView.Size = new System.Drawing.Size(904, 385);
             this.dataGridView.TabIndex = 0;
             // 
             // nameDataGridViewTextBoxColumn
@@ -137,14 +137,14 @@
             this.roomNameDataGridViewTextBoxColumn.Name = "roomNameDataGridViewTextBoxColumn";
             this.roomNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Update
+            // _Update
             // 
-            this.Update.HeaderText = "Sửa";
-            this.Update.MinimumWidth = 6;
-            this.Update.Name = "Update";
-            this.Update.ReadOnly = true;
-            this.Update.Text = "sửa";
-            this.Update.UseColumnTextForButtonValue = true;
+            this._Update.HeaderText = "Sửa";
+            this._Update.MinimumWidth = 6;
+            this._Update.Name = "_Update";
+            this._Update.ReadOnly = true;
+            this._Update.Text = "sửa";
+            this._Update.UseColumnTextForButtonValue = true;
             // 
             // Delete
             // 
@@ -167,20 +167,22 @@
             this.labelHeader.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelHeader.Location = new System.Drawing.Point(0, 0);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(1114, 82);
+            this.labelHeader.Size = new System.Drawing.Size(944, 82);
             this.labelHeader.TabIndex = 1;
             this.labelHeader.Text = "Danh sách lớp học";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.dataGridView);
             this.panel2.Controls.Add(this.checkBoxShowEndedClass);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 191);
+            this.panel2.Location = new System.Drawing.Point(0, 203);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(20);
-            this.panel2.Size = new System.Drawing.Size(1114, 499);
+            this.panel2.Size = new System.Drawing.Size(944, 425);
             this.panel2.TabIndex = 4;
             // 
             // checkBoxShowEndedClass
@@ -266,7 +268,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelHeader);
             this.Name = "ViewClass";
-            this.Size = new System.Drawing.Size(1114, 690);
+            this.Size = new System.Drawing.Size(944, 628);
             this.Load += new System.EventHandler(this.ViewClass_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelClassBindingSource)).EndInit();
@@ -289,7 +291,7 @@
         private DataGridViewTextBoxColumn shiftDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn roomNameDataGridViewTextBoxColumn;
-        private DataGridViewButtonColumn Update;
+        private DataGridViewButtonColumn _Update;
         private DataGridViewButtonColumn Delete;
         private Panel panel2;
         private CheckBox checkBoxShowEndedClass;
