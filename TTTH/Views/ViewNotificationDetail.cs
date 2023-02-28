@@ -17,9 +17,28 @@ namespace TTTH.Views
             InitializeComponent();
         }
 
+        //--------------------------------------------------------------
+        // EVENTS
+        //--------------------------------------------------------------
+
         private void buttonDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+        //--------------------------------------------------------------
+        // HELPER FUNCTIONS
+        //--------------------------------------------------------------
+
+        public void ChangeTitle(string title)
+        {
+            labelTopic.Text = title;
+        }
+
+        public void ChangeContent(string content)
+        {
+            textBoxShowContent.Text = content;
         }
     }
 }

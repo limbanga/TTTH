@@ -1,6 +1,6 @@
 ﻿namespace TTTH.Views.Dialog
 {
-    partial class DialogOpenNewClass
+    partial class DialogUpdateOrAddClass
     {
         /// <summary>
         /// Required designer variable.

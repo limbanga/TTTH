@@ -11,7 +11,11 @@ namespace TTTH.Models.DAO
     {
         public static List<ModelClass> GetAll()
         {
-            string query = @"select * from TTTH_class";
+            string query = @"select cl.*, co._course_name, r._room_name from TTTH_class cl 
+                            inner join TTTH_course co
+                            on cl._course_id = co._id
+                            left join TTTH_room r
+                            on cl._room_id = r._id";
 
             List<ModelClass> list = new List<ModelClass>();
 
@@ -32,8 +36,8 @@ namespace TTTH.Models.DAO
                             DateTime end = reader.GetDateTime(3);
                             int maxCapacity = reader.GetInt32(4);
                             int shift = reader.GetInt32(7);
-                            string courseName = "Chua co";
-                            string roomName = "Chua co room";
+                            string courseName = reader.GetString(8);
+                            string roomName = reader.IsDBNull(9)? "Chưa có phòng": reader.GetString(9);
 
                             // innit
                             ModelClass modelClass = new ModelClass(id, name, start, end, maxCapacity, shift, courseName, roomName);
@@ -58,6 +62,7 @@ namespace TTTH.Models.DAO
 
         public static bool Insert(string name, DateTime start, DateTime end, int maxCapacity, int shift, int courseId, int roomId)
         {
+
             int rowsAffect = 0;
             string query = @"insert into TTTH_class (_class_name, _start_day, _end_day, _capacity, _shift, _course_id, _room_id)
 values (@name, @start, @end, @maxCapacity, @shift, @courseId, @roomId)";

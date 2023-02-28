@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -41,13 +41,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.modelRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.labelHeader = new System.Windows.Forms.Label();
-            this.RoomName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._Update = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.modelRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelHeader = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelRoomBindingSource)).BeginInit();
@@ -139,9 +141,10 @@
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RoomName,
-            this.Type,
-            this.Capacity,
+            this.nameDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.capacityDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn,
             this._Update,
             this.Delete});
             this.dataGridView.DataSource = this.modelRoomBindingSource;
@@ -153,6 +156,62 @@
             this.dataGridView.RowTemplate.Height = 29;
             this.dataGridView.Size = new System.Drawing.Size(1076, 459);
             this.dataGridView.TabIndex = 0;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // capacityDataGridViewTextBoxColumn
+            // 
+            this.capacityDataGridViewTextBoxColumn.DataPropertyName = "Capacity";
+            this.capacityDataGridViewTextBoxColumn.HeaderText = "Capacity";
+            this.capacityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.capacityDataGridViewTextBoxColumn.Name = "capacityDataGridViewTextBoxColumn";
+            this.capacityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // _Update
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Cyan;
+            this._Update.DefaultCellStyle = dataGridViewCellStyle3;
+            this._Update.HeaderText = "Sửa";
+            this._Update.MinimumWidth = 6;
+            this._Update.Name = "_Update";
+            this._Update.ReadOnly = true;
+            this._Update.Text = "sửa";
+            this._Update.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCoral;
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Delete.HeaderText = "Xóa";
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "xóa";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // modelRoomBindingSource
             // 
@@ -171,58 +230,21 @@
             this.labelHeader.Text = "Danh sách phòng học";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // RoomName
+            // buttonAdd
             // 
-            this.RoomName.DataPropertyName = "Name";
-            this.RoomName.HeaderText = "Tên phòng";
-            this.RoomName.MinimumWidth = 6;
-            this.RoomName.Name = "RoomName";
-            this.RoomName.ReadOnly = true;
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Loại phòng";
-            this.Type.MinimumWidth = 6;
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            // 
-            // Capacity
-            // 
-            this.Capacity.DataPropertyName = "Capacity";
-            this.Capacity.HeaderText = "Sức chứa";
-            this.Capacity.MinimumWidth = 6;
-            this.Capacity.Name = "Capacity";
-            this.Capacity.ReadOnly = true;
-            // 
-            // _Update
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Cyan;
-            this._Update.DefaultCellStyle = dataGridViewCellStyle1;
-            this._Update.HeaderText = "Sửa";
-            this._Update.MinimumWidth = 6;
-            this._Update.Name = "_Update";
-            this._Update.ReadOnly = true;
-            this._Update.Text = "sửa";
-            this._Update.UseColumnTextForButtonValue = true;
-            // 
-            // Delete
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightCoral;
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Delete.HeaderText = "Xóa";
-            this.Delete.MinimumWidth = 6;
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Text = "xóa";
-            this.Delete.UseColumnTextForButtonValue = true;
+            this.buttonAdd.Location = new System.Drawing.Point(950, 118);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(114, 35);
+            this.buttonAdd.TabIndex = 22;
+            this.buttonAdd.Text = "Thêm phòng";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // ViewRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -258,9 +280,11 @@
         private DataGridView dataGridView;
         private Label labelHeader;
         private BindingSource modelRoomBindingSource;
-        private DataGridViewTextBoxColumn RoomName;
-        private DataGridViewTextBoxColumn Type;
-        private DataGridViewTextBoxColumn Capacity;
+        private Button buttonAdd;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn capacityDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn _Update;
         private DataGridViewButtonColumn Delete;
     }

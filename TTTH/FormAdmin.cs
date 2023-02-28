@@ -2,11 +2,15 @@
 {
     public partial class FormAdmin : Form
     {
+        private bool isExit = true;
         public FormAdmin()
         {
             InitializeComponent();
             viewNotification1.SwtichToViewPostNotification += SwtichToViewPostNotification;
+            viewNotification1.SwtichToViewNotificationDetail += SwtichToViewNotificationDetail;
         }
+
+
 
         //---------------------------------------------------------------
         // EVENTS
@@ -33,11 +37,13 @@
         #region Change view
         private void labelCourse_Click(object sender, EventArgs e)
         {
+            viewCourse2.ReLoadData();
             ShowView(viewCourse2);
         }
 
         private void labelClass_Click(object sender, EventArgs e)
         {
+            viewClass1.ReLoadData();
             ShowView(viewClass1);
         }
 
@@ -55,6 +61,34 @@
             viewRoom1.ReLoadData();
             ShowView(viewRoom1);
         }
+        private void labelStudent_Click(object sender, EventArgs e)
+        {
+            viewStudent1.ReloadData();
+            ShowView(viewStudent1);
+        }
+
+        private void labelLogout_Click(object sender, EventArgs e)
+        {
+            LogoutHandle();
+        }
+
+        private void pictureBoxLogout_Click(object sender, EventArgs e)
+        {
+            LogoutHandle();
+        }
+
+        #endregion
+
+        #region Hidden event
+        private void FormAdmin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (isExit)
+            {
+                Application.Exit();
+            }
+        }
+
+
         #endregion
 
 
@@ -157,19 +191,34 @@
             ShowView(viewNotification1);
         }
 
+        private void LogoutHandle()
+        {
+            isExit = false;
+            this.Close();
+        }
+
         //------------------------------------------------------
         // HANDLER EVENT FORM SUB FORM
         //------------------------------------------------------
 
+        #region event handler of sub form
         private void SwtichToViewPostNotification(object? sender, EventArgs e)
         {
             ShowView(viewPostNotification1);
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void SwtichToViewNotificationDetail(object? sender, EventArgs e)
         {
-            viewStudent1.ReloadData();
-            ShowView(viewStudent1);
+            if (Env.notification is not null)
+            {
+                viewNotificationDetail1.ChangeTitle(Env.notification.Topic);
+                viewNotificationDetail1.ChangeContent(Env.notification.Content);
+            }
+            ShowView(viewNotificationDetail1);
         }
+        #endregion
+
+
+
     }
 }

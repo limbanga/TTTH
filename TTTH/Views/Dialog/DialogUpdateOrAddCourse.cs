@@ -16,7 +16,7 @@ namespace TTTH.Views.Dialog
     public partial class DialogUpdateOrAddCourse : Form
     {
         private ModelCourse? modelCourse = null;
-        bool forAdd = true;
+
         public DialogUpdateOrAddCourse(ModelCourse? courseInput)
         {
             InitializeComponent();
@@ -42,7 +42,9 @@ namespace TTTH.Views.Dialog
             }
             else // update
             {
-
+                MessageBox.Show("Ddang chay vao cap nhat");
+                MessageBox.Show("Test"+ inputCourse.Id);
+                isSuccess = DAOCourse.Update(inputCourse);
             }
 
 
@@ -56,6 +58,14 @@ namespace TTTH.Views.Dialog
             }
         }
 
+        #region Hidden event
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+
+
         //-----------------------------------------------------------------------
         // HELPER FUNCTIONS
         //-----------------------------------------------------------------------
@@ -64,21 +74,20 @@ namespace TTTH.Views.Dialog
             if (modelCourse is null) { return; }
 
             labelHeader.Text = "Cập nhật khóa học";
-            forAdd = false;
 
-            textBoxID.Enabled = false;
-            textBoxID.Text = modelCourse.Id.ToString();
             textBoxName.Text = modelCourse.Name;
             textBoxDuration.Text = modelCourse.Duration.ToString();
             textBoxFee.Text = modelCourse.Fee.ToString();
+            
         }
         private ModelCourse GetInput()
         {
+            int id = modelCourse is null? -1: modelCourse.Id;
             string name = textBoxName.Text;
             double fee = Convert.ToDouble(textBoxFee.Text);
             int duration = Convert.ToInt32(textBoxDuration.Text);
 
-            return new ModelCourse(name, fee, duration);
+            return new ModelCourse(id, name, fee, duration);
         }
 
 

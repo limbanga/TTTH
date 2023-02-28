@@ -13,30 +13,17 @@ namespace TTTH.Views
 {
     public partial class FormLogin : Form
     {
-        private bool isExit = true;
-
-        //---------------------------------------------------------------------------
-        // FORM EVENTS
-        //---------------------------------------------------------------------------
-
         public FormLogin()
         {
             InitializeComponent();
         }
-
+        //---------------------------------------------------------------------------
+        // FORM EVENTS
+        //---------------------------------------------------------------------------
         private void FormLogin_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (isExit)
-            {
-                Application.Exit();
-            }
-        }
-
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             // get input user name and password
@@ -46,7 +33,7 @@ namespace TTTH.Views
             // validate
 
 
-            // call api
+
             CheckLogin(userName, password);
 
         }
@@ -70,12 +57,26 @@ namespace TTTH.Views
                 MessageBox.Show(Env.wrongPassMessage, "Không thể đăng nhập");
                 return;
             }
-
-            // login success -> close login form
-            isExit = false;
-            this.Close();
+            // phân quyền
+            Authorize();
         }
 
+        private void Authorize()
+        {
+            if (Env.user is null) { return; }
 
+            this.Hide();
+
+            if (Env.user.PermissionID == 1)
+            {
+                FormAdmin formAdmin = new FormAdmin();
+                formAdmin.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chưa làm");
+            }
+            this.Show();   
+        }
     }
 }

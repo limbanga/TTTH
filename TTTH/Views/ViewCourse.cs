@@ -30,7 +30,7 @@ namespace TTTH.Views
             string columnName = dataGridView.Columns[columnIndex].Name;
 
             Env.course = Env.courseList[e.RowIndex];
-            if (columnName.Equals("Update"))
+            if (columnName.Equals("_Update"))
             {
                 // get course
                 // create new form to update
@@ -39,20 +39,23 @@ namespace TTTH.Views
             }
             else if(columnName.Equals("OpenClass"))
             {
-                DialogOpenNewClass newClassDialog = new DialogOpenNewClass(Env.course);
+                DialogUpdateOrAddClass newClassDialog = new DialogUpdateOrAddClass(Env.course, null);
                 newClassDialog.ShowDialog();
             }
         }
 
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            DialogUpdateOrAddCourse updateDialog = new DialogUpdateOrAddCourse(null);
+            updateDialog.ShowDialog();
+        }
 
         //--------------------------------------------------
         // HELPER FUNTIONS
         //--------------------------------------------------
-        public void ReLoadCourse()
+        public void ReLoadData()
         {
             dataGridView.DataSource = Env.ReloadCourse();
         }
-
-
     }
 }

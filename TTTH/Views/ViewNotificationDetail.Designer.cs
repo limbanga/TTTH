@@ -124,7 +124,7 @@
 
         #endregion
 
-        public Label labelTopic;
+        private Label labelTopic;
         private Panel panel1;
         private Panel panel2;
         public TextBox textBoxShowContent;

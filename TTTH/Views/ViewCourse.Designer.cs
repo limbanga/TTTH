@@ -39,6 +39,7 @@
             this.modelCourseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelCourseBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -73,11 +74,11 @@
             this._Update,
             this.OpenClass});
             this.dataGridView.DataSource = this.modelCourseBindingSource;
-            this.dataGridView.Location = new System.Drawing.Point(23, 23);
+            this.dataGridView.Location = new System.Drawing.Point(23, 116);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(942, 450);
+            this.dataGridView.Size = new System.Drawing.Size(942, 357);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
@@ -136,6 +137,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.buttonAdd);
             this.panel2.Controls.Add(this.dataGridView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 64);
@@ -143,6 +145,16 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(20);
             this.panel2.Size = new System.Drawing.Size(988, 496);
             this.panel2.TabIndex = 3;
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(813, 33);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(124, 29);
+            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.Text = "Thêm mới khóa học";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // ViewCourse
             // 
@@ -173,5 +185,6 @@
         private DataGridViewTextBoxColumn durationDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn _Update;
         private DataGridViewButtonColumn OpenClass;
+        private Button buttonAdd;
     }
 }

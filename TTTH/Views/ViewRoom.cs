@@ -24,6 +24,10 @@ namespace TTTH.Views
         {
             dataGridView.DataSource = Env.roomList;
         }
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+
+        }
 
         //--------------------------------------------------
         // HELPER FUNCTIIONS
@@ -34,6 +38,5 @@ namespace TTTH.Views
             dataGridView.DataSource = Env.ReloadRoom();
         }
 
- 
     }
 }
