@@ -23,6 +23,7 @@ namespace TTTH.Views
         //-----------------------------------------------------------------------------
         private void buttonPost_Click(object sender, EventArgs e)
         {
+            // get input
             string topic = textBoxTopic.Text;
             string content = richTextBoxContent.Text;
 
@@ -35,8 +36,9 @@ namespace TTTH.Views
                 Application.Exit();
                 return; 
             }
-            MessageBox.Show("Test 33"+ Env.user.Id);
+
             bool isSuccess = DAONotification.Insert(topic,content, Env.user.Id);
+
             if (isSuccess)
             {
                 MessageBox.Show("Đăng thông báo thành công.", "Thành công", MessageBoxButtons.OK);

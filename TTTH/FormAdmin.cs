@@ -8,7 +8,10 @@
             InitializeComponent();
             viewNotification1.SwtichToViewPostNotification += SwtichToViewPostNotification;
             viewNotification1.SwtichToViewNotificationDetail += SwtichToViewNotificationDetail;
+            viewClass1.SwtichToViewClassDetail += SwtichToViewClassDetail;
         }
+
+ 
 
 
 
@@ -213,12 +216,18 @@
             {
                 viewNotificationDetail1.ChangeTitle(Env.notification.Topic);
                 viewNotificationDetail1.ChangeContent(Env.notification.Content);
+                ShowView(viewNotificationDetail1);
             }
-            ShowView(viewNotificationDetail1);
         }
         #endregion
 
-
+        private void SwtichToViewClassDetail(object? sender, EventArgs e)
+        {
+            if (Env.modelClass is not null)
+            {
+                ShowView(viewClassDetail);
+            }
+        }
 
     }
 }

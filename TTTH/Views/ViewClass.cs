@@ -13,6 +13,8 @@ namespace TTTH.Views
 {
     public partial class ViewClass : UserControl
     {
+
+        public EventHandler? SwtichToViewClassDetail;
         public ViewClass()
         {
             InitializeComponent();
@@ -27,19 +29,28 @@ namespace TTTH.Views
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0) { return; }
+
             int columnIndex = e.ColumnIndex;
             string columnName = dataGridView.Columns[columnIndex].Name;
-
+            
+            // get selected class
             Env.modelClass = Env.classList[e.RowIndex];
+            
             if (columnName.Equals("_Update"))
             {
-                MessageBox.Show("Sua lớp học");
+                MessageBox.Show("Sua lớp học id lop can sua la"+ Env.modelClass.Id);
                 DialogUpdateOrAddClass updateClass = new DialogUpdateOrAddClass(null, Env.modelClass);
                 updateClass.ShowDialog();
             }
             else if (columnName.Equals("Delete"))
             {
                 MessageBox.Show("Delete chua lam");
+            }
+            else
+            {
+                // public envent to main form
+                SwtichToViewClassDetail?.Invoke(this, new EventArgs());
             }
         }
 

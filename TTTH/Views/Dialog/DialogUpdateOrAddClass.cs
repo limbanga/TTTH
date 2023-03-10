@@ -20,9 +20,9 @@ namespace TTTH.Views.Dialog
 
         public DialogUpdateOrAddClass(ModelCourse? _course, ModelClass? _modelClass)
         {
+            InitializeComponent();
             course = _course;
             modelClass = _modelClass;
-            InitializeComponent();
         }
         //---------------------------------------------------------------------------
         // EVENTS
@@ -36,10 +36,6 @@ namespace TTTH.Views.Dialog
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            int rid = ((ModelRoom)comboBoxRoom.SelectedItem).Id;
-            MessageBox.Show("room id = " + rid);
-
-
             bool isSuccess = false;
             // ValidateInput();
             // get input
@@ -50,7 +46,7 @@ namespace TTTH.Views.Dialog
             }
             else
             {
-
+                isSuccess = DAOClass.Update(inputClass);
             }
 
             if (isSuccess)
@@ -81,13 +77,14 @@ namespace TTTH.Views.Dialog
             }
             else // add
             {
-               
-                labelHeader.Text = $"Mở lớp cho khóa học {course.Name}";
+                labelHeader.Text = $"Mở lớp cho khóa học {course?.Name}";
             }
         }
         private ModelClass GetInput()
         {
-
+            // classID = -1 -> add new
+            int classID = modelClass is null? -1: modelClass.Id;
+            MessageBox.Show("Test classID ="+classID);
             int courseId = course is null? -1: course.Id;
             string name = textBoxName.Text;
             int maxCapacity = Convert.ToInt32(textBoxLimitStudent.Text);
@@ -96,7 +93,7 @@ namespace TTTH.Views.Dialog
             DateTime start = dateTimePickerStart.Value;
             DateTime end = dateTimePickerEnd.Value;
 
-            return new ModelClass(name, start, end, maxCapacity, shift, courseId, roomId);
+            return new ModelClass(classID, name, start, end, maxCapacity, shift, courseId, roomId);
         }
         private void CloseIfCourseNull()
         {

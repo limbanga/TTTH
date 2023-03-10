@@ -77,8 +77,7 @@ namespace TTTH.Views.Dialog
 
             textBoxName.Text = modelCourse.Name;
             textBoxDuration.Text = modelCourse.Duration.ToString();
-            textBoxFee.Text = modelCourse.Fee.ToString();
-            
+            textBoxFee.Text = modelCourse.Fee.ToString();   
         }
         private ModelCourse GetInput()
         {

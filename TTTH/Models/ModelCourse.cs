@@ -16,6 +16,11 @@ namespace TTTH.Models
         public double Fee { get => fee; set => fee = value; }
         public int Duration { get => duration; set => duration = value; }
 
+        public ModelCourse() { } 
+        public ModelCourse(int id) 
+        {
+            this.Id = id;
+        }
         public ModelCourse(int id ,string name, double fee, int duration)
         {
             this.Id = id;

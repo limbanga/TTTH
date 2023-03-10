@@ -14,6 +14,12 @@ namespace TTTH.Models
         public string Name { get => name; set => name = value; }
         public string Type { get => type; set => type = value; }
         public int Capacity { get => capacity; set => capacity = value; }
+
+        public ModelRoom() { }
+        public ModelRoom(int id) 
+        {
+            this.Id = id;
+        }
         public ModelRoom(int id, string name, string type, int capacity)
         {
             this.Id = id;

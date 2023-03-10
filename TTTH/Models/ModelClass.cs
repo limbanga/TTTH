@@ -13,21 +13,11 @@ namespace TTTH.Models
         private DateTime end;
         private int maxCapacity;
         private int shift;
-        private int courseId = -1;
-        private string courseName;
-        private int roomId = -1;
-        private string roomName;
-        public string Name { get => name; set => name = value; }
-        public DateTime Start { get => start; set => start = value; }
-        public DateTime End { get => end; set => end = value; }
-        public int MaxCapacity { get => maxCapacity; set => maxCapacity = value; }
-        public int Shift { get => shift; set => shift = value; }
-        public string CourseName { get => courseName; set => courseName = value; }
-        public string RoomName { get => roomName; set => roomName = value; }
-        public int RoomId { get => roomId; set => roomId = value; }
-        public int CourseId { get => courseId; set => courseId = value; }
+        private ModelCourse course;
+        private ModelRoom room;
 
-        public ModelClass(int id, string name, DateTime start, DateTime end, int maxCapacity, int shift, string courseName, string roomName)
+        // for query
+        public ModelClass(int id, string name, DateTime start, DateTime end, int maxCapacity, int shift, ModelCourse course, ModelRoom room)
         {
             this.Id = id;
             this.Name = name;
@@ -35,19 +25,32 @@ namespace TTTH.Models
             this.End = end;
             this.MaxCapacity = maxCapacity;
             this.Shift = shift;
-            this.CourseName = courseName;
-            this.RoomName = roomName;
+            this.Course = course;
+            this.Room = room;
+        }
+        // for add or update
+        public ModelClass(int id, string name, DateTime start, DateTime end, int maxCapacity, int shift, int courseID, int roomID)
+        {
+            MessageBox.Show("Test id nhajn duocj la"+ id);
+            this.Id = id;
+            this.Name = name;
+            this.Start = start;
+            this.End = end;
+            this.MaxCapacity = maxCapacity;
+            this.Shift = shift;
+            this.Course = new ModelCourse(courseID);
+            this.Room = new ModelRoom(roomID);
         }
 
-        public ModelClass(string name, DateTime start, DateTime end, int maxCapacity, int shift, int courseId, int roomId)
-        {
-            this.name = name;
-            this.start = start;
-            this.end = end;
-            this.maxCapacity = maxCapacity;
-            this.shift = shift;
-            this.courseId = courseId;
-            this.roomId = roomId;
-        }
+        public string Name { get => name; set => name = value; }
+        public DateTime Start { get => start; set => start = value; }
+        public DateTime End { get => end; set => end = value; }
+        public int MaxCapacity { get => maxCapacity; set => maxCapacity = value; }
+        public int Shift { get => shift; set => shift = value; }
+        public ModelCourse Course { get => course; set => course = value; }
+        public string CourseName { get => course.Name; }
+        public ModelRoom Room { get => room; set => room = value; }
+        public string RoomName { get => room.Name; }
+
     }
 }

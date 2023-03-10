@@ -148,12 +148,15 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(813, 33);
+            this.buttonAdd.BackColor = System.Drawing.Color.Lime;
+            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAdd.Location = new System.Drawing.Point(850, 38);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(124, 29);
+            this.buttonAdd.Size = new System.Drawing.Size(115, 39);
             this.buttonAdd.TabIndex = 2;
-            this.buttonAdd.Text = "Thêm mới khóa học";
-            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Text = "Thêm mới";
+            this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // ViewCourse

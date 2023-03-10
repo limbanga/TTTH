@@ -58,13 +58,14 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxShowSidebar = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.viewNotificationDetail1 = new TTTH.Views.ViewNotificationDetail();
             this.viewStudent1 = new TTTH.Views.ViewStudent();
             this.viewRoom1 = new TTTH.Views.ViewRoom();
             this.viewNotification1 = new TTTH.Views.ViewNotification();
             this.viewPostNotification1 = new TTTH.Views.ViewPostNotification();
             this.viewCourse2 = new TTTH.Views.ViewCourse();
             this.viewClass1 = new TTTH.Views.ViewClass();
-            this.viewNotificationDetail1 = new TTTH.Views.ViewNotificationDetail();
+            this.viewClassDetail = new TTTH.Views.ViewClassDetail();
             this.panelSideBar.SuspendLayout();
             this.paneSidebarContent.SuspendLayout();
             this.panelAccountSubmenu.SuspendLayout();
@@ -97,7 +98,7 @@
             this.panelSideBar.MaximumSize = new System.Drawing.Size(247, 2000);
             this.panelSideBar.MinimumSize = new System.Drawing.Size(79, 200);
             this.panelSideBar.Name = "panelSideBar";
-            this.panelSideBar.Size = new System.Drawing.Size(247, 1055);
+            this.panelSideBar.Size = new System.Drawing.Size(247, 766);
             this.panelSideBar.TabIndex = 0;
             // 
             // paneSidebarContent
@@ -111,7 +112,7 @@
             this.paneSidebarContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.paneSidebarContent.Location = new System.Drawing.Point(0, 73);
             this.paneSidebarContent.Name = "paneSidebarContent";
-            this.paneSidebarContent.Size = new System.Drawing.Size(247, 982);
+            this.paneSidebarContent.Size = new System.Drawing.Size(247, 693);
             this.paneSidebarContent.TabIndex = 0;
             // 
             // panelAccountSubmenu
@@ -120,7 +121,7 @@
             this.panelAccountSubmenu.Controls.Add(this.panel7);
             this.panelAccountSubmenu.Controls.Add(this.panel6);
             this.panelAccountSubmenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelAccountSubmenu.Location = new System.Drawing.Point(0, 746);
+            this.panelAccountSubmenu.Location = new System.Drawing.Point(0, 457);
             this.panelAccountSubmenu.MaximumSize = new System.Drawing.Size(317, 153);
             this.panelAccountSubmenu.Name = "panelAccountSubmenu";
             this.panelAccountSubmenu.Size = new System.Drawing.Size(247, 153);
@@ -235,7 +236,7 @@
             this.panelAccount.Controls.Add(this.labelAccount);
             this.panelAccount.Controls.Add(this.pictureBoxAccount);
             this.panelAccount.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelAccount.Location = new System.Drawing.Point(0, 899);
+            this.panelAccount.Location = new System.Drawing.Point(0, 610);
             this.panelAccount.Name = "panelAccount";
             this.panelAccount.Size = new System.Drawing.Size(247, 83);
             this.panelAccount.TabIndex = 5;
@@ -440,6 +441,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.viewClassDetail);
             this.panel3.Controls.Add(this.viewNotificationDetail1);
             this.panel3.Controls.Add(this.viewStudent1);
             this.panel3.Controls.Add(this.viewRoom1);
@@ -450,15 +452,23 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(247, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1175, 1055);
+            this.panel3.Size = new System.Drawing.Size(1175, 766);
             this.panel3.TabIndex = 2;
+            // 
+            // viewNotificationDetail1
+            // 
+            this.viewNotificationDetail1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewNotificationDetail1.Location = new System.Drawing.Point(0, 0);
+            this.viewNotificationDetail1.Name = "viewNotificationDetail1";
+            this.viewNotificationDetail1.Size = new System.Drawing.Size(1175, 766);
+            this.viewNotificationDetail1.TabIndex = 3;
             // 
             // viewStudent1
             // 
             this.viewStudent1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewStudent1.Location = new System.Drawing.Point(0, 0);
             this.viewStudent1.Name = "viewStudent1";
-            this.viewStudent1.Size = new System.Drawing.Size(1175, 1055);
+            this.viewStudent1.Size = new System.Drawing.Size(1175, 766);
             this.viewStudent1.TabIndex = 3;
             // 
             // viewRoom1
@@ -466,7 +476,7 @@
             this.viewRoom1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewRoom1.Location = new System.Drawing.Point(0, 0);
             this.viewRoom1.Name = "viewRoom1";
-            this.viewRoom1.Size = new System.Drawing.Size(1175, 1055);
+            this.viewRoom1.Size = new System.Drawing.Size(1175, 766);
             this.viewRoom1.TabIndex = 3;
             // 
             // viewNotification1
@@ -474,7 +484,7 @@
             this.viewNotification1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewNotification1.Location = new System.Drawing.Point(0, 0);
             this.viewNotification1.Name = "viewNotification1";
-            this.viewNotification1.Size = new System.Drawing.Size(1175, 1055);
+            this.viewNotification1.Size = new System.Drawing.Size(1175, 766);
             this.viewNotification1.TabIndex = 3;
             // 
             // viewPostNotification1
@@ -482,7 +492,7 @@
             this.viewPostNotification1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewPostNotification1.Location = new System.Drawing.Point(0, 0);
             this.viewPostNotification1.Name = "viewPostNotification1";
-            this.viewPostNotification1.Size = new System.Drawing.Size(1175, 1055);
+            this.viewPostNotification1.Size = new System.Drawing.Size(1175, 766);
             this.viewPostNotification1.TabIndex = 4;
             // 
             // viewCourse2
@@ -490,7 +500,7 @@
             this.viewCourse2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewCourse2.Location = new System.Drawing.Point(0, 0);
             this.viewCourse2.Name = "viewCourse2";
-            this.viewCourse2.Size = new System.Drawing.Size(1175, 1055);
+            this.viewCourse2.Size = new System.Drawing.Size(1175, 766);
             this.viewCourse2.TabIndex = 0;
             // 
             // viewClass1
@@ -498,21 +508,21 @@
             this.viewClass1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewClass1.Location = new System.Drawing.Point(0, 0);
             this.viewClass1.Name = "viewClass1";
-            this.viewClass1.Size = new System.Drawing.Size(1175, 1055);
+            this.viewClass1.Size = new System.Drawing.Size(1175, 766);
             this.viewClass1.TabIndex = 4;
             // 
-            // viewNotificationDetail1
+            // viewClassDetail
             // 
-            this.viewNotificationDetail1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewNotificationDetail1.Location = new System.Drawing.Point(0, 0);
-            this.viewNotificationDetail1.Name = "viewNotificationDetail1";
-            this.viewNotificationDetail1.Size = new System.Drawing.Size(1175, 1055);
-            this.viewNotificationDetail1.TabIndex = 3;
+            this.viewClassDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewClassDetail.Location = new System.Drawing.Point(0, 0);
+            this.viewClassDetail.Name = "viewClassDetail";
+            this.viewClassDetail.Size = new System.Drawing.Size(1175, 766);
+            this.viewClassDetail.TabIndex = 3;
             // 
             // FormAdmin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(1422, 1055);
+            this.ClientSize = new System.Drawing.Size(1422, 766);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelSideBar);
             this.Name = "FormAdmin";
@@ -581,5 +591,6 @@
         private Views.ViewRoom viewRoom1;
         private Views.ViewStudent viewStudent1;
         private Views.ViewNotificationDetail viewNotificationDetail1;
+        private Views.ViewClassDetail viewClassDetail;
     }
 }

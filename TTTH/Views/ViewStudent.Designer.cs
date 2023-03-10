@@ -34,11 +34,12 @@
             this.checkBoxShowEndedClass = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.modelStudentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._Update = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.modelStudentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelStudentBindingSource)).BeginInit();
@@ -99,10 +100,7 @@
             this.dataGridView.RowTemplate.Height = 29;
             this.dataGridView.Size = new System.Drawing.Size(1100, 564);
             this.dataGridView.TabIndex = 0;
-            // 
-            // modelStudentBindingSource
-            // 
-            this.modelStudentBindingSource.DataSource = typeof(TTTH.Models.ModelStudent);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -145,10 +143,29 @@
             this.Delete.ToolTipText = "xóa";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // modelStudentBindingSource
+            // 
+            this.modelStudentBindingSource.DataSource = typeof(TTTH.Models.ModelStudent);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.BackColor = System.Drawing.Color.Lime;
+            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAdd.Location = new System.Drawing.Point(968, 123);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(152, 37);
+            this.buttonAdd.TabIndex = 24;
+            this.buttonAdd.Text = "Thêm học viên";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
             // ViewStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.panel2);
             this.Name = "ViewStudent";
@@ -173,5 +190,6 @@
         private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn _Update;
         private DataGridViewButtonColumn Delete;
+        private Button buttonAdd;
     }
 }

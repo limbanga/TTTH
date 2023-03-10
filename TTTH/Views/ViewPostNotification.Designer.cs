@@ -90,12 +90,15 @@
             // buttonPost
             // 
             this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPost.Location = new System.Drawing.Point(891, 596);
+            this.buttonPost.BackColor = System.Drawing.Color.Lime;
+            this.buttonPost.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonPost.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonPost.Location = new System.Drawing.Point(833, 591);
             this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(94, 29);
+            this.buttonPost.Size = new System.Drawing.Size(152, 37);
             this.buttonPost.TabIndex = 5;
             this.buttonPost.Text = "Đăng";
-            this.buttonPost.UseVisualStyleBackColor = true;
+            this.buttonPost.UseVisualStyleBackColor = false;
             this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
             // 
             // ViewPostNotification
