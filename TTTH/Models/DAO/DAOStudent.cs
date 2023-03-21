@@ -49,6 +49,143 @@ namespace TTTH.Models.DAO
             }
             return list;
         }
+
+        public static List<ModelStudent> GetStudentsInClass(int classID)
+        {
+            string query = @"select * from TTTH_student s inner join TTTH_register r on s._id = r._student_id where r._class_id = @classID";
+            List<ModelStudent> list = new List<ModelStudent>();
+
+            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@classID", classID);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            // parse
+                            int id = reader.GetInt32(0);
+                            string phoneNumber = reader.GetString(1);
+                            string name = reader.GetString(2);
+
+                            // innit
+                            ModelStudent modelStudent = new ModelStudent(id, name, phoneNumber);
+                            // assign
+                            list.Add(modelStudent);
+                        }
+                        reader.Close();
+                        cmd.Dispose();
+                    }
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("DAOstudent" + e.Message);
+                    //throw;
+                }
+            }
+            return list;
+        }
+
+        public static List<ModelStudent> GetStudentsNotInClass(int classID)
+        {
+            string query = @"select * from TTTH_student where _id not in (select _id from TTTH_student s 
+inner join TTTH_register r 
+on s._id = r._student_id 
+where r._class_id = @classID);";
+            List<ModelStudent> list = new List<ModelStudent>();
+
+            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@classID", classID);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            // parse
+                            int id = reader.GetInt32(0);
+                            string phoneNumber = reader.GetString(1);
+                            string name = reader.GetString(2);
+                            bool isInClass = false;
+
+                            // innit
+                            ModelStudent modelStudent = new ModelStudent(id, name, phoneNumber, isInClass);
+                            // assign
+                            list.Add(modelStudent);
+                        }
+
+                        reader.Close();
+                        cmd.Dispose();
+                    }
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("DAOstudent" + e.Message);
+                    //throw;
+                }
+            }
+            return list;
+        }
+
+        public static List<ModelStudent> GetAllStudentsAndCheckIfInClass(int classID)
+        {
+            string query = @"select * ,
+case 
+when _id in (
+select _student_id from TTTH_register where _class_id = @classID
+) then 1
+else 0
+end as 'is_in_class' from TTTH_student;";
+            List<ModelStudent> list = new List<ModelStudent>();
+
+            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@classID", classID);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            // parse
+                            int id = reader.GetInt32(0);
+                            string phoneNumber = reader.GetString(1);
+                            string name = reader.GetString(2);
+                            bool isInClass = Convert.ToBoolean(reader.GetInt32(3));
+
+                            // innit
+                            ModelStudent modelStudent = new ModelStudent(id, name, phoneNumber, isInClass);
+                            // assign
+                            list.Add(modelStudent);
+                        }
+
+                        reader.Close();
+                        cmd.Dispose();
+                    }
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("DAOstudent" + e.Message);
+                    //throw;
+                }
+            }
+            return list;
+        }
         #endregion
 
 

@@ -52,6 +52,7 @@ namespace TTTH.Views.Dialog
             if (isSuccess)
             {
                 MessageBox.Show("Tạo lớp thành công.", "Thêm thành công.", MessageBoxButtons.OK);
+                this.Close();
             }
             else
             {

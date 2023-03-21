@@ -57,7 +57,7 @@ namespace TTTH.Models.DAO
         public static bool Insert(string name, double fee, int duration)
         {
             int rowsAffect = 0;
-            string query = @"insert into TTTH_course (_course_name, _length, _price)
+            string query = @"insert into TTTH_course (_course_name, _duration, _fee)
                                 values (@name, @duration, @fee)";
 
             using (SqlConnection connection = new SqlConnection(Env.stringConnect))

@@ -48,11 +48,11 @@ where _user_name = @username and _pass_word = @password";
                     }
                     connection.Close();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    MessageBox.Show("CheckLogin"+ ex.Message);
                     //throw;
                 }
-                
             }
             return user;
         }   

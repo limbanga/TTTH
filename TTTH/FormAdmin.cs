@@ -1,4 +1,6 @@
-﻿namespace TTTH
+﻿using TTTH.Views;
+
+namespace TTTH
 {
     public partial class FormAdmin : Form
     {
@@ -10,11 +12,6 @@
             viewNotification1.SwtichToViewNotificationDetail += SwtichToViewNotificationDetail;
             viewClass1.SwtichToViewClassDetail += SwtichToViewClassDetail;
         }
-
- 
-
-
-
         //---------------------------------------------------------------
         // EVENTS
         //---------------------------------------------------------------
@@ -225,6 +222,8 @@
         {
             if (Env.modelClass is not null)
             {
+                viewClassDetail.SetDataForClass(Env.modelClass);
+                viewClassDetail.ReloadData();
                 ShowView(viewClassDetail);
             }
         }

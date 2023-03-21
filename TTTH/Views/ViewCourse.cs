@@ -46,8 +46,10 @@ namespace TTTH.Views
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            DialogUpdateOrAddCourse updateDialog = new DialogUpdateOrAddCourse(null);
-            updateDialog.ShowDialog();
+            DialogUpdateOrAddCourse addDialog = new DialogUpdateOrAddCourse(null);
+            addDialog.ShowDialog();
+            // reload data after update
+            ReLoadData();
         }
 
         //--------------------------------------------------

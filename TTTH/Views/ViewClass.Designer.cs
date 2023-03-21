@@ -30,15 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maxCapacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shiftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.courseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._Update = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.modelClassBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelHeader = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -50,6 +41,15 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.courseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shiftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxCapacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._Update = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelClassBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -62,12 +62,12 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
+            this.courseNameDataGridViewTextBoxColumn,
+            this.shiftDataGridViewTextBoxColumn,
+            this.roomNameDataGridViewTextBoxColumn,
             this.startDataGridViewTextBoxColumn,
             this.endDataGridViewTextBoxColumn,
             this.maxCapacityDataGridViewTextBoxColumn,
-            this.shiftDataGridViewTextBoxColumn,
-            this.courseNameDataGridViewTextBoxColumn,
-            this.roomNameDataGridViewTextBoxColumn,
             this._Update,
             this.Delete});
             this.dataGridView.DataSource = this.modelClassBindingSource;
@@ -77,84 +77,9 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(904, 385);
+            this.dataGridView.Size = new System.Drawing.Size(1108, 405);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // startDataGridViewTextBoxColumn
-            // 
-            this.startDataGridViewTextBoxColumn.DataPropertyName = "Start";
-            this.startDataGridViewTextBoxColumn.HeaderText = "Start";
-            this.startDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
-            this.startDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endDataGridViewTextBoxColumn
-            // 
-            this.endDataGridViewTextBoxColumn.DataPropertyName = "End";
-            this.endDataGridViewTextBoxColumn.HeaderText = "End";
-            this.endDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.endDataGridViewTextBoxColumn.Name = "endDataGridViewTextBoxColumn";
-            this.endDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // maxCapacityDataGridViewTextBoxColumn
-            // 
-            this.maxCapacityDataGridViewTextBoxColumn.DataPropertyName = "MaxCapacity";
-            this.maxCapacityDataGridViewTextBoxColumn.HeaderText = "MaxCapacity";
-            this.maxCapacityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.maxCapacityDataGridViewTextBoxColumn.Name = "maxCapacityDataGridViewTextBoxColumn";
-            this.maxCapacityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // shiftDataGridViewTextBoxColumn
-            // 
-            this.shiftDataGridViewTextBoxColumn.DataPropertyName = "Shift";
-            this.shiftDataGridViewTextBoxColumn.HeaderText = "Shift";
-            this.shiftDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.shiftDataGridViewTextBoxColumn.Name = "shiftDataGridViewTextBoxColumn";
-            this.shiftDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // courseNameDataGridViewTextBoxColumn
-            // 
-            this.courseNameDataGridViewTextBoxColumn.DataPropertyName = "CourseName";
-            this.courseNameDataGridViewTextBoxColumn.HeaderText = "CourseName";
-            this.courseNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.courseNameDataGridViewTextBoxColumn.Name = "courseNameDataGridViewTextBoxColumn";
-            this.courseNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // roomNameDataGridViewTextBoxColumn
-            // 
-            this.roomNameDataGridViewTextBoxColumn.DataPropertyName = "RoomName";
-            this.roomNameDataGridViewTextBoxColumn.HeaderText = "RoomName";
-            this.roomNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.roomNameDataGridViewTextBoxColumn.Name = "roomNameDataGridViewTextBoxColumn";
-            this.roomNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // _Update
-            // 
-            this._Update.HeaderText = "Sửa";
-            this._Update.MinimumWidth = 6;
-            this._Update.Name = "_Update";
-            this._Update.ReadOnly = true;
-            this._Update.Text = "sửa";
-            this._Update.UseColumnTextForButtonValue = true;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Xóa";
-            this.Delete.MinimumWidth = 6;
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Text = "xóa";
-            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // modelClassBindingSource
             // 
@@ -168,7 +93,7 @@
             this.labelHeader.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelHeader.Location = new System.Drawing.Point(0, 0);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(944, 82);
+            this.labelHeader.Size = new System.Drawing.Size(1148, 82);
             this.labelHeader.TabIndex = 1;
             this.labelHeader.Text = "Danh sách lớp học";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -183,7 +108,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 203);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(20);
-            this.panel2.Size = new System.Drawing.Size(944, 425);
+            this.panel2.Size = new System.Drawing.Size(1148, 445);
             this.panel2.TabIndex = 4;
             // 
             // checkBoxShowEndedClass
@@ -198,7 +123,7 @@
             // 
             // textBoxFind
             // 
-            this.textBoxFind.Location = new System.Drawing.Point(122, 126);
+            this.textBoxFind.Location = new System.Drawing.Point(118, 124);
             this.textBoxFind.Name = "textBoxFind";
             this.textBoxFind.Size = new System.Drawing.Size(138, 27);
             this.textBoxFind.TabIndex = 6;
@@ -206,7 +131,7 @@
             // labelFind
             // 
             this.labelFind.AutoSize = true;
-            this.labelFind.Location = new System.Drawing.Point(38, 133);
+            this.labelFind.Location = new System.Drawing.Point(34, 131);
             this.labelFind.Name = "labelFind";
             this.labelFind.Size = new System.Drawing.Size(67, 20);
             this.labelFind.TabIndex = 7;
@@ -214,7 +139,7 @@
             // 
             // buttonFind
             // 
-            this.buttonFind.Location = new System.Drawing.Point(266, 124);
+            this.buttonFind.Location = new System.Drawing.Point(262, 122);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(94, 29);
             this.buttonFind.TabIndex = 8;
@@ -255,6 +180,81 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Nhập giá trị";
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên lớp";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // courseNameDataGridViewTextBoxColumn
+            // 
+            this.courseNameDataGridViewTextBoxColumn.DataPropertyName = "CourseName";
+            this.courseNameDataGridViewTextBoxColumn.HeaderText = "Khóa học";
+            this.courseNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.courseNameDataGridViewTextBoxColumn.Name = "courseNameDataGridViewTextBoxColumn";
+            this.courseNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // shiftDataGridViewTextBoxColumn
+            // 
+            this.shiftDataGridViewTextBoxColumn.DataPropertyName = "Shift";
+            this.shiftDataGridViewTextBoxColumn.HeaderText = "Ca học";
+            this.shiftDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.shiftDataGridViewTextBoxColumn.Name = "shiftDataGridViewTextBoxColumn";
+            this.shiftDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // roomNameDataGridViewTextBoxColumn
+            // 
+            this.roomNameDataGridViewTextBoxColumn.DataPropertyName = "RoomName";
+            this.roomNameDataGridViewTextBoxColumn.HeaderText = "Phòng học";
+            this.roomNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.roomNameDataGridViewTextBoxColumn.Name = "roomNameDataGridViewTextBoxColumn";
+            this.roomNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startDataGridViewTextBoxColumn
+            // 
+            this.startDataGridViewTextBoxColumn.DataPropertyName = "Start";
+            this.startDataGridViewTextBoxColumn.HeaderText = "Khai giảng";
+            this.startDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
+            this.startDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endDataGridViewTextBoxColumn
+            // 
+            this.endDataGridViewTextBoxColumn.DataPropertyName = "End";
+            this.endDataGridViewTextBoxColumn.HeaderText = "Bế giảng";
+            this.endDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.endDataGridViewTextBoxColumn.Name = "endDataGridViewTextBoxColumn";
+            this.endDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // maxCapacityDataGridViewTextBoxColumn
+            // 
+            this.maxCapacityDataGridViewTextBoxColumn.DataPropertyName = "MaxCapacity";
+            this.maxCapacityDataGridViewTextBoxColumn.HeaderText = "Sức chứa ";
+            this.maxCapacityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.maxCapacityDataGridViewTextBoxColumn.Name = "maxCapacityDataGridViewTextBoxColumn";
+            this.maxCapacityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // _Update
+            // 
+            this._Update.HeaderText = "Sửa";
+            this._Update.MinimumWidth = 6;
+            this._Update.Name = "_Update";
+            this._Update.ReadOnly = true;
+            this._Update.Text = "sửa";
+            this._Update.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Xóa";
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "xóa";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
             // ViewClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -269,7 +269,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelHeader);
             this.Name = "ViewClass";
-            this.Size = new System.Drawing.Size(944, 628);
+            this.Size = new System.Drawing.Size(1148, 648);
             this.Load += new System.EventHandler(this.ViewClass_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelClassBindingSource)).EndInit();
@@ -285,15 +285,6 @@
         private DataGridView dataGridView;
         private BindingSource modelClassBindingSource;
         private Label labelHeader;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn maxCapacityDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn shiftDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn roomNameDataGridViewTextBoxColumn;
-        private DataGridViewButtonColumn _Update;
-        private DataGridViewButtonColumn Delete;
         private Panel panel2;
         private CheckBox checkBoxShowEndedClass;
         private TextBox textBoxFind;
@@ -303,5 +294,14 @@
         private ComboBox comboBox2;
         private Label label1;
         private Label label2;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn shiftDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn roomNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn endDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn maxCapacityDataGridViewTextBoxColumn;
+        private DataGridViewButtonColumn _Update;
+        private DataGridViewButtonColumn Delete;
     }
 }

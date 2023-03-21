@@ -12,11 +12,28 @@ namespace TTTH.Models.DAO
         #region Select
         public static List<ModelClass> GetAll()
         {
-            string query = @"select cl.*, co._course_name, r._room_name from TTTH_class cl 
-                            inner join TTTH_course co
-                            on cl._course_id = co._id
-                            left join TTTH_room r
-                            on cl._room_id = r._id";
+            string query = @"select cl._id,
+cl._class_name,
+cl._start_day,
+cl._end_day,
+cl._capacity,
+cl._shift,
+
+cl._course_id,
+co._course_name,
+co._fee,
+co._duration,
+
+cl._room_id,
+r._room_name,
+r._capacity,
+r._room_type
+
+from TTTH_class cl 
+inner join TTTH_course co
+on cl._course_id = co._id
+left join TTTH_room r
+on cl._room_id = r._id";
 
             List<ModelClass> list = new List<ModelClass>();
 
@@ -30,24 +47,34 @@ namespace TTTH.Models.DAO
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            // parse
-                            int id = reader.GetInt32(0);
-                            string name = reader.GetString(1);
-                            DateTime start = reader.GetDateTime(2);
-                            DateTime end = reader.GetDateTime(3);
-                            int maxCapacity = reader.GetInt32(4);
-                            int shift = reader.GetInt32(7);
+                            // class
+                            int classID = reader.GetInt32(0);
+                            string className = reader.GetString(1);
+                            DateTime startDate = reader.GetDateTime(2);
+                            DateTime endDate = reader.GetDateTime(3);
+                            int classCapacity = reader.GetInt32(4);
+                            int shift = reader.GetInt32(5);
+                            // course
+                            int courseID = reader.GetInt32(6);
+                            string courseName = reader.GetString(7);
+                            double courseFee = reader.GetDouble(8);
+                            int duration = reader.GetInt32(9);
+                            ModelCourse course = new ModelCourse(courseID, courseName, courseFee, duration);
 
-                            string courseName = reader.GetString(8);
-                            ModelCourse course= new ModelCourse();
-                            course.Name = courseName;
+                            // room
+                            int roomID = reader.GetInt32(10);    
+                            string roomName = reader.GetString(11);
+                            int roomCapacity = reader.GetInt32(12);
+                            string roomType = reader.GetString(13);
 
-                            string roomName = reader.IsDBNull(9) ? "Chưa có phòng" : reader.GetString(9);
-                            ModelRoom room = new ModelRoom();
-                            room.Name = roomName;
+                            ModelRoom room = new ModelRoom(roomID, roomName, roomType, roomCapacity);
+                            
+                            // get list date in week
+                            List<Int32> datesInWeek = GetDatesInWeekByClassID(classID);
 
                             // innit
-                            ModelClass modelClass = new ModelClass(id, name, start, end, maxCapacity, shift, course, room);
+                            ModelClass modelClass = new ModelClass(classID, className, startDate, endDate,
+                                classCapacity, shift, datesInWeek, course, room);
 
                             // assign
                             list.Add(modelClass);
@@ -58,16 +85,47 @@ namespace TTTH.Models.DAO
                     }
                     connection.Close();
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("48+couersdkah " + e.Message);
+                    MessageBox.Show("GetAllClass" + ex.Message);
                     //throw;
                 }
             }
             return list;
         }
 
-
+        private static List<int> GetDatesInWeekByClassID(int classID)
+        {
+            List<Int32> list = new List<Int32>();
+            string query = @"select _date_in_week from TTTH_class_date_in_week where _class_id = @classID";
+            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@classID", classID);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            // date
+                            int date = reader.GetInt32(0);
+                            list.Add(date);
+                        }
+                        reader.Close();
+                        cmd.Dispose();
+                    }
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("GetDatesInWeekByClassID" + ex.Message);
+                    //throw;
+                }
+            }
+            return list;
+        }
 
         #endregion
 

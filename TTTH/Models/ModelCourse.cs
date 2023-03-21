@@ -8,9 +8,9 @@ namespace TTTH.Models
 {
     public class ModelCourse : ModelEntity
     {
-        private string name;
-        private double fee;
-        private int duration;
+        private string name = "-";
+        private double fee = -1;
+        private int duration = -1;
 
         public string Name { get => name; set => name = value; }
         public double Fee { get => fee; set => fee = value; }

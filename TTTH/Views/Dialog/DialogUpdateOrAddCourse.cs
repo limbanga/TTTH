@@ -42,8 +42,6 @@ namespace TTTH.Views.Dialog
             }
             else // update
             {
-                MessageBox.Show("Ddang chay vao cap nhat");
-                MessageBox.Show("Test"+ inputCourse.Id);
                 isSuccess = DAOCourse.Update(inputCourse);
             }
 
@@ -51,6 +49,7 @@ namespace TTTH.Views.Dialog
             if (isSuccess)
             {
                 MessageBox.Show("Cập nhật thành công");
+                this.Close();
             }
             else
             {
@@ -58,13 +57,10 @@ namespace TTTH.Views.Dialog
             }
         }
 
-        #region Hidden event
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        #endregion
-
 
         //-----------------------------------------------------------------------
         // HELPER FUNCTIONS

@@ -95,8 +95,6 @@ namespace TTTH.Models.DAO
 
         #endregion
 
-
-
         #region Update
 
         public static bool Update(int id, string name, string type, int capacity)

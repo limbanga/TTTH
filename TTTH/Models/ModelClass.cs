@@ -8,16 +8,24 @@ namespace TTTH.Models
 {
     public class ModelClass : ModelEntity
     {
-        private string name;
-        private DateTime start;
-        private DateTime end;
-        private int maxCapacity;
-        private int shift;
-        private ModelCourse course;
-        private ModelRoom room;
+        private string name = "";
+        private DateTime start = DateTime.MinValue;
+        private DateTime end = DateTime.MaxValue;
+        private int maxCapacity = -1;
+        private int shift = -1;
+        private List<Int32> listDatesInWeek = new List<Int32>();
+        private ModelCourse course = new ModelCourse();
+        private ModelRoom room = new ModelRoom();
+
+        public ModelClass() { }
+        public ModelClass(int id) 
+        {
+            this.Id = id;
+        }
 
         // for query
-        public ModelClass(int id, string name, DateTime start, DateTime end, int maxCapacity, int shift, ModelCourse course, ModelRoom room)
+        public ModelClass(int id, string name, DateTime start, DateTime end,
+            int maxCapacity, int shift, List<Int32> listDatesInWeek, ModelCourse course, ModelRoom room)
         {
             this.Id = id;
             this.Name = name;
@@ -27,11 +35,12 @@ namespace TTTH.Models
             this.Shift = shift;
             this.Course = course;
             this.Room = room;
+            this.ListDatesInWeek = listDatesInWeek;
         }
         // for add or update
-        public ModelClass(int id, string name, DateTime start, DateTime end, int maxCapacity, int shift, int courseID, int roomID)
+        public ModelClass(int id, string name, DateTime start, DateTime end,
+            int maxCapacity, int shift, int courseID, int roomID)
         {
-            MessageBox.Show("Test id nhajn duocj la"+ id);
             this.Id = id;
             this.Name = name;
             this.Start = start;
@@ -51,6 +60,6 @@ namespace TTTH.Models
         public string CourseName { get => course.Name; }
         public ModelRoom Room { get => room; set => room = value; }
         public string RoomName { get => room.Name; }
-
+        public List<int> ListDatesInWeek { get => listDatesInWeek; set => listDatesInWeek = value; }
     }
 }

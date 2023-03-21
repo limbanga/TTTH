@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using TTTH.Models.DAO;
 namespace TTTH.Views
 {
     public partial class FormLogin : Form
@@ -49,7 +49,7 @@ namespace TTTH.Views
         private void CheckLogin(string userName, string password)
         {
             // return null if user don't exists
-            Env.user = Models.DAO.DAOUser.CheckLogin(userName, password);
+            Env.user = DAOUser.CheckLogin(userName, password);
             
             // can't find user case
             if (Env.user is null)
@@ -67,7 +67,12 @@ namespace TTTH.Views
 
             this.Hide();
 
+
             if (Env.user.PermissionID == 1)
+            {
+                MessageBox.Show("Chưa làm owner");
+            }
+            else if (Env.user.PermissionID == 2)
             {
                 FormAdmin formAdmin = new FormAdmin();
                 formAdmin.ShowDialog();
