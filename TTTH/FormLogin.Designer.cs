@@ -34,8 +34,6 @@
             this.checkBoxShowPass = new System.Windows.Forms.CheckBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -43,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 87);
+            this.label1.Location = new System.Drawing.Point(12, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 20);
             this.label1.TabIndex = 0;
@@ -51,9 +49,9 @@
             // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(152, 87);
+            this.textBoxUserName.Location = new System.Drawing.Point(122, 84);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(172, 27);
+            this.textBoxUserName.Size = new System.Drawing.Size(189, 27);
             this.textBoxUserName.TabIndex = 1;
             this.textBoxUserName.Text = "a";
             // 
@@ -62,9 +60,9 @@
             this.buttonLogin.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonLogin.Location = new System.Drawing.Point(25, 302);
+            this.buttonLogin.Location = new System.Drawing.Point(12, 295);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(299, 34);
+            this.buttonLogin.Size = new System.Drawing.Size(299, 50);
             this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Text = "Đăng nhập";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -73,7 +71,7 @@
             // checkBoxShowPass
             // 
             this.checkBoxShowPass.AutoSize = true;
-            this.checkBoxShowPass.Location = new System.Drawing.Point(25, 242);
+            this.checkBoxShowPass.Location = new System.Drawing.Point(12, 239);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
             this.checkBoxShowPass.Size = new System.Drawing.Size(127, 24);
             this.checkBoxShowPass.TabIndex = 3;
@@ -83,9 +81,9 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(152, 165);
+            this.textBoxPassword.Location = new System.Drawing.Point(122, 162);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(172, 27);
+            this.textBoxPassword.Size = new System.Drawing.Size(189, 27);
             this.textBoxPassword.TabIndex = 5;
             this.textBoxPassword.Text = "a";
             this.textBoxPassword.UseSystemPasswordChar = true;
@@ -93,37 +91,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 168);
+            this.label2.Location = new System.Drawing.Point(12, 165);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Mật khẩu";
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Lime;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(25, 370);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(299, 34);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Đăng ký";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(82, 334);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "___________________________";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(208, 242);
+            this.label4.Location = new System.Drawing.Point(195, 239);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 20);
             this.label4.TabIndex = 8;
@@ -137,7 +114,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(351, 65);
+            this.label5.Size = new System.Drawing.Size(326, 65);
             this.label5.TabIndex = 9;
             this.label5.Text = "Đăng nhập";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,18 +123,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 433);
+            this.ClientSize = new System.Drawing.Size(326, 360);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkBoxShowPass);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxUserName);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormLogin";
             this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.FormLogin_Load);
@@ -174,8 +149,6 @@
         private CheckBox checkBoxShowPass;
         private TextBox textBoxPassword;
         private Label label2;
-        private Button button2;
-        private Label label3;
         private Label label4;
         private Label label5;
     }

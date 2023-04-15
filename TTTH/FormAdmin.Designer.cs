@@ -35,8 +35,8 @@
             this.labelLogout = new System.Windows.Forms.Label();
             this.pictureBoxLogout = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.labelChangePassWord = new System.Windows.Forms.Label();
+            this.pictureBoxChangePassWord = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -58,21 +58,22 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxShowSidebar = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.viewClassDetail = new TTTH.GUI.ViewClassDetail();
+            this.viewClassDate_ = new TTTH.Views.ViewClassDate();
             this.viewNotificationDetail1 = new TTTH.Views.ViewNotificationDetail();
             this.viewStudent1 = new TTTH.Views.ViewStudent();
             this.viewRoom1 = new TTTH.Views.ViewRoom();
             this.viewNotification1 = new TTTH.Views.ViewNotification();
-            this.viewPostNotification1 = new TTTH.Views.ViewPostNotification();
+            this.viewPostNotification = new TTTH.Views.ViewPostNotification();
             this.viewCourse2 = new TTTH.Views.ViewCourse();
-            this.viewClass1 = new TTTH.Views.ViewClass();
-            this.viewClassDetail = new TTTH.Views.ViewClassDetail();
+            this.viewClass = new TTTH.Views.ViewClass();
             this.panelSideBar.SuspendLayout();
             this.paneSidebarContent.SuspendLayout();
             this.panelAccountSubmenu.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogout)).BeginInit();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChangePassWord)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panelAccount.SuspendLayout();
@@ -165,37 +166,39 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.label9);
-            this.panel7.Controls.Add(this.pictureBox7);
+            this.panel7.Controls.Add(this.labelChangePassWord);
+            this.panel7.Controls.Add(this.pictureBoxChangePassWord);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 50);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(247, 50);
             this.panel7.TabIndex = 7;
             // 
-            // label9
+            // labelChangePassWord
             // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(48, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(199, 50);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Đổi mật khẩu";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelChangePassWord.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelChangePassWord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelChangePassWord.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelChangePassWord.Location = new System.Drawing.Point(48, 0);
+            this.labelChangePassWord.Name = "labelChangePassWord";
+            this.labelChangePassWord.Size = new System.Drawing.Size(199, 50);
+            this.labelChangePassWord.TabIndex = 2;
+            this.labelChangePassWord.Text = "Đổi mật khẩu";
+            this.labelChangePassWord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelChangePassWord.Click += new System.EventHandler(this.labelChangePassWord_Click);
             // 
-            // pictureBox7
+            // pictureBoxChangePassWord
             // 
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox7.Image = global::TTTH.Properties.Resources.icon_change_password_55;
-            this.pictureBox7.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(48, 50);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox7.TabIndex = 1;
-            this.pictureBox7.TabStop = false;
+            this.pictureBoxChangePassWord.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxChangePassWord.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxChangePassWord.Image = global::TTTH.Properties.Resources.icon_change_password_55;
+            this.pictureBoxChangePassWord.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxChangePassWord.Name = "pictureBoxChangePassWord";
+            this.pictureBoxChangePassWord.Size = new System.Drawing.Size(48, 50);
+            this.pictureBoxChangePassWord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxChangePassWord.TabIndex = 1;
+            this.pictureBoxChangePassWord.TabStop = false;
+            this.pictureBoxChangePassWord.Click += new System.EventHandler(this.pictureBoxChangePassWord_Click);
             // 
             // panel6
             // 
@@ -442,18 +445,37 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.viewClassDetail);
+            this.panel3.Controls.Add(this.viewClassDate_);
             this.panel3.Controls.Add(this.viewNotificationDetail1);
             this.panel3.Controls.Add(this.viewStudent1);
             this.panel3.Controls.Add(this.viewRoom1);
             this.panel3.Controls.Add(this.viewNotification1);
-            this.panel3.Controls.Add(this.viewPostNotification1);
+            this.panel3.Controls.Add(this.viewPostNotification);
             this.panel3.Controls.Add(this.viewCourse2);
-            this.panel3.Controls.Add(this.viewClass1);
+            this.panel3.Controls.Add(this.viewClass);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(247, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1175, 766);
             this.panel3.TabIndex = 2;
+            // 
+            // viewClassDetail
+            // 
+            this.viewClassDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewClassDetail.Location = new System.Drawing.Point(0, 0);
+            this.viewClassDetail.Name = "viewClassDetail";
+            this.viewClassDetail.Size = new System.Drawing.Size(1175, 766);
+            this.viewClassDetail.TabIndex = 3;
+            // 
+            // viewClassDate_
+            // 
+            this.viewClassDate_.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewClassDate_.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.viewClassDate_.Location = new System.Drawing.Point(0, 0);
+            this.viewClassDate_.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.viewClassDate_.Name = "viewClassDate_";
+            this.viewClassDate_.Size = new System.Drawing.Size(1175, 766);
+            this.viewClassDate_.TabIndex = 3;
             // 
             // viewNotificationDetail1
             // 
@@ -487,13 +509,13 @@
             this.viewNotification1.Size = new System.Drawing.Size(1175, 766);
             this.viewNotification1.TabIndex = 3;
             // 
-            // viewPostNotification1
+            // viewPostNotification
             // 
-            this.viewPostNotification1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewPostNotification1.Location = new System.Drawing.Point(0, 0);
-            this.viewPostNotification1.Name = "viewPostNotification1";
-            this.viewPostNotification1.Size = new System.Drawing.Size(1175, 766);
-            this.viewPostNotification1.TabIndex = 4;
+            this.viewPostNotification.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewPostNotification.Location = new System.Drawing.Point(0, 0);
+            this.viewPostNotification.Name = "viewPostNotification";
+            this.viewPostNotification.Size = new System.Drawing.Size(1175, 766);
+            this.viewPostNotification.TabIndex = 4;
             // 
             // viewCourse2
             // 
@@ -503,21 +525,13 @@
             this.viewCourse2.Size = new System.Drawing.Size(1175, 766);
             this.viewCourse2.TabIndex = 0;
             // 
-            // viewClass1
+            // viewClass
             // 
-            this.viewClass1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewClass1.Location = new System.Drawing.Point(0, 0);
-            this.viewClass1.Name = "viewClass1";
-            this.viewClass1.Size = new System.Drawing.Size(1175, 766);
-            this.viewClass1.TabIndex = 4;
-            // 
-            // viewClassDetail
-            // 
-            this.viewClassDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewClassDetail.Location = new System.Drawing.Point(0, 0);
-            this.viewClassDetail.Name = "viewClassDetail";
-            this.viewClassDetail.Size = new System.Drawing.Size(1175, 766);
-            this.viewClassDetail.TabIndex = 3;
+            this.viewClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewClass.Location = new System.Drawing.Point(0, 0);
+            this.viewClass.Name = "viewClass";
+            this.viewClass.Size = new System.Drawing.Size(1175, 766);
+            this.viewClass.TabIndex = 4;
             // 
             // FormAdmin
             // 
@@ -534,7 +548,7 @@
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogout)).EndInit();
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChangePassWord)).EndInit();
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panelAccount.ResumeLayout(false);
@@ -576,21 +590,22 @@
         private PictureBox pictureBoxNotification;
         private Panel panelAccountSubmenu;
         private Panel panel7;
-        private Label label9;
-        private PictureBox pictureBox7;
+        private Label labelChangePassWord;
+        private PictureBox pictureBoxChangePassWord;
         private Panel panel6;
         private Label label8;
         private PictureBox pictureBox6;
         private Panel panel8;
         private Label labelLogout;
         private PictureBox pictureBoxLogout;
-        private Views.ViewPostNotification viewPostNotification1;
+        private Views.ViewPostNotification viewPostNotification;
         private Views.ViewCourse viewCourse2;
-        private Views.ViewClass viewClass1;
+        private Views.ViewClass viewClass;
         private Views.ViewNotification viewNotification1;
         private Views.ViewRoom viewRoom1;
         private Views.ViewStudent viewStudent1;
         private Views.ViewNotificationDetail viewNotificationDetail1;
-        private Views.ViewClassDetail viewClassDetail;
+        private Views.ViewClassDate viewClassDate_;
+        private GUI.ViewClassDetail viewClassDetail;
     }
 }

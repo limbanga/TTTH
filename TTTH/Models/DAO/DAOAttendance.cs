@@ -19,7 +19,7 @@ where _date_number = @dateNumber and _class_id = @classID;";
 
             List<RelationShipAttendance> list = new List<RelationShipAttendance>();
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -39,7 +39,7 @@ where _date_number = @dateNumber and _class_id = @classID;";
                             char status = reader.GetString(3)[0];
 
                             ModelStudent st = new ModelStudent(studentID, studentName, studentPhoneNumber);
-                            ModelClass c = new ModelClass(classID);
+                            DTOCLass c = new DTOCLass(classID);
 
                             RelationShipAttendance relationShipAttendance = new RelationShipAttendance(st, c, status, dateNumber);
 
@@ -70,7 +70,7 @@ where _date_number = @dateNumber and _class_id = @classID;";
             string query = @"update TTTH_attend
 set _status = @status
 where _class_id = @classID and _student_id = @studentID and _date_number = @dateNumber;";
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {

@@ -16,7 +16,7 @@ namespace TTTH.Models.DAO
             string query = @"select * from TTTH_student";
             List<ModelStudent> list = new List<ModelStudent>();
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -52,10 +52,18 @@ namespace TTTH.Models.DAO
 
         public static List<ModelStudent> GetStudentsInClass(int classID)
         {
-            string query = @"select * from TTTH_student s inner join TTTH_register r on s._id = r._student_id where r._class_id = @classID";
+            string query = @"select s._id,
+s._student_name,
+s._phone_number, 
+(select count(*) from TTTH_attend where _student_id = s._id and _class_id = @classID and _status = 'a') as '_total_absence',
+(select count(*) from TTTH_attend where _student_id = s._id and _class_id = @classID and _status = 'l') as '_total_late',
+(select AVG(_score) from TTTH_exam where _student_id = s._id and _class_id = @classID) as '_avg_score'
+from TTTH_student s inner join TTTH_register r on s._id = r._student_id 
+where r._class_id = @classID;";
+
             List<ModelStudent> list = new List<ModelStudent>();
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -70,11 +78,15 @@ namespace TTTH.Models.DAO
                         {
                             // parse
                             int id = reader.GetInt32(0);
-                            string phoneNumber = reader.GetString(1);
-                            string name = reader.GetString(2);
+                            string name = reader.GetString(1);
+                            string phoneNumber = reader.GetString(2);
+                            int totalAbsence = reader.IsDBNull(3) ? 0: reader.GetInt32(3);
+                            int totalLate = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
+                            double s = reader.IsDBNull(5) ? 0 : reader.GetDouble(5);
+
 
                             // innit
-                            ModelStudent modelStudent = new ModelStudent(id, name, phoneNumber);
+                            ModelStudent modelStudent = new ModelStudent(id, name, phoneNumber, totalAbsence, totalLate, s);
                             // assign
                             list.Add(modelStudent);
                         }
@@ -100,7 +112,7 @@ on s._id = r._student_id
 where r._class_id = @classID);";
             List<ModelStudent> list = new List<ModelStudent>();
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -149,7 +161,7 @@ else 0
 end as 'is_in_class' from TTTH_student;";
             List<ModelStudent> list = new List<ModelStudent>();
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -195,7 +207,7 @@ end as 'is_in_class' from TTTH_student;";
             int rowsAffect = 0;
             string query = @"insert into TTTH_student (_student_name, _phone_number) values (@name, @phoneNumber);";
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -235,7 +247,7 @@ end as 'is_in_class' from TTTH_student;";
             int rowsAffect = 0;
             string query = @"update TTTH_student set _student_name = @name, _phone_number = @phoneNumber where _id = @id";
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {

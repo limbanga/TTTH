@@ -15,7 +15,7 @@ namespace TTTH.Models.DAO
             int rowsAffect = 0;
             string query = @"insert into TTTH_register (_student_id, _class_id) values (@studentID, @classID);";
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace TTTH.Models.DAO
             int rowsAffect = 0;
             string query = @"delete from TTTH_register where _student_id = @studentID and _class_id = @classID;";
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {

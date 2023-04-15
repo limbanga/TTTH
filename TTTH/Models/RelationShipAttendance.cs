@@ -9,13 +9,13 @@ namespace TTTH.Models
     public class RelationShipAttendance
     {
         private ModelStudent modelStudent;
-        private ModelClass modelClass;
+        private DTOCLass modelClass;
         private char status;
         private DateTime date;
         private int dateNumber;
         private DateTime updateTime;
         public ModelStudent ModelStudent { get => modelStudent; set => modelStudent = value; }
-        public ModelClass ModelClass { get => modelClass; set => modelClass = value; }
+        public DTOCLass ModelClass { get => modelClass; set => modelClass = value; }
         public char Status { get => status; set => status = value; }
         public DateTime Date { get => date; set => date = value; }
         public int DateNumber { get => dateNumber; set => dateNumber = value; }
@@ -29,7 +29,7 @@ namespace TTTH.Models
 
 
 
-        public RelationShipAttendance(ModelStudent modelStudent, ModelClass modelClass, char status, DateTime date, int dateNumber, DateTime updateTime)
+        public RelationShipAttendance(ModelStudent modelStudent, DTOCLass modelClass, char status, DateTime date, int dateNumber, DateTime updateTime)
         {
             this.modelStudent = modelStudent;
             this.modelClass = modelClass;
@@ -39,7 +39,7 @@ namespace TTTH.Models
             this.updateTime = updateTime;
         }
 
-        public RelationShipAttendance(ModelStudent modelStudent, ModelClass modelClass, char status, DateTime date, int dateNumber)
+        public RelationShipAttendance(ModelStudent modelStudent, DTOCLass modelClass, char status, DateTime date, int dateNumber)
         {
             this.modelStudent = modelStudent;
             this.modelClass = modelClass;
@@ -47,7 +47,7 @@ namespace TTTH.Models
             this.date = date;
             this.dateNumber = dateNumber;
         }
-        public RelationShipAttendance(ModelStudent modelStudent, ModelClass modelClass, char status, int dateNumber)
+        public RelationShipAttendance(ModelStudent modelStudent, DTOCLass modelClass, char status, int dateNumber)
         {
             this.modelStudent = modelStudent;
             this.modelClass = modelClass;

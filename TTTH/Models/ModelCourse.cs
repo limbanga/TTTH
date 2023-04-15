@@ -15,6 +15,7 @@ namespace TTTH.Models
         public string Name { get => name; set => name = value; }
         public double Fee { get => fee; set => fee = value; }
         public int Duration { get => duration; set => duration = value; }
+        public string StringFee { get => string.Format("{0:0,0}", fee) + " vnd"; }
 
         public ModelCourse() { } 
         public ModelCourse(int id) 

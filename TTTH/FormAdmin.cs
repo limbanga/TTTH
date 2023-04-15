@@ -1,4 +1,6 @@
-﻿using TTTH.Views;
+﻿using TTTH.GUI.Dialog;
+using TTTH.Models;
+using TTTH.Views;
 
 namespace TTTH
 {
@@ -10,8 +12,11 @@ namespace TTTH
             InitializeComponent();
             viewNotification1.SwtichToViewPostNotification += SwtichToViewPostNotification;
             viewNotification1.SwtichToViewNotificationDetail += SwtichToViewNotificationDetail;
-            viewClass1.SwtichToViewClassDetail += SwtichToViewClassDetail;
+            viewClass.SwtichToViewClassDetail += SwtichToViewClassDetail;
+            viewClassDetail.SwtichToViewClassDate += SwtichToViewClassDate;
         }
+
+
         //---------------------------------------------------------------
         // EVENTS
         //---------------------------------------------------------------
@@ -37,14 +42,14 @@ namespace TTTH
         #region Change view
         private void labelCourse_Click(object sender, EventArgs e)
         {
-            viewCourse2.ReLoadData();
+            viewCourse2.LoadData2DataGridView();
             ShowView(viewCourse2);
         }
 
         private void labelClass_Click(object sender, EventArgs e)
         {
-            viewClass1.ReLoadData();
-            ShowView(viewClass1);
+            viewClass.ReLoadData();
+            ShowView(viewClass);
         }
 
         private void labelNotification_Click(object sender, EventArgs e)
@@ -75,6 +80,16 @@ namespace TTTH
         private void pictureBoxLogout_Click(object sender, EventArgs e)
         {
             LogoutHandle();
+        }
+
+        private void labelChangePassWord_Click(object sender, EventArgs e)
+        {
+            OpenDialogToChangePassWord();
+        }
+
+        private void pictureBoxChangePassWord_Click(object sender, EventArgs e)
+        {
+            OpenDialogToChangePassWord();
         }
 
         #endregion
@@ -123,8 +138,6 @@ namespace TTTH
         {
             panelManageSubmenu.Height = panelManageSubmenu.MaximumSize.Height;
         }
-
-
 
         private void ToggleSidebar()
         {
@@ -197,36 +210,48 @@ namespace TTTH
             this.Close();
         }
 
+        private void OpenDialogToChangePassWord()
+        {
+            DialogChangePassWord dialogChangePassWord = new DialogChangePassWord();
+            dialogChangePassWord.ShowDialog();
+        }
+
         //------------------------------------------------------
         // HANDLER EVENT FORM SUB FORM
         //------------------------------------------------------
 
-        #region event handler of sub form
+        #region Event handler of sub form
         private void SwtichToViewPostNotification(object? sender, EventArgs e)
         {
-            ShowView(viewPostNotification1);
+            ShowView(viewPostNotification);
         }
 
         private void SwtichToViewNotificationDetail(object? sender, EventArgs e)
         {
-            if (Env.notification is not null)
+            if (BUS.notification is not null)
             {
-                viewNotificationDetail1.ChangeTitle(Env.notification.Topic);
-                viewNotificationDetail1.ChangeContent(Env.notification.Content);
+                viewNotificationDetail1.ChangeTitle(BUS.notification.Topic);
+                viewNotificationDetail1.ChangeContent(BUS.notification.Content);
                 ShowView(viewNotificationDetail1);
             }
         }
-        #endregion
 
         private void SwtichToViewClassDetail(object? sender, EventArgs e)
         {
-            if (Env.modelClass is not null)
+            if (BUS.modelClass is not null)
             {
-                viewClassDetail.SetDataForClass(Env.modelClass);
-                viewClassDetail.ReloadData();
+                viewClassDetail.LoadDataByClassID(BUS.modelClass.Id);
                 ShowView(viewClassDetail);
             }
         }
+        private void SwtichToViewClassDate(object? sender, EventArgs e)
+        {
+            ShowView(viewClassDate_);
+        }
+
+
+        #endregion
+
 
     }
 }

@@ -18,7 +18,7 @@ on n._user_id = u._id";
 
             List<ModelNotification> list = new List<ModelNotification>();
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
@@ -59,7 +59,7 @@ on n._user_id = u._id";
             string query = @"insert into TTTH_notification(_topic, _content, _user_id)
 values (@topic, @content, @user_id)";
 
-            using (SqlConnection connection = new SqlConnection(Env.stringConnect))
+            using (SqlConnection connection = new SqlConnection(BUS.stringConnect))
             {
                 try
                 {
