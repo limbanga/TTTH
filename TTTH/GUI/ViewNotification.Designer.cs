@@ -1,4 +1,6 @@
-﻿namespace TTTH.Views
+﻿using TTTH.Models.DTO;
+
+namespace TTTH.Views
 {
     partial class ViewNotification
     {
@@ -30,15 +32,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.modelNotificationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.labelHeader = new System.Windows.Forms.Label();
             this.topicDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createddateDisplayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.getUserPostedNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewDetail = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._Hide = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.modelNotificationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.labelHeader = new System.Windows.Forms.Label();
-            this.buttonAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelNotificationBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -56,61 +57,20 @@
             this.topicDataGridViewTextBoxColumn,
             this.createddateDisplayDataGridViewTextBoxColumn,
             this.getUserPostedNameDataGridViewTextBoxColumn,
-            this.ViewDetail,
-            this._Hide});
+            this.ViewDetail});
             this.dataGridView.DataSource = this.modelNotificationBindingSource;
-            this.dataGridView.Location = new System.Drawing.Point(19, 258);
+            this.dataGridView.Location = new System.Drawing.Point(19, 172);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(1122, 391);
+            this.dataGridView.Size = new System.Drawing.Size(1122, 477);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
-            // topicDataGridViewTextBoxColumn
-            // 
-            this.topicDataGridViewTextBoxColumn.DataPropertyName = "Topic";
-            this.topicDataGridViewTextBoxColumn.HeaderText = "Topic";
-            this.topicDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.topicDataGridViewTextBoxColumn.Name = "topicDataGridViewTextBoxColumn";
-            // 
-            // createddateDisplayDataGridViewTextBoxColumn
-            // 
-            this.createddateDisplayDataGridViewTextBoxColumn.DataPropertyName = "Created_dateDisplay";
-            this.createddateDisplayDataGridViewTextBoxColumn.HeaderText = "Created_dateDisplay";
-            this.createddateDisplayDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.createddateDisplayDataGridViewTextBoxColumn.Name = "createddateDisplayDataGridViewTextBoxColumn";
-            this.createddateDisplayDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // getUserPostedNameDataGridViewTextBoxColumn
-            // 
-            this.getUserPostedNameDataGridViewTextBoxColumn.DataPropertyName = "GetUserPostedName";
-            this.getUserPostedNameDataGridViewTextBoxColumn.HeaderText = "GetUserPostedName";
-            this.getUserPostedNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.getUserPostedNameDataGridViewTextBoxColumn.Name = "getUserPostedNameDataGridViewTextBoxColumn";
-            this.getUserPostedNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ViewDetail
-            // 
-            this.ViewDetail.HeaderText = "Xem chi tiết";
-            this.ViewDetail.MinimumWidth = 6;
-            this.ViewDetail.Name = "ViewDetail";
-            this.ViewDetail.ReadOnly = true;
-            this.ViewDetail.Text = "Xem";
-            this.ViewDetail.UseColumnTextForButtonValue = true;
-            // 
-            // Hide
-            // 
-            this._Hide.HeaderText = "Ẩn";
-            this._Hide.MinimumWidth = 6;
-            this._Hide.Name = "Hide";
-            this._Hide.ReadOnly = true;
-            this._Hide.Text = "Ẩn";
-            this._Hide.UseColumnTextForButtonValue = true;
-            // 
             // modelNotificationBindingSource
             // 
-            this.modelNotificationBindingSource.DataSource = typeof(TTTH.Models.ModelNotification);
+            this.modelNotificationBindingSource.DataSource = typeof(TTTH.Models.DTO.DTONotification);
             // 
             // panel1
             // 
@@ -119,10 +79,25 @@
             this.panel1.Controls.Add(this.labelHeader);
             this.panel1.Controls.Add(this.dataGridView);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1165, 666);
             this.panel1.TabIndex = 4;
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.BackColor = System.Drawing.Color.Lime;
+            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAdd.Location = new System.Drawing.Point(923, 111);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(218, 40);
+            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.Text = "Đăng thông báo";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // labelHeader
             // 
@@ -137,19 +112,38 @@
             this.labelHeader.Text = "Danh sách thông báo";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonAdd
+            // topicDataGridViewTextBoxColumn
             // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.BackColor = System.Drawing.Color.Lime;
-            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonAdd.Location = new System.Drawing.Point(923, 106);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(218, 40);
-            this.buttonAdd.TabIndex = 2;
-            this.buttonAdd.Text = "Đăng thông báo";
-            this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.topicDataGridViewTextBoxColumn.DataPropertyName = "Topic";
+            this.topicDataGridViewTextBoxColumn.HeaderText = "Chủ đề";
+            this.topicDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.topicDataGridViewTextBoxColumn.Name = "topicDataGridViewTextBoxColumn";
+            this.topicDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createddateDisplayDataGridViewTextBoxColumn
+            // 
+            this.createddateDisplayDataGridViewTextBoxColumn.DataPropertyName = "Created_dateDisplay";
+            this.createddateDisplayDataGridViewTextBoxColumn.HeaderText = "Ngày đăng";
+            this.createddateDisplayDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.createddateDisplayDataGridViewTextBoxColumn.Name = "createddateDisplayDataGridViewTextBoxColumn";
+            this.createddateDisplayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // getUserPostedNameDataGridViewTextBoxColumn
+            // 
+            this.getUserPostedNameDataGridViewTextBoxColumn.DataPropertyName = "GetUserPostedName";
+            this.getUserPostedNameDataGridViewTextBoxColumn.HeaderText = "Người đăng";
+            this.getUserPostedNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.getUserPostedNameDataGridViewTextBoxColumn.Name = "getUserPostedNameDataGridViewTextBoxColumn";
+            this.getUserPostedNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ViewDetail
+            // 
+            this.ViewDetail.HeaderText = "Xem chi tiết";
+            this.ViewDetail.MinimumWidth = 6;
+            this.ViewDetail.Name = "ViewDetail";
+            this.ViewDetail.ReadOnly = true;
+            this.ViewDetail.Text = "Xem";
+            this.ViewDetail.UseColumnTextForButtonValue = true;
             // 
             // ViewNotification
             // 
@@ -171,12 +165,11 @@
         private DataGridView dataGridView;
         private BindingSource modelNotificationBindingSource;
         private Panel panel1;
+        public Button buttonAdd;
+        private Label labelHeader;
         private DataGridViewTextBoxColumn topicDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn createddateDisplayDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn getUserPostedNameDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn ViewDetail;
-        private DataGridViewButtonColumn _Hide;
-        private Button buttonAdd;
-        private Label labelHeader;
     }
 }

@@ -7,29 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TTTH.Models;
 using TTTH.Models.DAO;
+using TTTH.Models.DTO;
 
 namespace TTTH.Views.Dialog
 {
     public partial class DialogScore : Form
     {
-        private DTOCLass modelClass;
-        List<ModelScore> displayData = new List<ModelScore>();
-        public DialogScore(DTOCLass _modelClass)
+        List<DTOScore> displayData = new List<DTOScore>();
+        private DTOClassDate dTOClassDate;
+        public DialogScore(DTOClassDate dTOClassDate)
         {
-            InitializeComponent();
-            this.modelClass = _modelClass;
+            InitializeComponent();  
+            this.dTOClassDate = dTOClassDate;
         }
 
         //------------------------------------------------------
-        // FORM EVENTS
+        // EVENTS
         //------------------------------------------------------
 
         private void DialogScore_Load(object sender, EventArgs e)
         {
-            int lastExam = DAOScore.GetLastExamNumber(modelClass.Id);
-            if (lastExam <= 0)
+            int classID = dTOClassDate.ClassID;
+            int lastExamNumber = ModelScore.GetLastExamNumber(classID);
+            if (lastExamNumber <= 0)
             {
                 DialogResult r = MessageBox.Show(
                     "Lớp học hiện tại chưa có bài kiểm tra nào. Bạn có muốn tạo mới một bài kiểm tra?",
@@ -38,38 +39,32 @@ namespace TTTH.Views.Dialog
                     );
                 if (r == DialogResult.Cancel) { this.Close(); }
                 // else
-                // make new exam
-                int classID = modelClass.Id;
-                int newLastExamNumber = DAOScore.MakeNewExam(classID);
+                
+                try
+                {
+                    lastExamNumber = ModelScore.MakeNewExam(classID);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(
+                        "Đã có lỗi xảy ra. Không thể tạo bài kiểm tra",
+                        "Xảy ra lỗi",
+                        MessageBoxButtons.OK);
+                    this.Close();
+                }
             }
 
-            bindDataForExamNumberComboBox();
+            bindDataForExamNumberComboBox(lastExamNumber);
             LoadData2Datagridview();
         }
 
-        private void bindDataForExamNumberComboBox()
-        {
-            int lastExamNumber = DAOScore.GetLastExamNumber(modelClass.Id);
-            // bind data to combobox
-            for (int i = 1; i <= lastExamNumber; i++)
-            {
-                comboBoxExamNumber.Items.Add(i);
-            }
-            comboBoxExamNumber.SelectedItem = lastExamNumber;
-        }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (!ValidateInputScore()) { return; }
             HandleSaveScore();
         }
 
-        private bool ValidateInputScore()
-        {
-            // -------------------------------------------------------------------------------------------
-            // check input
-
-            return true;
-        }
         private void comboBoxExamNumber_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadData2Datagridview();
@@ -78,43 +73,46 @@ namespace TTTH.Views.Dialog
         private void buttonAddNewExam_Click(object sender, EventArgs e)
         {
             // make new exam
-            int classID = modelClass.Id;
-            int newLastExamNumber = DAOScore.MakeNewExam(classID);
+            int classID = dTOClassDate.ClassID;
+            int newLastExamNumber = ModelScore.MakeNewExam(classID);
             // reload form
             comboBoxExamNumber.Items.Add(newLastExamNumber);
             comboBoxExamNumber.SelectedItem = newLastExamNumber;
             LoadData2Datagridview();
         }
 
-
         //------------------------------------------------------
         // HELPER FUNCTIONS
         //------------------------------------------------------
+        private void bindDataForExamNumberComboBox(int numberExam)
+        {
+            // bind data to combobox
+            for (int i = 1; i <= numberExam; i++)
+            {
+                comboBoxExamNumber.Items.Add(i);
+            }
+            comboBoxExamNumber.SelectedItem = numberExam;
+        }
 
         private void LoadData2Datagridview()
         {
             int examNumber = Convert.ToInt32(comboBoxExamNumber.SelectedItem);
-            displayData = DAOScore.GetAll(modelClass.Id, examNumber);
-            if (displayData.Count <= 0) 
-            {
-                // displayData = 
-            }
+            displayData = ModelScore.GetScoreByClassID(dTOClassDate.ClassID, examNumber);
             dataGridView.DataSource = displayData;
         }
 
-
         private void HandleSaveScore()
         {
-            int examNumber = (int)comboBoxExamNumber.SelectedItem;
-            int classID = modelClass.Id;
+            int examNumber = (int) comboBoxExamNumber.SelectedItem;
+            int classID = dTOClassDate.ClassID;
             // save all student in datagridview
-            foreach (ModelScore score in displayData)
+            foreach (DTOScore score in displayData)
             {
-                int studentID = score.ModelStudent.Id;
+                int studentID = score.DTOStudent.Id;
                 double s = score.Score;
                 try
                 {
-                    DAOScore.UpdateScore(examNumber, classID, studentID, s);
+                    ModelScore.UpdateScore(examNumber, classID, studentID, s);
                 }
                 catch (Exception)
                 {
@@ -125,9 +123,32 @@ namespace TTTH.Views.Dialog
                     return;
                 }
             }
-            MessageBox.Show("Cập nhật thông tin thành công!", "Lưu thành công", MessageBoxButtons.OK);
-            LoadData2Datagridview();
+            MessageBox.Show(
+                "Cập nhật thông tin thành công!",
+                "Lưu thành công",
+                MessageBoxButtons.OK);
+            this.Close();
         }
-        
+
+        private bool ValidateInputScore()
+        {
+            int maxScore = 10;
+            int minScore = 0;
+            foreach (DTOScore score in displayData)
+            {
+                double s = score.Score;
+                if (s < minScore || s > maxScore)
+                {
+                    string studentName = score.StudentName;
+                    MessageBox.Show(
+                        $"Điểm của học sinh {studentName} không hợp lệ.",
+                        "Vui lòng kiểm tra lại.",
+                        MessageBoxButtons.OK);
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

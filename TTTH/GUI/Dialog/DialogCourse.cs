@@ -7,21 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TTTH.Models;
 using TTTH.Models.DAO;
-
+using TTTH.Models.DTO;
 
 namespace TTTH.Views.Dialog
 {
     public partial class DialogCourse : Form
     {
-        private ModelCourse? modelCourse = null;
+        private DTOCourse? oldCourse;
 
-        public DialogCourse(ModelCourse courseInput)
+        public DialogCourse(DTOCourse courseInput)
         {
             InitializeComponent();
             // có truyền vào thanh số nghĩa là update ngược lại add
-            this.modelCourse = courseInput;
+            this.oldCourse = courseInput;
         }
         public DialogCourse()
         {
@@ -32,68 +31,23 @@ namespace TTTH.Views.Dialog
         //-----------------------------------------------------------------------
         private void FormUpdateOrAddCourse_Load(object sender, EventArgs e)
         {
-            BindData();
+            BindOldData();
+            DisableIfCourseHasBegun();
         }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            // if (!ValidateInput()) { return; }
-            ModelCourse inputCourse = GetInput();
+            if (!ValidateInput()) { return; }
+            DTOCourse inputCourse = GetInput();
 
-            if (modelCourse is null) // add new
+            if (oldCourse is null) 
             {
                 HandleAddNewCourse(inputCourse);
             }
-            else // update 
+            else 
             {
                 HandleUpdateCourse(inputCourse);
             }
-        }
-
-        private void HandleUpdateCourse(ModelCourse inputCourse)
-        {
-            try
-            {
-                DAOCourse.Update(inputCourse);
-                MessageBox.Show(
-                    "Cập nhật thông tin khóa học thành công.",
-                    "Cập nhập thông tin thành công", 
-                    MessageBoxButtons.OK);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    ex.Message,
-                    "Không thể cập nhật thông tin khóa học. Vui lòng thử lại.",
-                    MessageBoxButtons.OK
-                    );
-            }
-        }
-
-        private void HandleAddNewCourse(ModelCourse inputCourse)
-        {
-            try
-            {
-                DAOCourse.Insert(inputCourse);
-                MessageBox.Show(
-                    "Thêm mới khóa học thành công",
-                    "Thêm thành công", 
-                    MessageBoxButtons.OK);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    ex.Message, 
-                    "Không thể thêm mới khóa học. Vui lòng thử lại.",
-                    MessageBoxButtons.OK
-                    );
-            }
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void textBoxFee_KeyPress(object sender, KeyPressEventArgs e)
@@ -130,26 +84,36 @@ namespace TTTH.Views.Dialog
         //-----------------------------------------------------------------------
         // HELPER FUNCTIONS
         //-----------------------------------------------------------------------
-        private void BindData()
+        private void BindOldData()
         {
-            if (modelCourse is null) { return; }
+            if (oldCourse is null) { return; }
 
-            labelHeader.Text = "Cập nhật khóa học";
+            labelHeader.Text = $"Cập nhật khóa học {oldCourse.Name}";
+            this.Text = "Cập nhật khóa học";
 
-            textBoxName.Text = modelCourse.Name;
-            textBoxDuration.Text = modelCourse.Duration.ToString();
-            textBoxFee.Text = modelCourse.Fee.ToString();
-            // prevent change duration if course has began
-            textBoxDuration.Enabled = !DAOCourse.CheckCourseBegin(modelCourse.Id);
+            textBoxName.Text = oldCourse.Name;
+            textBoxDuration.Text = oldCourse.Duration.ToString();
+            textBoxFee.Text = oldCourse.Fee.ToString();
         }
-        private ModelCourse GetInput()
-        {
-            int id = modelCourse is null? -1: modelCourse.Id;
-            string name = textBoxName.Text;
-            double fee = Convert.ToDouble(textBoxFee.Text);
-            int duration = Convert.ToInt32(textBoxDuration.Text);
 
-            return new ModelCourse(id, name, fee, duration);
+        private void DisableIfCourseHasBegun()
+        {
+            if (oldCourse is null) { return; }
+            if (ModelCourse.CheckCourseBegin(oldCourse.Id) == false) { return; }
+            // if has already use
+            textBoxDuration.Enabled = false;
+            textBoxFee.Enabled = false;
+        }
+
+        private DTOCourse GetInput()
+        {
+            DTOCourse course = new DTOCourse();
+            course.Id = oldCourse is null? -1: oldCourse.Id;
+            course.Name = textBoxName.Text;
+            course.Fee = Convert.ToDouble(textBoxFee.Text);
+            course.Duration = Convert.ToInt32(textBoxDuration.Text);
+
+            return course;
         }
 
         // validate and alert to user
@@ -186,7 +150,7 @@ namespace TTTH.Views.Dialog
             // điều kiện đúng -> học phí là số thực và học phí >= 0
             // -> phủ định điều kiện đúng dc diều kiện sai 
             if (! 
-                (Validator.isDouble(textBoxFee.Text) && 
+                (Validator.IsDouble(textBoxFee.Text) && 
                  Convert.ToDouble(textBoxFee.Text) >= 0)
                )
             {
@@ -198,7 +162,7 @@ namespace TTTH.Views.Dialog
             }
 
             if (!
-                (Validator.isInteger(textBoxDuration.Text) &&
+                (Validator.IsInteger(textBoxDuration.Text) &&
                  Convert.ToInt32(textBoxDuration.Text) >= 1)
                )
             {
@@ -212,6 +176,45 @@ namespace TTTH.Views.Dialog
             return true;
         }
 
-
+        private void HandleUpdateCourse(DTOCourse inputCourse)
+        {
+            try
+            {
+                ModelCourse.Update(inputCourse);
+                MessageBox.Show(
+                    "Cập nhật thông tin khóa học thành công.",
+                    "Cập nhập thông tin thành công",
+                    MessageBoxButtons.OK);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Không thể cập nhật thông tin khóa học. Vui lòng thử lại.",
+                    MessageBoxButtons.OK
+                    );
+            }
+        }
+        private void HandleAddNewCourse(DTOCourse inputCourse)
+        {
+            try
+            {
+                ModelCourse.Insert(inputCourse);
+                MessageBox.Show(
+                    "Thêm mới khóa học thành công",
+                    "Thêm thành công",
+                    MessageBoxButtons.OK);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Không thể thêm mới khóa học. Vui lòng thử lại.",
+                    MessageBoxButtons.OK
+                    );
+            }
+        }
     }
 }

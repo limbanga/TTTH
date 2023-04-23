@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TTTH.Models;
 using TTTH.Models.DAO;
+using TTTH.Models.DTO;
 
 namespace TTTH.GUI.Dialog
 {
     public partial class DialogClassDate : Form
     {
-        private DTOClassDate classDate;
+        private DTOClassDate currentClassDate;
         public DialogClassDate(DTOClassDate _classDate)
         {
             InitializeComponent();
-            this.classDate = _classDate;
+            this.currentClassDate = _classDate;
         }
         //---------------------------------------------------------------------------
         // EVENTS
@@ -32,16 +32,16 @@ namespace TTTH.GUI.Dialog
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            int roomID = ((DTOroom) comboBoxRoom.SelectedItem).Id;
-            int teacherID = ((DTOUser)comboBoxTeacher.SelectedItem).Id;
-            DateTime date = dateTimePickerDateHappen.Value;
-            int shift = Convert.ToInt32(comboBoxShift.SelectedItem);
-
-            DTOClassDate inputClassDate = new DTOClassDate(classDate.Id, roomID, teacherID, date, shift);
+            DTOClassDate inputClassDate = new DTOClassDate();
+            inputClassDate.Id = this.currentClassDate.Id;
+            inputClassDate.RoomID = ((DTOroom) comboBoxRoom.SelectedItem).Id;
+            inputClassDate.TeacherID = ((DTOUser)comboBoxTeacher.SelectedItem).Id;
+            inputClassDate.Date = dateTimePickerDateHappen.Value;
+            inputClassDate.Shift = Convert.ToInt32(comboBoxShift.SelectedItem);
+            inputClassDate.IsHappend = checkBoxIsHappen.Checked;
 
             HandleUpdateClassDate(inputClassDate);
         }
-
 
         //---------------------------------------------------------------------------
         // HELPER FUNCTION
@@ -84,15 +84,18 @@ namespace TTTH.GUI.Dialog
         {
             BindingOldRoom();
             BindingOldTeacher();
-            dateTimePickerDateHappen.Value = classDate.Date;
-            comboBoxShift.SelectedItem = classDate.Shift.ToString();
+            labelHeader.Text = $"Điều chỉnh thông tin buổi học {currentClassDate.DateNumber} - {currentClassDate.ClassName}";
+            dateTimePickerDateHappen.Value = currentClassDate.Date;
+            comboBoxShift.SelectedItem = currentClassDate.Shift.ToString();
+            checkBoxIsHappen.Checked = currentClassDate.IsHappend;
         }
+
         void BindingOldTeacher()
         {
             foreach (var item in comboBoxTeacher.Items)
             {
                 DTOUser user = (DTOUser)item;
-                if (user is not null && user.Id == classDate.TeacherID)
+                if (user is not null && user.Id == currentClassDate.TeacherID)
                 {
                     comboBoxTeacher.SelectedItem = item;
                     return;
@@ -104,7 +107,7 @@ namespace TTTH.GUI.Dialog
             foreach (var item in comboBoxRoom.Items)
             {
                 DTOroom room = (DTOroom)item;
-                if (room is not null && room.Id == classDate.RoomID)
+                if (room is not null && room.Id == currentClassDate.RoomID)
                 {
                     comboBoxRoom.SelectedItem = item;
                     return;
@@ -117,7 +120,7 @@ namespace TTTH.GUI.Dialog
             {
                 ModelClassDate.Update(inputClassDate);
                 MessageBox.Show(
-                    "Cập nhật lịch học thành công.",
+                    "Cập nhật thông tin buổi học thành công.",
                     "Thành công",
                     MessageBoxButtons.OK
                     );

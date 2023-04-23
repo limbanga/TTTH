@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewNotificationDetail));
             this.labelTopic = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.textBoxShowContent = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -54,35 +54,25 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.buttonDelete);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.buttonBack);
             this.panel1.Controls.Add(this.textBoxShowContent);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1112, 719);
             this.panel1.TabIndex = 1;
             // 
-            // buttonDelete
+            // buttonBack
             // 
-            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDelete.Location = new System.Drawing.Point(877, 671);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(94, 29);
-            this.buttonDelete.TabIndex = 2;
-            this.buttonDelete.Text = "Xóa";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(991, 671);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Sửa";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonBack.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.Image")));
+            this.buttonBack.Location = new System.Drawing.Point(25, 148);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(100, 37);
+            this.buttonBack.TabIndex = 7;
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // textBoxShowContent
             // 
@@ -90,11 +80,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxShowContent.BackColor = System.Drawing.SystemColors.Info;
-            this.textBoxShowContent.Location = new System.Drawing.Point(25, 148);
+            this.textBoxShowContent.Location = new System.Drawing.Point(25, 206);
             this.textBoxShowContent.Multiline = true;
             this.textBoxShowContent.Name = "textBoxShowContent";
             this.textBoxShowContent.ReadOnly = true;
-            this.textBoxShowContent.Size = new System.Drawing.Size(1060, 500);
+            this.textBoxShowContent.Size = new System.Drawing.Size(1060, 496);
             this.textBoxShowContent.TabIndex = 0;
             this.textBoxShowContent.Text = "Nội dung:\r\ncon gà di\r\nlim pro";
             // 
@@ -128,7 +118,6 @@
         private Panel panel1;
         private Panel panel2;
         public TextBox textBoxShowContent;
-        private Button buttonDelete;
-        private Button button1;
+        private Button buttonBack;
     }
 }

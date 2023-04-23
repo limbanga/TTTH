@@ -1,4 +1,6 @@
-﻿namespace TTTH.Views.Dialog
+﻿using TTTH.Models.DTO;
+
+namespace TTTH.Views.Dialog
 {
     partial class DialogScore
     {
@@ -33,20 +35,21 @@
             this.comboBoxExamNumber = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.modelScoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonSave = new System.Windows.Forms.Button();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentPhoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.scoreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelScoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelScoreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(349, 19);
+            this.button1.Location = new System.Drawing.Point(396, 90);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.Size = new System.Drawing.Size(106, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "Thêm mới";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,18 +58,18 @@
             // comboBoxExamNumber
             // 
             this.comboBoxExamNumber.FormattingEnabled = true;
-            this.comboBoxExamNumber.Location = new System.Drawing.Point(174, 20);
+            this.comboBoxExamNumber.Location = new System.Drawing.Point(191, 91);
             this.comboBoxExamNumber.Name = "comboBoxExamNumber";
-            this.comboBoxExamNumber.Size = new System.Drawing.Size(151, 28);
+            this.comboBoxExamNumber.Size = new System.Drawing.Size(169, 28);
             this.comboBoxExamNumber.TabIndex = 1;
             this.comboBoxExamNumber.SelectedIndexChanged += new System.EventHandler(this.comboBoxExamNumber_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 23);
+            this.label1.Location = new System.Drawing.Point(35, 94);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 20);
+            this.label1.Size = new System.Drawing.Size(132, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Chọn bài kiểm tra";
             // 
@@ -83,26 +86,12 @@
             this.studentPhoneNumberDataGridViewTextBoxColumn,
             this.scoreDataGridViewTextBoxColumn});
             this.dataGridView.DataSource = this.modelScoreBindingSource;
-            this.dataGridView.Location = new System.Drawing.Point(31, 115);
+            this.dataGridView.Location = new System.Drawing.Point(35, 148);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(829, 426);
+            this.dataGridView.Size = new System.Drawing.Size(933, 393);
             this.dataGridView.TabIndex = 3;
-            // 
-            // modelScoreBindingSource
-            // 
-            this.modelScoreBindingSource.DataSource = typeof(TTTH.Models.ModelScore);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(771, 560);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(94, 29);
-            this.buttonSave.TabIndex = 4;
-            this.buttonSave.Text = "Lưu";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // studentNameDataGridViewTextBoxColumn
             // 
@@ -128,18 +117,49 @@
             this.scoreDataGridViewTextBoxColumn.Name = "scoreDataGridViewTextBoxColumn";
             this.scoreDataGridViewTextBoxColumn.ToolTipText = "Nhập điểm cho học sinh";
             // 
+            // modelScoreBindingSource
+            // 
+            this.modelScoreBindingSource.DataSource = typeof(TTTH.Models.DTO.DTOScore);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(862, 560);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(106, 29);
+            this.buttonSave.TabIndex = 4;
+            this.buttonSave.Text = "Lưu";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(998, 68);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Chọn bài kiểm tra";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // DialogScore
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 601);
+            this.ClientSize = new System.Drawing.Size(998, 601);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxExamNumber);
             this.Controls.Add(this.button1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DialogScore";
-            this.Text = "DialogScore";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Nhập điểm";
             this.Load += new System.EventHandler(this.DialogScore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelScoreBindingSource)).EndInit();
@@ -156,6 +176,7 @@
         private DataGridView dataGridView;
         private BindingSource modelScoreBindingSource;
         private Button buttonSave;
+        private Label label2;
         private DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn studentPhoneNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn scoreDataGridViewTextBoxColumn;

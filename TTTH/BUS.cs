@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TTTH.Models;
-using TTTH.Models.DAO;
+﻿using TTTH.Models.DAO;
+using TTTH.Models.DTO;
 
 namespace TTTH
 {
@@ -19,51 +14,90 @@ namespace TTTH
         // PHẦN THIẾT lẬP THÔNG TIN DỰ ÁN
         //------------------------------------------------------------------------
         public static string stringConnect = @"Data Source=TCS\SQLEXPRESS;Initial Catalog=ttth_test;Integrated Security=True";
-        // --------------------------ERROR MESSAGE--------------------------------
-        public static string wrongPassMessage = "Thông tin tài khoản hoặc mật khẩu không chính xác";
 
         //------------------------------------------------------------------------
         // CÁC BIẾN TOÀN CỤC
         //------------------------------------------------------------------------
         
         //----------------------------------USER----------------------------------
-        public static DTOUser? user;
-        
+        public static DTOUser user = new DTOUser();
+
         //------------------------------NOTIFICATION------------------------------
-        public static List<ModelNotification> notificatonList = DAONotification.GetAll();
-        public static ModelNotification? notification = null;
-        public static List<ModelNotification> ReloadNotificatonList()
+        public static List<DTONotification> notificatonList = new List<DTONotification>();
+        public static DTONotification? notification = null;
+        public static List<DTONotification> ReloadNotificatonList()
         {
-            return notificatonList = DAONotification.GetAll();
+            return notificatonList = ModelNotification.GetAll();
         }
         //------------------------------NOTIFICATION------------------------------
-        public static List<ModelCourse> courseList = DAOCourse.GetAll();
-        public static ModelCourse? course = null;
-        public static List<ModelCourse> ReloadCourse()
+        public static List<DTOCourse> courseList = new List<DTOCourse> ();
+        public static DTOCourse? course = null;
+        public static List<DTOCourse> ReloadCourse()
         {
-            return courseList = DAOCourse.GetAll();
+            return courseList = ModelCourse.GetAll();
         }
         //------------------------------CLASS------------------------------
-        public static List<DTOCLass> classList = DAOClass.GetAll();
-        public static DTOCLass? modelClass = null;
-        public static List<DTOCLass> ReloadClass() 
+        public static List<DTOClass> classList = new List<DTOClass>();
+        public static DTOClass? currentClass = null;
+        public static List<DTOClass> ReloadClass() 
         {
-            return classList = DAOClass.GetAll();
+            return classList = ModelClass.GetAll();
         }
         //------------------------------ROOM------------------------------
-        public static List<DTOroom> roomList = ModelRoom.GetAll();
-        public static DTOroom? modelRoom = null;
+        public static List<DTOroom> roomList = new List<DTOroom>();
+        public static DTOroom? currentRoom = null;
         public static List<DTOroom> ReloadRoom()
         {
             return roomList = ModelRoom.GetAll();
         }
 
         //------------------------------STUDENT------------------------------
-        public static List<ModelStudent> studentList = DAOStudent.GetAll();
-        public static ModelStudent? modelStudent = null;
-        public static List<ModelStudent> ReloadStudent()
+        public static List<DTOStudent> studentList = new List<DTOStudent>();
+        public static DTOStudent? modelStudent = null;
+        public static List<DTOStudent> ReloadStudent()
         {
-            return studentList = DAOStudent.GetAll();
+            return studentList = ModelStudent.GetAll();
+        }
+
+        //------------------------------CLASS DATE------------------------------
+        public static DTOClassDate? currentClassDate = null;
+
+        //----------------------------------------------------------------------
+        // LIB các hàm dùng chung, ít hàm nên không tách ra
+        //----------------------------------------------------------------------
+        public static string ConvertWeekDateNumberToWeekDate(int weekDateNumber)
+        {
+            weekDateNumber = ((weekDateNumber + 1) % 7);
+            switch (weekDateNumber)
+            {
+                case 1:
+                    return "Chủ nhật";
+                case 2:
+                    return "Thứ 2";
+                case 3:
+                    return "Thứ 3";
+                case 4:
+                    return "Thứ 4";
+                case 5:
+                    return "Thứ 5";
+                case 6:
+                    return "Thứ 6";
+                default:
+                    return "Thứ 7";
+            }
+        }
+        public static DateTime GetWeekMonday(DateTime dt)
+        {
+            // nhận vào một ngày
+            // trả về ngày thứ 2 gần nhất trước ngày đó (thứ 2 trong tuần đó)
+            int m = (int) dt.DayOfWeek;
+            int n = (m - 1) % 7;
+            return dt.AddDays(-n);
+        }
+        public static string HashPass(string pass)
+        {
+            string hashedPass = pass;
+            return hashedPass;
         }
     }
 }

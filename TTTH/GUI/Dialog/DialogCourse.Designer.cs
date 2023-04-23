@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxDuration = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,7 +42,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.buttonCancel);
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.textBoxDuration);
             this.panel1.Controls.Add(this.label4);
@@ -55,30 +53,17 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(22, 20, 22, 20);
-            this.panel1.Size = new System.Drawing.Size(367, 400);
+            this.panel1.Size = new System.Drawing.Size(367, 388);
             this.panel1.TabIndex = 8;
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.BackColor = System.Drawing.Color.Tomato;
-            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonCancel.Location = new System.Drawing.Point(19, 319);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(148, 45);
-            this.buttonCancel.TabIndex = 9;
-            this.buttonCancel.Text = "Hủy";
-            this.buttonCancel.UseVisualStyleBackColor = false;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.Lime;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSave.Location = new System.Drawing.Point(199, 319);
+            this.buttonSave.Location = new System.Drawing.Point(25, 317);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(148, 45);
-            this.buttonSave.TabIndex = 8;
+            this.buttonSave.Size = new System.Drawing.Size(322, 45);
+            this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "Lưu";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -88,7 +73,7 @@
             this.textBoxDuration.Location = new System.Drawing.Point(123, 246);
             this.textBoxDuration.Name = "textBoxDuration";
             this.textBoxDuration.Size = new System.Drawing.Size(224, 27);
-            this.textBoxDuration.TabIndex = 7;
+            this.textBoxDuration.TabIndex = 2;
             this.textBoxDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDuration_KeyPress);
             // 
             // label4
@@ -116,14 +101,14 @@
             this.textBoxName.Location = new System.Drawing.Point(123, 120);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(224, 27);
-            this.textBoxName.TabIndex = 5;
+            this.textBoxName.TabIndex = 0;
             // 
             // textBoxFee
             // 
             this.textBoxFee.Location = new System.Drawing.Point(123, 184);
             this.textBoxFee.Name = "textBoxFee";
             this.textBoxFee.Size = new System.Drawing.Size(224, 27);
-            this.textBoxFee.TabIndex = 3;
+            this.textBoxFee.TabIndex = 1;
             this.textBoxFee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFee_KeyPress);
             // 
             // label3
@@ -153,12 +138,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 400);
+            this.ClientSize = new System.Drawing.Size(367, 388);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DialogCourse";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thêm mới khóa học";
             this.Load += new System.EventHandler(this.FormUpdateOrAddCourse_Load);
             this.panel1.ResumeLayout(false);
@@ -170,7 +156,6 @@
         #endregion
 
         private Panel panel1;
-        private Button buttonCancel;
         private Button buttonSave;
         private TextBox textBoxDuration;
         private Label label4;

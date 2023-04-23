@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxCapacity = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,7 +42,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.buttonCancel);
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.textBoxCapacity);
             this.panel1.Controls.Add(this.label4);
@@ -58,37 +56,25 @@
             this.panel1.Size = new System.Drawing.Size(363, 301);
             this.panel1.TabIndex = 10;
             // 
-            // buttonCancel
-            // 
-            this.buttonCancel.BackColor = System.Drawing.Color.Tomato;
-            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonCancel.Location = new System.Drawing.Point(22, 233);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(134, 45);
-            this.buttonCancel.TabIndex = 9;
-            this.buttonCancel.Text = "Hủy";
-            this.buttonCancel.UseVisualStyleBackColor = false;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.Lime;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSave.Location = new System.Drawing.Point(199, 233);
+            this.buttonSave.Location = new System.Drawing.Point(25, 233);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(134, 45);
-            this.buttonSave.TabIndex = 8;
+            this.buttonSave.Size = new System.Drawing.Size(308, 45);
+            this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "Lưu";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // textBoxCapacity
             // 
+            this.textBoxCapacity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxCapacity.Location = new System.Drawing.Point(138, 158);
             this.textBoxCapacity.Name = "textBoxCapacity";
             this.textBoxCapacity.Size = new System.Drawing.Size(195, 27);
-            this.textBoxCapacity.TabIndex = 7;
+            this.textBoxCapacity.TabIndex = 2;
             // 
             // label4
             // 
@@ -112,17 +98,19 @@
             // 
             // textBoxName
             // 
+            this.textBoxName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxName.Location = new System.Drawing.Point(138, 32);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(195, 27);
-            this.textBoxName.TabIndex = 5;
+            this.textBoxName.TabIndex = 0;
             // 
             // textBoxType
             // 
+            this.textBoxType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxType.Location = new System.Drawing.Point(138, 96);
             this.textBoxType.Name = "textBoxType";
             this.textBoxType.Size = new System.Drawing.Size(195, 27);
-            this.textBoxType.TabIndex = 3;
+            this.textBoxType.TabIndex = 1;
             // 
             // label3
             // 
@@ -156,7 +144,8 @@
             this.Controls.Add(this.labelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DialogRoom";
-            this.Text = "DialogUpdateOrAddRoom";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Thêm mới phòng học";
             this.Load += new System.EventHandler(this.DialogUpdateOrAddRoom_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -167,7 +156,6 @@
         #endregion
 
         private Panel panel1;
-        private Button buttonCancel;
         private Button buttonSave;
         private TextBox textBoxCapacity;
         private Label label4;

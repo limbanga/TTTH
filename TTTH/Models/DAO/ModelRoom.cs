@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using TTTH.Models.DTO;
 
 namespace TTTH.Models.DAO
 {
@@ -15,37 +16,36 @@ namespace TTTH.Models.DAO
         #region Select
         public static List<DTOroom> GetAll()
         {
-            string query = @"select * from TTTH_room";
+            string query = @"SELECT * FROM TTTH_room";
 
             List<DTOroom> list = new List<DTOroom>();
 
-
-                try
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(query, DataBase.GetConnection()))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, DataBase.GetConnection()))
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            // parse
-                            int id = reader.GetInt32(0);
-                            string name = reader.GetString(1);
-                            int capacity = reader.GetInt32(2);
-                            string type = reader.GetString(3);
+                        DTOroom r = new DTOroom();
+                        // parse
+                        r.Id = reader.GetInt32(0);
+                        r.Name = reader.GetString(1);
+                        r.Capacity = reader.GetInt32(2);
+                        r.Type = reader.GetString(3);
 
-                            // innit
-                            DTOroom modelRoom = new DTOroom(id, name, type, capacity);
-                            // assign
-                            list.Add(modelRoom);
-                        }
-                        reader.Close();
-                        cmd.Dispose();
+                        // assign
+                        list.Add(r);
                     }
+                    reader.Close();
+                    cmd.Dispose();
+                    DataBase.CloseConectionIfOpen();    
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             
             return list;
         }
@@ -100,6 +100,7 @@ namespace TTTH.Models.DAO
 
                     string errorMsg = (string) cmd.ExecuteScalar();
                     cmd.Dispose();
+                    DataBase.CloseConectionIfOpen();   
 
                     if (!string.IsNullOrEmpty(errorMsg))
                     {
@@ -111,9 +112,9 @@ namespace TTTH.Models.DAO
             {
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("Lỗi không xác định."+ex.Message);
+                throw new Exception("Lỗi không xác định.");
             }
         }
 

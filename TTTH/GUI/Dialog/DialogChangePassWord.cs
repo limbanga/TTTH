@@ -21,14 +21,10 @@ namespace TTTH.GUI.Dialog
         //-----------------------------------------------------
         // EVENTS
         //-----------------------------------------------------
-        private void DialogChangePassWord_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            //if (!CheckValid()) { return; }
+            if (CheckValid() == false) { return; }
+
             if (BUS.user is null)
             {
                 MessageBox.Show(
@@ -36,7 +32,9 @@ namespace TTTH.GUI.Dialog
                     "Vui lòng đăng nhập",
                     MessageBoxButtons.OK);
                 this.Close();
+                return;
             }
+
             string userName = BUS.user.LoginName;
             string oldPass = textBoxPassword.Text;
             string newPass = textBoxNewPassWord.Text;
@@ -44,6 +42,44 @@ namespace TTTH.GUI.Dialog
 
             HandleChangePassWord(userName, oldPass, newPass, rePass);
 
+        }
+
+        //-----------------------------------------------------
+        // HELPER FUNCTIONS
+        //-----------------------------------------------------
+
+        private bool CheckValid()
+        {
+            int passwordLength = 8;
+            string cap = "Vui lòng kiểm tra lại.";
+            if (textBoxPassword.Text.Length < passwordLength)
+            {
+                MessageBox.Show(
+                    $"Mật khẩu cũ phải có độ dài ít nhất là {passwordLength}.",
+                    cap,
+                    MessageBoxButtons.OK);
+                return false;
+            }
+
+            if (textBoxNewPassWord.Text.Length < passwordLength)
+            {
+                MessageBox.Show(
+                    $"Mật khẩu mới phải có độ dài ít nhất là {passwordLength}.",
+                    cap,
+                    MessageBoxButtons.OK);
+                return false;
+            }
+
+            if (textBoxRePassWord.Text.Equals(textBoxNewPassWord.Text) == false)
+            {
+                MessageBox.Show(
+                    "Xác nhận mật khẩu không khớp với mật khẩu mới.",
+                    cap,
+                    MessageBoxButtons.OK);
+                return false;
+            }
+
+            return true;
         }
 
         private void HandleChangePassWord(string userName, string oldPass, string newPass, string rePass)
@@ -60,51 +96,10 @@ namespace TTTH.GUI.Dialog
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    ex.Message, 
+                    ex.Message,
                     "Không thể cập nhật.",
                     MessageBoxButtons.OK);
             }
-        }
-
-
-
-
-        //-----------------------------------------------------
-        // HELPER FUNCTIONS
-        //-----------------------------------------------------
-
-        private bool CheckValid()
-        {
-            int passwordLength = 8;
-            string cap = "Vui lòng kiểm tra lại.";
-            if (textBoxPassword.Text.Length < passwordLength)
-            {
-                MessageBox.Show(
-                    "Mật khẩu cũ phải có độ dài ít nhất là 8.",
-                    cap,
-                    MessageBoxButtons.OK);
-                return false;
-            }
-
-            if (textBoxNewPassWord.Text.Length < passwordLength)
-            {
-                MessageBox.Show(
-                    "Mật khẩu mới phải có độ dài ít nhất là 8.",
-                    cap,
-                    MessageBoxButtons.OK);
-                return false;
-            }
-
-            if (!textBoxRePassWord.Text.Equals(textBoxNewPassWord.Text))
-            {
-                MessageBox.Show(
-                    "Xác nhận mật khẩu không khớp với mật khẩu mới.",
-                    cap,
-                    MessageBoxButtons.OK);
-                return false;
-            }
-
-            return true;
         }
     }
 }

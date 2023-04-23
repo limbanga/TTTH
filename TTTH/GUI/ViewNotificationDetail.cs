@@ -12,6 +12,8 @@ namespace TTTH.Views
 {
     public partial class ViewNotificationDetail : UserControl
     {
+
+        public EventHandler? SwitchToViewNotification;
         public ViewNotificationDetail()
         {
             InitializeComponent();
@@ -21,11 +23,10 @@ namespace TTTH.Views
         // EVENTS
         //--------------------------------------------------------------
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
-
+            SwitchToViewNotification?.Invoke(sender, EventArgs.Empty);
         }
-
 
         //--------------------------------------------------------------
         // HELPER FUNCTIONS
@@ -40,5 +41,7 @@ namespace TTTH.Views
         {
             textBoxShowContent.Text = content;
         }
+
+
     }
 }

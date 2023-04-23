@@ -57,6 +57,5 @@ namespace TTTH.Views
             dataGridView.DataSource = BUS.ReloadNotificatonList();
         }
 
-
     }
 }

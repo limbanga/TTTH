@@ -7,16 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TTTH.Models;
 using TTTH.Models.DAO;
+using TTTH.Models.DTO;
 using TTTH.Views.Dialog;
 
 namespace TTTH.Views
 {
     public partial class ViewClassDate : UserControl
     {
-        private DTOCLass modelClass = new DTOCLass();
-        List<ModelStudent>  displayData = new List<ModelStudent>();
+        public EventHandler? SwtichToViewClassDetail;
+        private DTOClassDate dTOClassDate = new DTOClassDate();
+        List<DTOStudent>  displayData = new List<DTOStudent>();
         public ViewClassDate()
         {
             InitializeComponent();
@@ -25,35 +26,27 @@ namespace TTTH.Views
         //  ENVENTS
         //--------------------------------------------------------------------
 
-        private void ViewClassDetail_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            // open form for user select students in list to add into class
-            // mở form cho người dùng chọn những học sinh để thêm vào lớp
-            DialogRegister2Class enrollForm = new DialogRegister2Class();
-            enrollForm.ShowDialog();
-            ReloadData();
-        }
-
-        private void buttonTakeAttention_Click(object sender, EventArgs e)
+        private void ButtonTakeAttention_Click(object sender, EventArgs e)
         {
             // mở form điểm danh
-            DialogCheckAttendend dialogCheckAttendend = new DialogCheckAttendend(modelClass);
-            dialogCheckAttendend.ShowDialog();
+            DialogAttendend dialogAttendend = new DialogAttendend(dTOClassDate);
+            dialogAttendend.ShowDialog();
             //reload data
             ReloadData();
         }
 
-        private void buttonEnterScore_Click(object sender, EventArgs e)
+        private void ButtonEnterScore_Click(object sender, EventArgs e)
         {
-            DialogScore dialogScore = new DialogScore(modelClass);
+            DialogScore dialogScore = new DialogScore(dTOClassDate);
             dialogScore.ShowDialog();
             //reload data
             ReloadData();
+        }
+
+        private void ButtonBack_Click(object sender, EventArgs e)
+        {
+            // public to main form
+            SwtichToViewClassDetail?.Invoke(sender, new EventArgs());
         }
 
         //--------------------------------------------------------------------
@@ -62,25 +55,24 @@ namespace TTTH.Views
 
         public void ReloadData()
         {
-            if (BUS.modelClass is null) { return; }
-            displayData = DAOStudent.GetStudentsInClass(BUS.modelClass.Id);
+            if (BUS.currentClassDate is null) { return; }
+            displayData = ModelStudent.GetStudentsInClass(BUS.currentClassDate.ClassID);
             dataGridView.DataSource = displayData;
         }
 
-        public void SetDataForClass(DTOCLass c)
+        public void BindClassDateData(DTOClassDate cd)
         {
-            this.modelClass = c;
+            this.dTOClassDate = cd;
 
-            labelClassName.Text = $"Lớp: { c.Name }";
-            labelTeacher.Text = $"Giảng viên: { "-" }";
-            labelShift.Text = $"Ca học: { c.Shift }";
-            string dateInWeekString = string.Join(",", c.ListDatesInWeek.ToArray());
+            #region Set label
+            labelClassName.Text = $"Lớp '{cd.ClassName}' - Buổi '{cd.DateNumber}'";
+            labelShift.Text = $"Ca: {cd.Shift}";
+            labelTeacher.Text = $"Giảng viên: {cd.TeacherName}";
+            labelDate.Text = $"{BUS.ConvertWeekDateNumberToWeekDate((int)cd.Date.DayOfWeek)}" +
+                $" - {cd.Date.ToString("dd/MM/yyyy")}";
+            #endregion
 
-        }
-
-        private void labelShift_Click(object sender, EventArgs e)
-        {
-
+            ReloadData();
         }
     }
 }

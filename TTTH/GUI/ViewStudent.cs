@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TTTH.Models.DAO;
+using TTTH.Models.DTO;
 using TTTH.Views.Dialog;
 
 namespace TTTH.Views
@@ -26,10 +28,10 @@ namespace TTTH.Views
             dataGridView.DataSource = BUS.studentList;
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
             // open form handle add student
-            DialogUpdateOrAddStudent dialogAdd = new DialogUpdateOrAddStudent(true);
+            DialogStudent dialogAdd = new DialogStudent();
             dialogAdd.ShowDialog();
             // reload new data after update
             ReloadData();
@@ -41,21 +43,40 @@ namespace TTTH.Views
             string columnName = dataGridView.Columns[columnIndex].Name;
 
             // get student
-            BUS.modelStudent = BUS.studentList[e.RowIndex];
+            DTOStudent selectedStudent = (DTOStudent) dataGridView.Rows[e.RowIndex].DataBoundItem;
             if (columnName.Equals("UpdateButton"))
             {
                 // create new form to update
-                DialogUpdateOrAddStudent dialogUpdate = new DialogUpdateOrAddStudent(false);
+                DialogStudent dialogUpdate = new DialogStudent(selectedStudent);
                 dialogUpdate.ShowDialog();
                 // reload data after update
                 ReloadData();
             }
             else if (columnName.Equals("DeleteButton"))
             {
-                MessageBox.Show("Xoa hoc vien");
+                int studentID = selectedStudent.Id;
+                string msg = $"Bạn có muốn xóa học viên {selectedStudent.Name } và các thông tin liên quan không?";
+
+                if (ModelStudent.CheckStudentJoinAnyClass(studentID))
+                {
+                    msg = $"Học viên {selectedStudent.Name} đã tham gia lớp học, bạn có muốn xóa học viên và các thông tin liên quan không?";
+                }
+
+                DialogResult r = MessageBox.Show(
+                    msg,
+                    "Xác nhận xóa.",
+                    MessageBoxButtons.YesNo
+                    );
+
+                if (r != DialogResult.Yes) { return; }
+
+                HandleDeleteStudent(studentID);
+                ReloadData();
             }
 
         }
+
+
 
         //--------------------------------------------------------------
         // HELPER FUNCTIONS
@@ -63,6 +84,27 @@ namespace TTTH.Views
         public void ReloadData()
         {
             dataGridView.DataSource = BUS.ReloadStudent();
+        }
+
+        private void HandleDeleteStudent(int studentID)
+        {
+            try
+            {
+                ModelStudent.Delete(studentID);
+                MessageBox.Show(
+                    "Xóa học viên thành công",
+                    "Xóa thành công.",
+                    MessageBoxButtons.OK
+                    );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Đã xảy ra lỗi.",
+                    MessageBoxButtons.OK
+                    );
+            }
         }
 
     }

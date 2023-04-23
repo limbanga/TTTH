@@ -7,98 +7,116 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TTTH.Models;
 using TTTH.Models.DAO;
+using TTTH.Models.DTO;
 
 namespace TTTH.Views.Dialog
 {
     public partial class DialogRoom : Form
     {
-        private bool forAdd = true;
-        // forAdd = true -> add form
-        // forAdd = false -> update form
-        public DialogRoom(bool _forAdd)
+        private DTOroom? oldRoom;
+
+        public DialogRoom()
         {
             InitializeComponent();
-            this.forAdd = _forAdd;
+        }
+        public DialogRoom(DTOroom? currentRoom)
+        {
+            InitializeComponent();
+            this.oldRoom = currentRoom;
         }
         //-----------------------------------------------------------------------
         // EVENTS
         //-----------------------------------------------------------------------
         private void DialogUpdateOrAddRoom_Load(object sender, EventArgs e)
         {
-            BindData();
+            BindOldData();
         }
-
-
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (!ValidateInput()) { return; }
             DTOroom inputRoom = GetInput();
 
-            if (forAdd)
+            if (oldRoom is null)
             {
-                AddRoom(inputRoom);
+                HandleAddRoom(inputRoom);
             }
             else
             {
-                UpdateRoom(inputRoom);
+                HandleUpdateRoom(inputRoom);
             }
 
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            // close form
-            this.Close();
-        }
         //-----------------------------------------------------------------------
         // HELPER FUNCTIONS
         //-----------------------------------------------------------------------
         private bool ValidateInput()
         {
+            string cap = "Vui lòng nhập lại";
             if (string.IsNullOrEmpty(textBoxName.Text))
             {
-                MessageBox.Show("Tên phòng không được bỏ trống.", "Vui lòng nhập lại", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "Tên phòng không được bỏ trống.",
+                    cap, 
+                    MessageBoxButtons.OK);
                 return false;
             }
 
             if (string.IsNullOrEmpty(textBoxCapacity.Text))
             {
-                MessageBox.Show("Sức chứa không được bỏ trống.", "Vui lòng nhập lại", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "Sức chứa không được bỏ trống.",
+                    cap, 
+                    MessageBoxButtons.OK);
                 return false;
             }
 
-            if (string.IsNullOrEmpty(textBoxType.Text))
+            if (Validator.IsInteger(textBoxCapacity.Text) == false)
             {
-                MessageBox.Show("Loại phòng không được bỏ trống.", "Vui lòng nhập lại", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "Sức chứa phải là số nguyên.",
+                    cap, 
+                    MessageBoxButtons.OK);
+                return false;
+            }
+
+            if (Convert.ToInt32(textBoxCapacity.Text) <= 0)
+            {
+                MessageBox.Show(
+                    "Sức chứa phải lớn hơn 0.",
+                    cap,
+                    MessageBoxButtons.OK);
                 return false;
             }
 
             return true;
         }
 
-        private void BindData()
+        private void BindOldData()
         {
+            if (oldRoom is null) { return; }
             // binding old data
-            if (forAdd || BUS.modelRoom is null) { return; }
-            textBoxName.Text = BUS.modelRoom.Name;
-            textBoxType.Text = BUS.modelRoom.Type;
-            textBoxCapacity.Text = BUS.modelRoom.Capacity.ToString();
+            labelHeader.Text = "Cập nhật thông tin phòng học";
+            this.Text = "Cập nhật thông tin phòng học";
+            textBoxName.Text = oldRoom.Name;
+            textBoxType.Text = oldRoom.Type;
+            textBoxCapacity.Text = oldRoom.Capacity.ToString();
         }
 
         private DTOroom GetInput()
         {
-            int id = (forAdd || BUS.modelRoom is null)? -1 : BUS.modelRoom.Id;
-            string name = textBoxName.Text;
-            string type = textBoxType.Text;
-            int capacity = Convert.ToInt32(textBoxCapacity.Text);
+            DTOroom inputRoom = new DTOroom();
+            inputRoom.Id = BUS.currentRoom is null? -1 : BUS.currentRoom.Id;
+            inputRoom.Name = textBoxName.Text;
+            inputRoom.Type = textBoxType.Text;
+            inputRoom.Capacity = Convert.ToInt32(textBoxCapacity.Text);
 
-            return new DTOroom(id, name, type, capacity);
+            return inputRoom;
         }
 
-        private void AddRoom(DTOroom inputRoom)
+        private void HandleAddRoom(DTOroom inputRoom)
         {
             try
             {
@@ -119,7 +137,7 @@ namespace TTTH.Views.Dialog
             }
         }
 
-        private void UpdateRoom(DTOroom inputRoom)
+        private void HandleUpdateRoom(DTOroom inputRoom)
         {
             try
             {

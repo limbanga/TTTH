@@ -44,7 +44,7 @@
             this.labelHeader.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelHeader.Location = new System.Drawing.Point(0, 0);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(1015, 75);
+            this.labelHeader.Size = new System.Drawing.Size(1004, 75);
             this.labelHeader.TabIndex = 0;
             this.labelHeader.Text = "Đăng thông báo mới";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,18 +52,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 100);
+            this.label2.Location = new System.Drawing.Point(28, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.Size = new System.Drawing.Size(64, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tiêu đề:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 151);
+            this.label3.Location = new System.Drawing.Point(28, 151);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
+            this.label3.Size = new System.Drawing.Size(78, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nội dung:";
             // 
@@ -71,9 +71,9 @@
             // 
             this.textBoxTopic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTopic.Location = new System.Drawing.Point(113, 100);
+            this.textBoxTopic.Location = new System.Drawing.Point(127, 100);
             this.textBoxTopic.Name = "textBoxTopic";
-            this.textBoxTopic.Size = new System.Drawing.Size(872, 27);
+            this.textBoxTopic.Size = new System.Drawing.Size(843, 27);
             this.textBoxTopic.TabIndex = 3;
             // 
             // richTextBoxContent
@@ -81,9 +81,9 @@
             this.richTextBoxContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxContent.Location = new System.Drawing.Point(113, 152);
+            this.richTextBoxContent.Location = new System.Drawing.Point(127, 152);
             this.richTextBoxContent.Name = "richTextBoxContent";
-            this.richTextBoxContent.Size = new System.Drawing.Size(872, 422);
+            this.richTextBoxContent.Size = new System.Drawing.Size(843, 422);
             this.richTextBoxContent.TabIndex = 4;
             this.richTextBoxContent.Text = "";
             // 
@@ -92,18 +92,18 @@
             this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPost.BackColor = System.Drawing.Color.Lime;
             this.buttonPost.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonPost.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonPost.Location = new System.Drawing.Point(833, 591);
+            this.buttonPost.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonPost.Location = new System.Drawing.Point(799, 591);
             this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(152, 37);
+            this.buttonPost.Size = new System.Drawing.Size(171, 37);
             this.buttonPost.TabIndex = 5;
             this.buttonPost.Text = "Đăng";
             this.buttonPost.UseVisualStyleBackColor = false;
-            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
+            this.buttonPost.Click += new System.EventHandler(this.ButtonPost_Click);
             // 
             // ViewPostNotification
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonPost);
             this.Controls.Add(this.richTextBoxContent);
@@ -111,8 +111,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelHeader);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Name = "ViewPostNotification";
-            this.Size = new System.Drawing.Size(1015, 649);
+            this.Size = new System.Drawing.Size(1004, 649);
             this.ResumeLayout(false);
             this.PerformLayout();
 

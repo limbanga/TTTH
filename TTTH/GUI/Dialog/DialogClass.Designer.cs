@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxClassName = new System.Windows.Forms.TextBox();
             this.textBoxLimitStudent = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,10 +38,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.labelHeader = new System.Windows.Forms.Label();
-            this.groupBoxDatesInWeek = new System.Windows.Forms.GroupBox();
+            this.groupBoxSchedule = new System.Windows.Forms.GroupBox();
+            this.comboBoxTeacher = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.comboBoxRoom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelWeekDate = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -49,10 +51,8 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.comboBoxTeacher = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBoxDatesInWeek.SuspendLayout();
-            this.flowLayoutPanel.SuspendLayout();
+            this.groupBoxSchedule.SuspendLayout();
+            this.flowLayoutPanelWeekDate.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -65,13 +65,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên lớp học";
             // 
-            // textBoxName
+            // textBoxClassName
             // 
-            this.textBoxName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxName.Location = new System.Drawing.Point(169, 85);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(257, 27);
-            this.textBoxName.TabIndex = 1;
+            this.textBoxClassName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxClassName.Location = new System.Drawing.Point(169, 85);
+            this.textBoxClassName.Name = "textBoxClassName";
+            this.textBoxClassName.Size = new System.Drawing.Size(257, 27);
+            this.textBoxClassName.TabIndex = 1;
             // 
             // textBoxLimitStudent
             // 
@@ -162,24 +162,44 @@
             this.labelHeader.Text = "Mở lớp cho khóa học {khoahoc.Name}";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBoxDatesInWeek
+            // groupBoxSchedule
             // 
-            this.groupBoxDatesInWeek.Controls.Add(this.comboBoxTeacher);
-            this.groupBoxDatesInWeek.Controls.Add(this.label6);
-            this.groupBoxDatesInWeek.Controls.Add(this.comboBoxRoom);
-            this.groupBoxDatesInWeek.Controls.Add(this.label5);
-            this.groupBoxDatesInWeek.Controls.Add(this.flowLayoutPanel);
-            this.groupBoxDatesInWeek.Controls.Add(this.comboBoxShift);
-            this.groupBoxDatesInWeek.Controls.Add(this.label3);
-            this.groupBoxDatesInWeek.Controls.Add(this.label4);
-            this.groupBoxDatesInWeek.Controls.Add(this.dateTimePickerStart);
-            this.groupBoxDatesInWeek.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxDatesInWeek.Location = new System.Drawing.Point(26, 224);
-            this.groupBoxDatesInWeek.Name = "groupBoxDatesInWeek";
-            this.groupBoxDatesInWeek.Size = new System.Drawing.Size(400, 270);
-            this.groupBoxDatesInWeek.TabIndex = 16;
-            this.groupBoxDatesInWeek.TabStop = false;
-            this.groupBoxDatesInWeek.Text = "Lịch học dự kiến";
+            this.groupBoxSchedule.Controls.Add(this.comboBoxTeacher);
+            this.groupBoxSchedule.Controls.Add(this.label6);
+            this.groupBoxSchedule.Controls.Add(this.comboBoxRoom);
+            this.groupBoxSchedule.Controls.Add(this.label5);
+            this.groupBoxSchedule.Controls.Add(this.flowLayoutPanelWeekDate);
+            this.groupBoxSchedule.Controls.Add(this.comboBoxShift);
+            this.groupBoxSchedule.Controls.Add(this.label3);
+            this.groupBoxSchedule.Controls.Add(this.label4);
+            this.groupBoxSchedule.Controls.Add(this.dateTimePickerStart);
+            this.groupBoxSchedule.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxSchedule.Location = new System.Drawing.Point(26, 224);
+            this.groupBoxSchedule.Name = "groupBoxSchedule";
+            this.groupBoxSchedule.Size = new System.Drawing.Size(400, 270);
+            this.groupBoxSchedule.TabIndex = 16;
+            this.groupBoxSchedule.TabStop = false;
+            this.groupBoxSchedule.Text = "Lịch học dự kiến";
+            // 
+            // comboBoxTeacher
+            // 
+            this.comboBoxTeacher.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxTeacher.FormattingEnabled = true;
+            this.comboBoxTeacher.Location = new System.Drawing.Point(124, 182);
+            this.comboBoxTeacher.Name = "comboBoxTeacher";
+            this.comboBoxTeacher.Size = new System.Drawing.Size(257, 28);
+            this.comboBoxTeacher.TabIndex = 21;
+            this.comboBoxTeacher.Text = "1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(21, 185);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 20);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Giảng viên";
             // 
             // comboBoxRoom
             // 
@@ -201,19 +221,19 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Phòng học";
             // 
-            // flowLayoutPanel
+            // flowLayoutPanelWeekDate
             // 
-            this.flowLayoutPanel.Controls.Add(this.checkBox1);
-            this.flowLayoutPanel.Controls.Add(this.checkBox2);
-            this.flowLayoutPanel.Controls.Add(this.checkBox3);
-            this.flowLayoutPanel.Controls.Add(this.checkBox4);
-            this.flowLayoutPanel.Controls.Add(this.checkBox5);
-            this.flowLayoutPanel.Controls.Add(this.checkBox6);
-            this.flowLayoutPanel.Controls.Add(this.checkBox7);
-            this.flowLayoutPanel.Location = new System.Drawing.Point(21, 39);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(361, 32);
-            this.flowLayoutPanel.TabIndex = 17;
+            this.flowLayoutPanelWeekDate.Controls.Add(this.checkBox1);
+            this.flowLayoutPanelWeekDate.Controls.Add(this.checkBox2);
+            this.flowLayoutPanelWeekDate.Controls.Add(this.checkBox3);
+            this.flowLayoutPanelWeekDate.Controls.Add(this.checkBox4);
+            this.flowLayoutPanelWeekDate.Controls.Add(this.checkBox5);
+            this.flowLayoutPanelWeekDate.Controls.Add(this.checkBox6);
+            this.flowLayoutPanelWeekDate.Controls.Add(this.checkBox7);
+            this.flowLayoutPanelWeekDate.Location = new System.Drawing.Point(21, 39);
+            this.flowLayoutPanelWeekDate.Name = "flowLayoutPanelWeekDate";
+            this.flowLayoutPanelWeekDate.Size = new System.Drawing.Size(361, 32);
+            this.flowLayoutPanelWeekDate.TabIndex = 17;
             // 
             // checkBox1
             // 
@@ -292,47 +312,28 @@
             this.checkBox7.Text = "cn";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
-            // comboBoxTeacher
-            // 
-            this.comboBoxTeacher.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxTeacher.FormattingEnabled = true;
-            this.comboBoxTeacher.Location = new System.Drawing.Point(124, 182);
-            this.comboBoxTeacher.Name = "comboBoxTeacher";
-            this.comboBoxTeacher.Size = new System.Drawing.Size(257, 28);
-            this.comboBoxTeacher.TabIndex = 21;
-            this.comboBoxTeacher.Text = "1";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(21, 185);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 20);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Giảng viên";
-            // 
             // DialogClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(447, 599);
-            this.Controls.Add(this.groupBoxDatesInWeek);
+            this.Controls.Add(this.groupBoxSchedule);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxLimitStudent);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.textBoxClassName);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DialogClass";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thêm mới khóa học";
             this.Load += new System.EventHandler(this.DialogOpenNewClass_Load);
-            this.groupBoxDatesInWeek.ResumeLayout(false);
-            this.groupBoxDatesInWeek.PerformLayout();
-            this.flowLayoutPanel.ResumeLayout(false);
-            this.flowLayoutPanel.PerformLayout();
+            this.groupBoxSchedule.ResumeLayout(false);
+            this.groupBoxSchedule.PerformLayout();
+            this.flowLayoutPanelWeekDate.ResumeLayout(false);
+            this.flowLayoutPanelWeekDate.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,7 +342,7 @@
         #endregion
 
         private Label label1;
-        private TextBox textBoxName;
+        private TextBox textBoxClassName;
         private TextBox textBoxLimitStudent;
         private Label label2;
         private Label label3;
@@ -350,7 +351,7 @@
         private Label label4;
         private Button buttonSave;
         private Label labelHeader;
-        private GroupBox groupBoxDatesInWeek;
+        private GroupBox groupBoxSchedule;
         private CheckBox checkBox7;
         private CheckBox checkBox6;
         private CheckBox checkBox5;
@@ -358,7 +359,7 @@
         private CheckBox checkBox3;
         private CheckBox checkBox2;
         private CheckBox checkBox1;
-        private FlowLayoutPanel flowLayoutPanel;
+        private FlowLayoutPanel flowLayoutPanelWeekDate;
         private ComboBox comboBoxRoom;
         private Label label5;
         private ComboBox comboBoxTeacher;

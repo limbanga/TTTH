@@ -25,12 +25,12 @@ namespace TTTH.Models
             return _connection;
         }
 
-        public static DataTable ExcuteQuery(SqlCommand cmd)
+        public static void CloseConectionIfOpen()
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            return dt;
+            if (_connection is not null && _connection.State == ConnectionState.Open)
+            {
+                _connection.Close();
+            }
         }
     }
 }

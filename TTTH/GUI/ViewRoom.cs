@@ -29,7 +29,7 @@ namespace TTTH.Views
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             // open form handle add event
-            DialogRoom addForm = new DialogRoom(true);
+            DialogRoom addForm = new DialogRoom();
             addForm.ShowDialog();
 
             // update data after add
@@ -44,19 +44,16 @@ namespace TTTH.Views
             int columnIndex = e.ColumnIndex;
             string columnName = dataGridView.Columns[columnIndex].Name;
             // get clicked room
-            BUS.modelRoom = BUS.roomList[e.RowIndex];
+            BUS.currentRoom = BUS.roomList[e.RowIndex];
             if (columnName.Equals("UpdateButton"))
             {
-                // get course
-                // create new form to update
-                DialogRoom updateForm = new DialogRoom(false); // update -> forAdd = false 
+                DialogRoom updateForm = new DialogRoom(BUS.currentRoom);
                 updateForm.ShowDialog();
-                // reload data after change
                 ReLoadData();
             }
             else if (columnName.Equals("DeleteButton"))
             {
-                int roomID = BUS.modelRoom.Id;
+                int roomID = BUS.currentRoom.Id;
                 string msg = "Bạn có chắc chắn muốn xóa phòng này không?";
 
                 if (ModelRoom.CheckRoomBeforeDelete(roomID))
@@ -89,7 +86,6 @@ namespace TTTH.Views
                     MessageBoxButtons.OK);
             }
         }
-
 
         //--------------------------------------------------
         // HELPER FUNCTIIONS

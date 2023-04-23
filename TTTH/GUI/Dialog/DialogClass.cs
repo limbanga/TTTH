@@ -7,61 +7,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TTTH.Models;
 using TTTH.Models.DAO;
-
+using TTTH.Models.DTO;
 
 namespace TTTH.Views.Dialog
 {
     public partial class DialogClass : Form
     {
-        private ModelCourse? course;
-        private DTOCLass? modelClass;
+        private DTOCourse? course;
+        private DTOClass? oldClass;
 
         List<DTOroom> roomList = new List<DTOroom>();
 
-        public DialogClass(ModelCourse? _course, DTOCLass? _modelClass)
+        public DialogClass(DTOCourse? _course, DTOClass? dTOClass)
         {
             InitializeComponent();
             course = _course;
-            modelClass = _modelClass;
+            this.oldClass = dTOClass;
         }
         //---------------------------------------------------------------------------
         // EVENTS
         //---------------------------------------------------------------------------
         private void DialogOpenNewClass_Load(object sender, EventArgs e)
         {
-            CloseIfCourseNull();
-            BindOldData();
             FillFormData();
-        }
-
-        private void FillFormData()
-        {
-            BindComboboxRoom();
-            BindComboboxTeacher();
+            BindOldData();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
 
-            // if (!ValidateInput()) { return; }
-
-            List<Int32> datesWeek = GetDatesInWeek();
-            if (datesWeek.Count <= 0)
-            {
-                MessageBox.Show(
-                    "Bạn phải những ngày học trong tuần.",
-                    "Vui lòng kiểm tra lại",
-                    MessageBoxButtons.OK);
-                return;
-            }
+            if (!ValidateInput()) { return; }
 
             // get input
-            DTOCLass inputClass = GetInput();
+            DTOClass inputClass = GetInput();
 
-            if (modelClass is null) // add new
+            if (oldClass is null) // add new
             {
+                #region Get date in week
+                // lấy lịch học trong tuần
+                List<Int32> datesWeek = GetDatesInWeek();
+                if (datesWeek.Count <= 0)
+                {
+                    MessageBox.Show(
+                        "Bạn phải những ngày học trong tuần.",
+                        "Vui lòng kiểm tra lại",
+                        MessageBoxButtons.OK);
+                    return;
+                }
+                #endregion
                 HandleAddNewClass(inputClass, datesWeek);
             }
             else
@@ -70,21 +64,23 @@ namespace TTTH.Views.Dialog
             }
         }
 
-        private void HandleUpdateClass(DTOCLass inputClass)
+        //---------------------------------------------------------------------------
+        // HELPER FUNCTION
+        //---------------------------------------------------------------------------
+        private void FillFormData()
         {
-            MessageBox.Show("chua lam update class");
+            BindComboboxRoom();
+            BindComboboxTeacher();
         }
 
-
-
-        private void HandleAddNewClass(DTOCLass inputClass, List<Int32> dates)
+        private void HandleAddNewClass(DTOClass inputClass, List<Int32> dates)
         {
             try
             {
-                DAOClass.Insert(inputClass, dates);
+                ModelClass.Insert(inputClass, dates);
                 MessageBox.Show(
                     "Tạo lớp thành công.",
-                    "Thành công.", 
+                    "Thành công.",
                     MessageBoxButtons.OK);
                 this.Close();
             }
@@ -96,50 +92,20 @@ namespace TTTH.Views.Dialog
             }
         }
 
-        //---------------------------------------------------------------------------
-        // HELPER FUNCTION
-        //---------------------------------------------------------------------------
         private void BindOldData()
         {
-            if (modelClass is not null) // update
+            if (oldClass is not null) // update
             {
-                labelHeader.Text = $"Cập nhật thông tin lớp {modelClass.Name}";
-                textBoxName.Text = modelClass.Name;
-                textBoxLimitStudent.Text = modelClass.MaxCapacity.ToString();
-                comboBoxShift.SelectedItem = modelClass.Shift;
-                dateTimePickerStart.Value = modelClass.Start;
-                foreach (int d in modelClass.ListDatesInWeek)
-                {
-                    if (d == 1)
-                    {
-                        checkBox7.Checked = true;
-                    }
-                    else if (d == 2)
-                    {
-                        checkBox1.Checked = true;
-                    }
-                    else if(d == 3)
-                    {
-                        checkBox2.Checked = true;
-                    }
-                    else if(d == 4)
-                    {
-                        checkBox3.Checked = true;
-                    }
-                    else if (d == 5)
-                    {
-                        checkBox4.Checked = true;
-                    }
-                    else if (d == 6)
-                    {
-                        checkBox5.Checked = true;
-                    }
-                    else if (d == 7)
-                    {
-                        checkBox6.Checked = true;
-                    }
-                }
-                checkHasBegined(modelClass);
+                labelHeader.Text = $"Cập nhật thông tin lớp {oldClass.Name}";
+                textBoxClassName.Text = oldClass.Name;
+                textBoxLimitStudent.Text = oldClass.MaxCapacity.ToString();
+                comboBoxShift.SelectedItem = oldClass.Shift.ToString();
+                dateTimePickerStart.Value = oldClass.Start;
+                BindOldTeacher();
+                BindOldRoom();
+
+                dateTimePickerStart.Enabled = false;
+                flowLayoutPanelWeekDate.Enabled = false;
             }
             else // add
             {
@@ -147,56 +113,59 @@ namespace TTTH.Views.Dialog
             }
         }
 
-        private void checkHasBegined(DTOCLass modelClass)
+        private void BindOldRoom()
         {
-            if (modelClass.Start < DateTime.Now)
+            if (oldClass is null)
             {
-                MessageBox.Show(
-                    "Lớp học này đã bắt đầu. Bạn sẽ không thể chỉnh sửa một số thông tin.",
-                    "Thông báo!",
-                    MessageBoxButtons.OK);
-                groupBoxDatesInWeek.Enabled = false;
-                textBoxLimitStudent.Enabled = false;
-                dateTimePickerStart.Enabled = false;
-                comboBoxShift.Enabled = false;
-            }
-        }
-
-        private DTOCLass GetInput()
-        {
-            // classID = -1 -> add new
-            int classID = modelClass is null? -1: modelClass.Id;
-            int courseID = course is null? -1: course.Id;
-            int roomID = ((DTOroom) comboBoxRoom.SelectedItem).Id;
-            int teacherID = ((DTOUser) comboBoxTeacher.SelectedItem).Id;
-
-            string name = textBoxName.Text;
-            int maxCapacity = Convert.ToInt32(textBoxLimitStudent.Text);
-            int shift = Convert.ToInt32(comboBoxShift.SelectedItem);
-            DateTime start = dateTimePickerStart.Value;
-
-            return new DTOCLass(classID, name, start, maxCapacity, shift, courseID, roomID, teacherID);
-        }
-        private void CloseIfCourseNull()
-        {
-            /*
-                XỬ LÝ TRƯỜNG HỌC MỞ LỚP MÀ KHÔNG DỰA VÀO KHÓA HỌC NÀO
-             */
-
-            // class is null -> tạo mới lớp
-            // nhưng lớp tạo mới phải từ course => course is not null
-            // mà course mà null nghĩa là không tạo mới dc
-            if (modelClass is null && course is null) 
-            {
-                MessageBox.Show(
-                     "Khoá học bạn chọn không tồn tại hoặc đã bị xóa. Vui lòng thử lại sau.",
-                     "Không tìm thấy khóa học",
-                     MessageBoxButtons.OK
-                     );
                 this.Close();
                 return;
             }
+
+            foreach (DTOroom room in comboBoxRoom.Items)
+            {
+                if (room.Id == oldClass.RoomID)
+                {
+                    comboBoxRoom.SelectedItem = room;
+                    return;
+                }
+            }
         }
+
+        private void BindOldTeacher()
+        {
+            if (oldClass is null)
+            { 
+                this.Close();
+                return; 
+            }
+
+            foreach (DTOUser teacher in comboBoxTeacher.Items)
+            {
+                if (teacher.Id == oldClass.TeacherID)
+                {
+                    comboBoxTeacher.SelectedItem = teacher;
+                    return;
+                }
+            }
+        }
+
+        private DTOClass GetInput()
+        {
+            DTOClass inputClass = new DTOClass();
+            // classID = -1 -> add new
+            inputClass.Id = oldClass is null? -1: oldClass.Id;
+            inputClass.CourseID = course is null? -1: course.Id;
+            inputClass.RoomID = ((DTOroom) comboBoxRoom.SelectedItem).Id;
+            inputClass.TeacherID = ((DTOUser) comboBoxTeacher.SelectedItem).Id;
+
+            inputClass.Name = textBoxClassName.Text;
+            inputClass.MaxCapacity = Convert.ToInt32(textBoxLimitStudent.Text);
+            inputClass.Shift = Convert.ToInt32(comboBoxShift.SelectedItem);
+            inputClass.Start = dateTimePickerStart.Value;
+
+            return inputClass;
+        }
+
         private void BindComboboxRoom()
         {
             roomList = BUS.ReloadRoom();
@@ -208,7 +177,7 @@ namespace TTTH.Views.Dialog
                 comboBoxRoom.Items.Add(room);
             }
 
-            comboBoxRoom.DisplayMember = "Name";
+            comboBoxRoom.DisplayMember = "Name_Capacity";
             comboBoxRoom.ValueMember = "Id";
             comboBoxRoom.SelectedIndex = 0;
         }
@@ -232,7 +201,7 @@ namespace TTTH.Views.Dialog
         {
             const string cap = "Vui lòng kiểm tra lại";
 
-            if (string.IsNullOrEmpty(textBoxName.Text))
+            if (string.IsNullOrEmpty(textBoxClassName.Text))
             {
                 MessageBox.Show(
                     "Không thể để trống tên lớp học.",
@@ -252,7 +221,7 @@ namespace TTTH.Views.Dialog
             }
 
 
-            if (!(Validator.isInteger(textBoxLimitStudent.Text) && Convert.ToInt32(textBoxLimitStudent.Text) > 0))
+            if (!(Validator.IsInteger(textBoxLimitStudent.Text) && Convert.ToInt32(textBoxLimitStudent.Text) > 0))
             {
                 MessageBox.Show(
                     "Giới hạn học viên phải là số nguyên dương.",
@@ -267,7 +236,7 @@ namespace TTTH.Views.Dialog
         private List<int> GetDatesInWeek()
         {
             List<int> list = new List<int>();
-            foreach (CheckBox checkBox in flowLayoutPanel.Controls.OfType<CheckBox>())
+            foreach (CheckBox checkBox in flowLayoutPanelWeekDate.Controls.OfType<CheckBox>())
             {
                 if (checkBox.Checked)
                 {
@@ -283,6 +252,26 @@ namespace TTTH.Views.Dialog
                 }
             }
             return list;
+        }
+
+        private void HandleUpdateClass(DTOClass inputClass)
+        {
+            try
+            {
+                ModelClass.Update(inputClass);
+                MessageBox.Show(
+                  "Cập nhật thông tin lớp thành công.",
+                  "Thành công.",
+                  MessageBoxButtons.OK);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Đã xảy ra lỗi.",
+                    MessageBoxButtons.OK);
+            }
         }
     }
 }

@@ -1,16 +1,7 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TTTH.Models;
+﻿using System.Net.Mail;
+using System.Net;
 using TTTH.Models.DAO;
+
 namespace TTTH.Views
 {
     public partial class FormLogin : Form
@@ -25,20 +16,11 @@ namespace TTTH.Views
         private void FormLogin_Load(object sender, EventArgs e)
         {
             
-            //SqlCommand cmd = new SqlCommand("select top 1 * from TTTH_user \r\nwhere _user_name = @username and _pass_word = @password;", DataBase.GetConnection());
-
-            //cmd.Parameters.AddWithValue("@username", "dd");
-            //cmd.Parameters.AddWithValue("@password", "a");
-
-            //DataTable datatable = DataBase.ExcuteQuery(cmd);
-
-            //MessageBox.Show("Test" + datatable.Rows[0][0].ToString());
-            
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             // validate
-            //if (!ValidateInput()) { return; }
+            if (!ValidateInput()) { return; }
 
             // get input user name and password
             string userName = textBoxUserName.Text;
@@ -48,32 +30,15 @@ namespace TTTH.Views
             CheckLogin(userName, password);
         }
 
-        private bool ValidateInput()
-        {
-            if (string.IsNullOrEmpty(textBoxUserName.Text))
-            {
-                MessageBox.Show(
-                    "Tên đăng nhập không thể để trống.", 
-                    "Vui lòng kiểm tra lại",
-                    MessageBoxButtons.OK);
-                return false;
-            }
-
-            if (textBoxPassword.Text.Length < 8)
-            {
-                MessageBox.Show(
-                    "Độ dài mật khẩu ít nhất là 8 ký tự.",
-                    "Vui lòng kiểm tra lại",
-                    MessageBoxButtons.OK);
-                return false;
-            }
-
-            return true;
-        }
-
         private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)
         {
             textBoxPassword.UseSystemPasswordChar = !checkBoxShowPass.Checked;
+        }
+
+        private void labelForgetPass_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hãy liên hệ với quản trị viên để được hỗ trợ lấy lại mật khẩu.");
+            //SendEmail("Chào lim", "hello", "gmail.com");
         }
 
         //----------------------------------------------------------------------------
@@ -93,7 +58,6 @@ namespace TTTH.Views
                 MessageBox.Show(ex.Message, "Vui lòng kiểm tra lại", MessageBoxButtons.OK);
             }
            
-
         }
 
         private void Authorize()
@@ -102,22 +66,58 @@ namespace TTTH.Views
 
             this.Hide();
 
-
             if (BUS.user.PermissionID == 1)
-            {
-                MessageBox.Show("Chưa làm owner");
-            }
-            else if (BUS.user.PermissionID == 2)
             {
                 FormAdmin formAdmin = new FormAdmin();
                 formAdmin.ShowDialog();
             }
-            else
+            else if (BUS.user.PermissionID == 2)
             {
                 FormTeacher formTeacher = new FormTeacher();
                 formTeacher.ShowDialog();
             }
             this.Show();   
+        }
+
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrEmpty(textBoxUserName.Text))
+            {
+                MessageBox.Show(
+                    "Tên đăng nhập không thể để trống.",
+                    "Vui lòng kiểm tra lại",
+                    MessageBoxButtons.OK);
+                return false;
+            }
+
+            if (textBoxPassword.Text.Length < 8)
+            {
+                MessageBox.Show(
+                    "Độ dài mật khẩu ít nhất là 8 ký tự.",
+                    "Vui lòng kiểm tra lại",
+                    MessageBoxButtons.OK);
+                return false;
+            }
+
+            return true;
+        }
+
+        public void SendEmail(string subject, string body, string recipient)
+        {
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress("@gmail.com");
+                mail.To.Add(recipient);
+                mail.Subject = subject;
+                mail.Body = body;
+
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new NetworkCredential("@gmail.com", "!dewtf534#FF");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+            }
         }
     }
 }

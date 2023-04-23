@@ -28,172 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelManageSubmenu = new System.Windows.Forms.Panel();
-            this.labelStudent = new System.Windows.Forms.Label();
-            this.labelRoom = new System.Windows.Forms.Label();
-            this.labelClass = new System.Windows.Forms.Label();
-            this.labelCourse = new System.Windows.Forms.Label();
-            this.panelManagement = new System.Windows.Forms.Panel();
-            this.labelManagement = new System.Windows.Forms.Label();
-            this.pictureBoxManage = new System.Windows.Forms.PictureBox();
-            this.labelNotification = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTeacher));
             this.panelSideBarHeader = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxShowSidebar = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.viewClassDetail = new TTTH.Views.ViewClassDate();
-            this.viewNotificationDetail1 = new TTTH.Views.ViewNotificationDetail();
+            this.viewClassDetail = new TTTH.GUI.ViewClassDetail();
+            this.viewClassDate = new TTTH.Views.ViewClassDate();
+            this.viewNotificationDetail = new TTTH.Views.ViewNotificationDetail();
             this.viewStudent1 = new TTTH.Views.ViewStudent();
-            this.viewRoom1 = new TTTH.Views.ViewRoom();
-            this.viewNotification1 = new TTTH.Views.ViewNotification();
-            this.viewPostNotification1 = new TTTH.Views.ViewPostNotification();
-            this.viewCourse2 = new TTTH.Views.ViewCourse();
-            this.viewClass1 = new TTTH.Views.ViewClass();
-            this.pictureBoxNotification = new System.Windows.Forms.PictureBox();
+            this.viewNotification = new TTTH.Views.ViewNotification();
+            this.viewCalender = new TTTH.GUI.viewCalender();
+            this.viewClass = new TTTH.Views.ViewClass();
             this.panelSideBar = new System.Windows.Forms.Panel();
             this.paneSidebarContent = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelAccountSubmenu = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelLogout = new System.Windows.Forms.Label();
-            this.pictureBoxLogout = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.labelChangePassWord = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.panelAccount = new System.Windows.Forms.Panel();
-            this.labelAccount = new System.Windows.Forms.Label();
-            this.pictureBoxAccount = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panelManageSubmenu.SuspendLayout();
-            this.panelManagement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManage)).BeginInit();
             this.panelSideBarHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSidebar)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNotification)).BeginInit();
             this.panelSideBar.SuspendLayout();
             this.paneSidebarContent.SuspendLayout();
             this.panelAccountSubmenu.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogout)).BeginInit();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.panelAccount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccount)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelManageSubmenu
-            // 
-            this.panelManageSubmenu.Controls.Add(this.labelStudent);
-            this.panelManageSubmenu.Controls.Add(this.labelRoom);
-            this.panelManageSubmenu.Controls.Add(this.labelClass);
-            this.panelManageSubmenu.Controls.Add(this.labelCourse);
-            this.panelManageSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelManageSubmenu.Location = new System.Drawing.Point(0, 83);
-            this.panelManageSubmenu.MaximumSize = new System.Drawing.Size(321, 212);
-            this.panelManageSubmenu.Name = "panelManageSubmenu";
-            this.panelManageSubmenu.Size = new System.Drawing.Size(247, 212);
-            this.panelManageSubmenu.TabIndex = 3;
-            // 
-            // labelStudent
-            // 
-            this.labelStudent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelStudent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelStudent.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.labelStudent.Location = new System.Drawing.Point(0, 159);
-            this.labelStudent.Name = "labelStudent";
-            this.labelStudent.Size = new System.Drawing.Size(247, 53);
-            this.labelStudent.TabIndex = 3;
-            this.labelStudent.Text = "Học viên";
-            this.labelStudent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelRoom
-            // 
-            this.labelRoom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelRoom.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelRoom.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.labelRoom.Location = new System.Drawing.Point(0, 106);
-            this.labelRoom.Name = "labelRoom";
-            this.labelRoom.Size = new System.Drawing.Size(247, 53);
-            this.labelRoom.TabIndex = 2;
-            this.labelRoom.Text = "Phòng học";
-            this.labelRoom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelClass
-            // 
-            this.labelClass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelClass.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.labelClass.Location = new System.Drawing.Point(0, 53);
-            this.labelClass.Name = "labelClass";
-            this.labelClass.Size = new System.Drawing.Size(247, 53);
-            this.labelClass.TabIndex = 1;
-            this.labelClass.Text = "Lớp học";
-            this.labelClass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelCourse
-            // 
-            this.labelCourse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelCourse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCourse.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.labelCourse.Location = new System.Drawing.Point(0, 0);
-            this.labelCourse.Name = "labelCourse";
-            this.labelCourse.Size = new System.Drawing.Size(247, 53);
-            this.labelCourse.TabIndex = 0;
-            this.labelCourse.Text = "Khóa học";
-            this.labelCourse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelManagement
-            // 
-            this.panelManagement.Controls.Add(this.labelManagement);
-            this.panelManagement.Controls.Add(this.pictureBoxManage);
-            this.panelManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelManagement.Location = new System.Drawing.Point(0, 0);
-            this.panelManagement.Name = "panelManagement";
-            this.panelManagement.Size = new System.Drawing.Size(247, 83);
-            this.panelManagement.TabIndex = 2;
-            // 
-            // labelManagement
-            // 
-            this.labelManagement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelManagement.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelManagement.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelManagement.Location = new System.Drawing.Point(79, 0);
-            this.labelManagement.Name = "labelManagement";
-            this.labelManagement.Size = new System.Drawing.Size(168, 83);
-            this.labelManagement.TabIndex = 2;
-            this.labelManagement.Text = "Quản lý";
-            this.labelManagement.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBoxManage
-            // 
-            this.pictureBoxManage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxManage.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxManage.Image = global::TTTH.Properties.Resources.icon_management_55;
-            this.pictureBoxManage.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxManage.Name = "pictureBoxManage";
-            this.pictureBoxManage.Size = new System.Drawing.Size(79, 83);
-            this.pictureBoxManage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxManage.TabIndex = 1;
-            this.pictureBoxManage.TabStop = false;
-            // 
-            // labelNotification
-            // 
-            this.labelNotification.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelNotification.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelNotification.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelNotification.Location = new System.Drawing.Point(79, 0);
-            this.labelNotification.Name = "labelNotification";
-            this.labelNotification.Size = new System.Drawing.Size(168, 83);
-            this.labelNotification.TabIndex = 2;
-            this.labelNotification.Text = "Thông báo";
-            this.labelNotification.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelSideBarHeader
             // 
@@ -202,18 +71,18 @@
             this.panelSideBarHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSideBarHeader.Location = new System.Drawing.Point(0, 0);
             this.panelSideBarHeader.Name = "panelSideBarHeader";
-            this.panelSideBarHeader.Size = new System.Drawing.Size(247, 73);
+            this.panelSideBarHeader.Size = new System.Drawing.Size(247, 81);
             this.panelSideBarHeader.TabIndex = 1;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = global::TTTH.Properties.Resources.meo_dan_55;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(79, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(168, 73);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.Size = new System.Drawing.Size(168, 81);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
@@ -224,7 +93,7 @@
             this.pictureBoxShowSidebar.Image = global::TTTH.Properties.Resources.icon_side_bar_55;
             this.pictureBoxShowSidebar.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxShowSidebar.Name = "pictureBoxShowSidebar";
-            this.pictureBoxShowSidebar.Size = new System.Drawing.Size(79, 73);
+            this.pictureBoxShowSidebar.Size = new System.Drawing.Size(79, 81);
             this.pictureBoxShowSidebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxShowSidebar.TabIndex = 1;
             this.pictureBoxShowSidebar.TabStop = false;
@@ -232,17 +101,16 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.viewClassDetail);
-            this.panel3.Controls.Add(this.viewNotificationDetail1);
+            this.panel3.Controls.Add(this.viewClassDate);
+            this.panel3.Controls.Add(this.viewNotificationDetail);
             this.panel3.Controls.Add(this.viewStudent1);
-            this.panel3.Controls.Add(this.viewRoom1);
-            this.panel3.Controls.Add(this.viewNotification1);
-            this.panel3.Controls.Add(this.viewPostNotification1);
-            this.panel3.Controls.Add(this.viewCourse2);
-            this.panel3.Controls.Add(this.viewClass1);
+            this.panel3.Controls.Add(this.viewNotification);
+            this.panel3.Controls.Add(this.viewCalender);
+            this.panel3.Controls.Add(this.viewClass);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(247, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1020, 748);
+            this.panel3.Size = new System.Drawing.Size(1107, 763);
             this.panel3.TabIndex = 4;
             // 
             // viewClassDetail
@@ -250,76 +118,63 @@
             this.viewClassDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewClassDetail.Location = new System.Drawing.Point(0, 0);
             this.viewClassDetail.Name = "viewClassDetail";
-            this.viewClassDetail.Size = new System.Drawing.Size(1020, 748);
+            this.viewClassDetail.Size = new System.Drawing.Size(1107, 763);
             this.viewClassDetail.TabIndex = 3;
             // 
-            // viewNotificationDetail1
+            // viewClassDate
             // 
-            this.viewNotificationDetail1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewNotificationDetail1.Location = new System.Drawing.Point(0, 0);
-            this.viewNotificationDetail1.Name = "viewNotificationDetail1";
-            this.viewNotificationDetail1.Size = new System.Drawing.Size(1020, 748);
-            this.viewNotificationDetail1.TabIndex = 3;
+            this.viewClassDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewClassDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.viewClassDate.Location = new System.Drawing.Point(0, 0);
+            this.viewClassDate.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.viewClassDate.Name = "viewClassDate";
+            this.viewClassDate.Size = new System.Drawing.Size(1107, 763);
+            this.viewClassDate.TabIndex = 3;
+            // 
+            // viewNotificationDetail
+            // 
+            this.viewNotificationDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewNotificationDetail.Location = new System.Drawing.Point(0, 0);
+            this.viewNotificationDetail.Name = "viewNotificationDetail";
+            this.viewNotificationDetail.Size = new System.Drawing.Size(1107, 763);
+            this.viewNotificationDetail.TabIndex = 3;
             // 
             // viewStudent1
             // 
             this.viewStudent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewStudent1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.viewStudent1.Location = new System.Drawing.Point(0, 0);
             this.viewStudent1.Name = "viewStudent1";
-            this.viewStudent1.Size = new System.Drawing.Size(1020, 748);
+            this.viewStudent1.Size = new System.Drawing.Size(1107, 763);
             this.viewStudent1.TabIndex = 3;
             // 
-            // viewRoom1
+            // viewNotification
             // 
-            this.viewRoom1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewRoom1.Location = new System.Drawing.Point(0, 0);
-            this.viewRoom1.Name = "viewRoom1";
-            this.viewRoom1.Size = new System.Drawing.Size(1020, 748);
-            this.viewRoom1.TabIndex = 3;
+            this.viewNotification.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewNotification.Location = new System.Drawing.Point(0, 0);
+            this.viewNotification.Name = "viewNotification";
+            this.viewNotification.Size = new System.Drawing.Size(1107, 763);
+            this.viewNotification.TabIndex = 3;
             // 
-            // viewNotification1
+            // viewCalender
             // 
-            this.viewNotification1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewNotification1.Location = new System.Drawing.Point(0, 0);
-            this.viewNotification1.Name = "viewNotification1";
-            this.viewNotification1.Size = new System.Drawing.Size(1020, 748);
-            this.viewNotification1.TabIndex = 3;
+            this.viewCalender.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewCalender.Location = new System.Drawing.Point(0, 0);
+            this.viewCalender.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.viewCalender.Name = "viewCalender";
+            this.viewCalender.Padding = new System.Windows.Forms.Padding(20);
+            this.viewCalender.Size = new System.Drawing.Size(1107, 763);
+            this.viewCalender.StartDate = new System.DateTime(2023, 4, 17, 22, 47, 24, 569);
+            this.viewCalender.TabIndex = 5;
             // 
-            // viewPostNotification1
+            // viewClass
             // 
-            this.viewPostNotification1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewPostNotification1.Location = new System.Drawing.Point(0, 0);
-            this.viewPostNotification1.Name = "viewPostNotification1";
-            this.viewPostNotification1.Size = new System.Drawing.Size(1020, 748);
-            this.viewPostNotification1.TabIndex = 4;
-            // 
-            // viewCourse2
-            // 
-            this.viewCourse2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewCourse2.Location = new System.Drawing.Point(0, 0);
-            this.viewCourse2.Name = "viewCourse2";
-            this.viewCourse2.Size = new System.Drawing.Size(1020, 748);
-            this.viewCourse2.TabIndex = 0;
-            // 
-            // viewClass1
-            // 
-            this.viewClass1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewClass1.Location = new System.Drawing.Point(0, 0);
-            this.viewClass1.Name = "viewClass1";
-            this.viewClass1.Size = new System.Drawing.Size(1020, 748);
-            this.viewClass1.TabIndex = 4;
-            // 
-            // pictureBoxNotification
-            // 
-            this.pictureBoxNotification.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxNotification.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxNotification.Image = global::TTTH.Properties.Resources.icon_notification_55;
-            this.pictureBoxNotification.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxNotification.Name = "pictureBoxNotification";
-            this.pictureBoxNotification.Size = new System.Drawing.Size(79, 83);
-            this.pictureBoxNotification.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxNotification.TabIndex = 1;
-            this.pictureBoxNotification.TabStop = false;
+            this.viewClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.viewClass.Location = new System.Drawing.Point(0, 0);
+            this.viewClass.Name = "viewClass";
+            this.viewClass.Size = new System.Drawing.Size(1107, 763);
+            this.viewClass.TabIndex = 4;
             // 
             // panelSideBar
             // 
@@ -331,22 +186,69 @@
             this.panelSideBar.MaximumSize = new System.Drawing.Size(247, 2000);
             this.panelSideBar.MinimumSize = new System.Drawing.Size(79, 200);
             this.panelSideBar.Name = "panelSideBar";
-            this.panelSideBar.Size = new System.Drawing.Size(247, 748);
+            this.panelSideBar.Size = new System.Drawing.Size(247, 763);
             this.panelSideBar.TabIndex = 3;
             // 
             // paneSidebarContent
             // 
             this.paneSidebarContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.paneSidebarContent.Controls.Add(this.label3);
+            this.paneSidebarContent.Controls.Add(this.label2);
+            this.paneSidebarContent.Controls.Add(this.label1);
             this.paneSidebarContent.Controls.Add(this.panelAccountSubmenu);
-            this.paneSidebarContent.Controls.Add(this.panelAccount);
-            this.paneSidebarContent.Controls.Add(this.panel1);
-            this.paneSidebarContent.Controls.Add(this.panelManageSubmenu);
-            this.paneSidebarContent.Controls.Add(this.panelManagement);
             this.paneSidebarContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paneSidebarContent.Location = new System.Drawing.Point(0, 73);
+            this.paneSidebarContent.Location = new System.Drawing.Point(0, 81);
             this.paneSidebarContent.Name = "paneSidebarContent";
-            this.paneSidebarContent.Size = new System.Drawing.Size(247, 675);
+            this.paneSidebarContent.Size = new System.Drawing.Size(247, 682);
             this.paneSidebarContent.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(0, 100);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label3.Size = new System.Drawing.Size(247, 50);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Thông báo";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.labelNotification_Click);
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(0, 50);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label2.Size = new System.Drawing.Size(247, 50);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Lớp học";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.labelClassList_Click);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(247, 50);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Lịch dạy";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.labelCalender_Click);
             // 
             // panelAccountSubmenu
             // 
@@ -354,7 +256,7 @@
             this.panelAccountSubmenu.Controls.Add(this.panel7);
             this.panelAccountSubmenu.Controls.Add(this.panel6);
             this.panelAccountSubmenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelAccountSubmenu.Location = new System.Drawing.Point(0, 439);
+            this.panelAccountSubmenu.Location = new System.Drawing.Point(0, 529);
             this.panelAccountSubmenu.MaximumSize = new System.Drawing.Size(317, 153);
             this.panelAccountSubmenu.Name = "panelAccountSubmenu";
             this.panelAccountSubmenu.Size = new System.Drawing.Size(247, 153);
@@ -363,7 +265,6 @@
             // panel8
             // 
             this.panel8.Controls.Add(this.labelLogout);
-            this.panel8.Controls.Add(this.pictureBoxLogout);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 100);
             this.panel8.Name = "panel8";
@@ -375,63 +276,45 @@
             this.labelLogout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelLogout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelLogout.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelLogout.Location = new System.Drawing.Point(48, 0);
+            this.labelLogout.Image = global::TTTH.Properties.Resources.icon_logout_35;
+            this.labelLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelLogout.Location = new System.Drawing.Point(0, 0);
             this.labelLogout.Name = "labelLogout";
-            this.labelLogout.Size = new System.Drawing.Size(199, 50);
+            this.labelLogout.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.labelLogout.Size = new System.Drawing.Size(247, 50);
             this.labelLogout.TabIndex = 2;
             this.labelLogout.Text = "Đăng xuất";
             this.labelLogout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBoxLogout
-            // 
-            this.pictureBoxLogout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxLogout.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxLogout.Image = global::TTTH.Properties.Resources.icon_logout_35;
-            this.pictureBoxLogout.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxLogout.Name = "pictureBoxLogout";
-            this.pictureBoxLogout.Size = new System.Drawing.Size(48, 50);
-            this.pictureBoxLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxLogout.TabIndex = 1;
-            this.pictureBoxLogout.TabStop = false;
+            this.labelLogout.Click += new System.EventHandler(this.labelLogout_Click);
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.label9);
-            this.panel7.Controls.Add(this.pictureBox7);
+            this.panel7.Controls.Add(this.labelChangePassWord);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 50);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(247, 50);
             this.panel7.TabIndex = 7;
             // 
-            // label9
+            // labelChangePassWord
             // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(48, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(199, 50);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Đổi mật khẩu";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox7.Image = global::TTTH.Properties.Resources.icon_change_password_55;
-            this.pictureBox7.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(48, 50);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox7.TabIndex = 1;
-            this.pictureBox7.TabStop = false;
+            this.labelChangePassWord.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelChangePassWord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelChangePassWord.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelChangePassWord.Image = ((System.Drawing.Image)(resources.GetObject("labelChangePassWord.Image")));
+            this.labelChangePassWord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelChangePassWord.Location = new System.Drawing.Point(0, 0);
+            this.labelChangePassWord.Name = "labelChangePassWord";
+            this.labelChangePassWord.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.labelChangePassWord.Size = new System.Drawing.Size(247, 50);
+            this.labelChangePassWord.TabIndex = 2;
+            this.labelChangePassWord.Text = "Đổi mật khẩu";
+            this.labelChangePassWord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelChangePassWord.Click += new System.EventHandler(this.labelChangePassWord_Click);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.pictureBox6);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
@@ -443,141 +326,66 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(48, 0);
+            this.label8.Image = global::TTTH.Properties.Resources.icon_user_info_35;
+            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(199, 50);
+            this.label8.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label8.Size = new System.Drawing.Size(247, 50);
             this.label8.TabIndex = 2;
             this.label8.Text = "Thông tin tài khoản";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox6.Image = global::TTTH.Properties.Resources.icon_user_info_35;
-            this.pictureBox6.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(48, 50);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox6.TabIndex = 1;
-            this.pictureBox6.TabStop = false;
-            // 
-            // panelAccount
-            // 
-            this.panelAccount.Controls.Add(this.labelAccount);
-            this.panelAccount.Controls.Add(this.pictureBoxAccount);
-            this.panelAccount.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelAccount.Location = new System.Drawing.Point(0, 592);
-            this.panelAccount.Name = "panelAccount";
-            this.panelAccount.Size = new System.Drawing.Size(247, 83);
-            this.panelAccount.TabIndex = 5;
-            // 
-            // labelAccount
-            // 
-            this.labelAccount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAccount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAccount.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelAccount.Location = new System.Drawing.Point(79, 0);
-            this.labelAccount.Name = "labelAccount";
-            this.labelAccount.Size = new System.Drawing.Size(168, 83);
-            this.labelAccount.TabIndex = 2;
-            this.labelAccount.Text = "Tài khoản";
-            this.labelAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBoxAccount
-            // 
-            this.pictureBoxAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxAccount.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxAccount.Image = global::TTTH.Properties.Resources.icon_account_40;
-            this.pictureBoxAccount.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxAccount.Name = "pictureBoxAccount";
-            this.pictureBoxAccount.Size = new System.Drawing.Size(79, 83);
-            this.pictureBoxAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxAccount.TabIndex = 1;
-            this.pictureBoxAccount.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.labelNotification);
-            this.panel1.Controls.Add(this.pictureBoxNotification);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 295);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(247, 83);
-            this.panel1.TabIndex = 4;
+            this.label8.Click += new System.EventHandler(this.labelAccountInfor_Click);
             // 
             // FormTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 748);
+            this.ClientSize = new System.Drawing.Size(1354, 763);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelSideBar);
             this.Name = "FormTeacher";
-            this.Text = "FormTeacher";
-            this.panelManageSubmenu.ResumeLayout(false);
-            this.panelManagement.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManage)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Quản lý lớp học";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormTeacher_FormClosed);
+            this.Load += new System.EventHandler(this.FormTeacher_Load);
             this.panelSideBarHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSidebar)).EndInit();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNotification)).EndInit();
             this.panelSideBar.ResumeLayout(false);
             this.paneSidebarContent.ResumeLayout(false);
             this.panelAccountSubmenu.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogout)).EndInit();
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.panelAccount.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccount)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Panel panelManageSubmenu;
-        private Label labelStudent;
-        private Label labelRoom;
-        private Label labelClass;
-        private Label labelCourse;
-        private Panel panelManagement;
-        private Label labelManagement;
-        private PictureBox pictureBoxManage;
-        private Label labelNotification;
         private Panel panelSideBarHeader;
         private PictureBox pictureBox2;
         private PictureBox pictureBoxShowSidebar;
         private Panel panel3;
-        private Views.ViewClassDate viewClassDetail;
-        private Views.ViewNotificationDetail viewNotificationDetail1;
+        private Views.ViewNotification viewNotification;
+        private Views.ViewClass viewClass;
+        private GUI.ViewClassDetail viewClassDetail;
+        private Views.ViewClassDate viewClassDate;
+        private Views.ViewNotificationDetail viewNotificationDetail;
         private Views.ViewStudent viewStudent1;
-        private Views.ViewRoom viewRoom1;
-        private Views.ViewNotification viewNotification1;
-        private Views.ViewPostNotification viewPostNotification1;
-        private Views.ViewCourse viewCourse2;
-        private Views.ViewClass viewClass1;
-        private PictureBox pictureBoxNotification;
         private Panel panelSideBar;
         private Panel paneSidebarContent;
+        private Label label1;
         private Panel panelAccountSubmenu;
         private Panel panel8;
         private Label labelLogout;
-        private PictureBox pictureBoxLogout;
         private Panel panel7;
-        private Label label9;
-        private PictureBox pictureBox7;
+        private Label labelChangePassWord;
         private Panel panel6;
         private Label label8;
-        private PictureBox pictureBox6;
-        private Panel panelAccount;
-        private Label labelAccount;
-        private PictureBox pictureBoxAccount;
-        private Panel panel1;
+        private Label label3;
+        private Label label2;
+        private GUI.viewCalender viewCalender;
     }
 }

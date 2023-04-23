@@ -56,9 +56,8 @@
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxPassword.Location = new System.Drawing.Point(187, 92);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(196, 27);
+            this.textBoxPassword.Size = new System.Drawing.Size(205, 27);
             this.textBoxPassword.TabIndex = 15;
-            this.textBoxPassword.Text = "a";
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label2
@@ -78,7 +77,7 @@
             this.buttonConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonConfirm.Location = new System.Drawing.Point(27, 269);
             this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(356, 50);
+            this.buttonConfirm.Size = new System.Drawing.Size(365, 50);
             this.buttonConfirm.TabIndex = 12;
             this.buttonConfirm.Text = "Xác nhận";
             this.buttonConfirm.UseVisualStyleBackColor = false;
@@ -89,9 +88,8 @@
             this.textBoxNewPassWord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxNewPassWord.Location = new System.Drawing.Point(187, 148);
             this.textBoxNewPassWord.Name = "textBoxNewPassWord";
-            this.textBoxNewPassWord.Size = new System.Drawing.Size(196, 27);
+            this.textBoxNewPassWord.Size = new System.Drawing.Size(205, 27);
             this.textBoxNewPassWord.TabIndex = 19;
-            this.textBoxNewPassWord.Text = "a";
             this.textBoxNewPassWord.UseSystemPasswordChar = true;
             // 
             // label3
@@ -109,9 +107,8 @@
             this.textBoxRePassWord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxRePassWord.Location = new System.Drawing.Point(187, 208);
             this.textBoxRePassWord.Name = "textBoxRePassWord";
-            this.textBoxRePassWord.Size = new System.Drawing.Size(196, 27);
+            this.textBoxRePassWord.Size = new System.Drawing.Size(205, 27);
             this.textBoxRePassWord.TabIndex = 21;
-            this.textBoxRePassWord.Text = "a";
             this.textBoxRePassWord.UseSystemPasswordChar = true;
             // 
             // label4
@@ -139,8 +136,8 @@
             this.Controls.Add(this.buttonConfirm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DialogChangePassWord";
-            this.Text = "DialogChangePassWord";
-            this.Load += new System.EventHandler(this.DialogChangePassWord_Load);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Đổi mật khẩu";
             this.ResumeLayout(false);
             this.PerformLayout();
 

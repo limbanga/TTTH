@@ -10,12 +10,15 @@ namespace TTTH
         public FormAdmin()
         {
             InitializeComponent();
-            viewNotification1.SwtichToViewPostNotification += SwtichToViewPostNotification;
-            viewNotification1.SwtichToViewNotificationDetail += SwtichToViewNotificationDetail;
+            viewNotification.SwtichToViewPostNotification += SwtichToViewPostNotification;
+            viewNotification.SwtichToViewNotificationDetail += SwtichToViewNotificationDetail;
             viewClass.SwtichToViewClassDetail += SwtichToViewClassDetail;
             viewClassDetail.SwtichToViewClassDate += SwtichToViewClassDate;
+            viewClassDetail.SwtichToViewClass += SwtichToViewClass;
+            viewClassDate.SwtichToViewClassDetail += SwtichToViewClassDetail;
+            viewNotificationDetail1.SwitchToViewNotification += SwitchToViewNotification;
+            viewPostNotification.SwitchToViewNotification += SwitchToViewNotification;
         }
-
 
         //---------------------------------------------------------------
         // EVENTS
@@ -37,8 +40,6 @@ namespace TTTH
         }
         #endregion
 
-
-
         #region Change view
         private void labelCourse_Click(object sender, EventArgs e)
         {
@@ -48,7 +49,7 @@ namespace TTTH
 
         private void labelClass_Click(object sender, EventArgs e)
         {
-            viewClass.ReLoadData();
+            viewClass.LoadData2DataGridView();
             ShowView(viewClass);
         }
 
@@ -63,8 +64,8 @@ namespace TTTH
         }
         private void labelRoom_Click(object sender, EventArgs e)
         {
-            viewRoom1.ReLoadData();
-            ShowView(viewRoom1);
+            viewRoom.ReLoadData();
+            ShowView(viewRoom);
         }
         private void labelStudent_Click(object sender, EventArgs e)
         {
@@ -92,6 +93,33 @@ namespace TTTH
             OpenDialogToChangePassWord();
         }
 
+        private void labelAccount_Click(object sender, EventArgs e)
+        {
+            ToggleAccountSubmenu();
+        }
+
+        private void pictureBoxAccount_Click(object sender, EventArgs e)
+        {
+            ToggleAccountSubmenu();
+        }
+
+        private void labelStatistics_Click(object sender, EventArgs e)
+        {
+            viewStatistic.LoadData2DataGridView();
+            viewStatistic.BringToFront();
+        }
+
+        private void pictureBoxStatistics_Click(object sender, EventArgs e)
+        {
+            viewStatistic.LoadData2DataGridView();
+            viewStatistic.BringToFront();
+        }
+
+        private void labelAccountInfor_Click_1(object sender, EventArgs e)
+        {
+            DialogUserInformation dialogUser = new DialogUserInformation(BUS.user);
+            dialogUser.ShowDialog();   
+        }
         #endregion
 
         #region Hidden event
@@ -115,7 +143,6 @@ namespace TTTH
             view.BringToFront();
         }
 
-        
         private void ShowManageSubmenu()
         {
             bool isManageSubmenuClose = panelManageSubmenu.Height == panelManageSubmenu.MinimumSize.Height;
@@ -130,10 +157,12 @@ namespace TTTH
                 CloseManageSubmenu();
             }
         }
+
         private void CloseManageSubmenu()
         {
             panelManageSubmenu.Height = panelManageSubmenu.MinimumSize.Height;
         }
+
         private void OpenManageSubmenu()
         {
             panelManageSubmenu.Height = panelManageSubmenu.MaximumSize.Height;
@@ -166,15 +195,6 @@ namespace TTTH
         {
             panelSideBar.Width = panelSideBar.MinimumSize.Width;
         }
-        private void labelAccount_Click(object sender, EventArgs e)
-        {
-            ToggleAccountSubmenu();
-        }
-
-        private void pictureBoxAccount_Click(object sender, EventArgs e)
-        {
-            ToggleAccountSubmenu();
-        }
 
         private void ToggleAccountSubmenu()
         {
@@ -200,8 +220,8 @@ namespace TTTH
         }
         private void ShowNotificationView()
         {
-            viewNotification1.ReLoadNotification();
-            ShowView(viewNotification1);
+            viewNotification.ReLoadNotification();
+            ShowView(viewNotification);
         }
 
         private void LogoutHandle()
@@ -214,6 +234,12 @@ namespace TTTH
         {
             DialogChangePassWord dialogChangePassWord = new DialogChangePassWord();
             dialogChangePassWord.ShowDialog();
+        }
+
+        private void labelUserAccount_Click(object sender, EventArgs e)
+        {
+            viewAccountInfor.LoadData2DataGridView();
+            viewAccountInfor.BringToFront();
         }
 
         //------------------------------------------------------
@@ -238,20 +264,35 @@ namespace TTTH
 
         private void SwtichToViewClassDetail(object? sender, EventArgs e)
         {
-            if (BUS.modelClass is not null)
+            if (BUS.currentClass is not null)
             {
-                viewClassDetail.LoadDataByClassID(BUS.modelClass.Id);
+                viewClassDetail.LoadDataByClassID(BUS.currentClass);
                 ShowView(viewClassDetail);
             }
         }
+
         private void SwtichToViewClassDate(object? sender, EventArgs e)
         {
-            ShowView(viewClassDate_);
+            if (BUS.currentClassDate is not null)
+            {
+                viewClassDate.BindClassDateData(BUS.currentClassDate);
+                ShowView(viewClassDate);
+            }
+        }
+
+        private void SwtichToViewClass(object? sender, EventArgs e)
+        {
+            viewClass.LoadData2DataGridView();
+            ShowView(viewClass);
+        }
+
+        private void SwitchToViewNotification(object? sender, EventArgs e)
+        {
+            viewNotification.ReLoadNotification();
+            viewNotification.BringToFront();
         }
 
 
         #endregion
-
-
     }
 }
