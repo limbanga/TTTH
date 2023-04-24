@@ -91,7 +91,7 @@
             this.textBoxPassWord.Location = new System.Drawing.Point(165, 153);
             this.textBoxPassWord.Name = "textBoxPassWord";
             this.textBoxPassWord.Size = new System.Drawing.Size(442, 27);
-            this.textBoxPassWord.TabIndex = 11;
+            this.textBoxPassWord.TabIndex = 2;
             this.textBoxPassWord.Text = "letmein123";
             this.textBoxPassWord.UseSystemPasswordChar = true;
             // 
@@ -112,7 +112,7 @@
             this.textBoxAdress.Multiline = true;
             this.textBoxAdress.Name = "textBoxAdress";
             this.textBoxAdress.Size = new System.Drawing.Size(442, 205);
-            this.textBoxAdress.TabIndex = 9;
+            this.textBoxAdress.TabIndex = 5;
             // 
             // label5
             // 
@@ -130,7 +130,7 @@
             this.textBoxPhoneNumber.Location = new System.Drawing.Point(165, 273);
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(442, 27);
-            this.textBoxPhoneNumber.TabIndex = 7;
+            this.textBoxPhoneNumber.TabIndex = 4;
             // 
             // labelPhoneNumber
             // 
@@ -149,7 +149,7 @@
             this.ButtonSave.Location = new System.Drawing.Point(18, 573);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(589, 45);
-            this.ButtonSave.TabIndex = 3;
+            this.ButtonSave.TabIndex = 7;
             this.ButtonSave.Text = "Lưu";
             this.ButtonSave.UseVisualStyleBackColor = false;
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
@@ -160,7 +160,7 @@
             this.textBoxEmail.Location = new System.Drawing.Point(165, 214);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(442, 27);
-            this.textBoxEmail.TabIndex = 2;
+            this.textBoxEmail.TabIndex = 3;
             // 
             // labelEmail
             // 

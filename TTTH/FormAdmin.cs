@@ -23,6 +23,12 @@ namespace TTTH
         //---------------------------------------------------------------
         // EVENTS
         //---------------------------------------------------------------
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+            viewNotification.ReLoadNotification();
+        }
+
         #region Sidebar behavior
         private void pictureBoxShowSidebar_Click(object sender, EventArgs e)
         {
@@ -294,5 +300,7 @@ namespace TTTH
 
 
         #endregion
+
+
     }
 }

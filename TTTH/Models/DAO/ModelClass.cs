@@ -137,6 +137,12 @@ namespace TTTH.Models.DAO
 	                            RETURN
                             END
 
+                            IF(EXISTS(SELECT * FROM TTTH_class WHERE _class_name = @name))
+                            BEGIN
+	                            SELECT N'Tên lớp học trùng lặp.'
+	                            RETURN
+                            END
+
                             INSERT INTO TTTH_class VALUES 
                             (@name, @startDate, @capacity, @courseID, @teacherID, @shift, @roomID)
 
@@ -152,7 +158,7 @@ namespace TTTH.Models.DAO
                             WHILE @i <= @duration
                             BEGIN
 	                            -- skip invalid day in week
-	                            WHILE DATEPART(dw, @tempDate) not in "+ array + @"
+	                            WHILE DATEPART(dw, @tempDate) not in " + array + @"
 		                            SELECT @tempDate = DATEADD(D, 1, @tempDate)
 	                            -- insert 
 	                            INSERT INTO TTTH_class_date VALUES (@classID, @i, @tempDate, @roomID, @shift, @teacherID, 0)

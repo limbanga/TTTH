@@ -36,6 +36,9 @@ namespace TTTH
             viewClass.UpdateButton1.Visible = false;
             viewClass.DeleteButton1.Visible = false;
             viewClass.RegisterButton1.Visible = false;
+
+            viewNotification.ReLoadNotification();
+            viewNotification.BringToFront();
         }
 
         private void SwtichToViewClassDate(object? sender, EventArgs e)

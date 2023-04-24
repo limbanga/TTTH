@@ -506,8 +506,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.viewStatistic);
-            this.panel3.Controls.Add(this.viewAccountInfor);
             this.panel3.Controls.Add(this.viewNotification);
             this.panel3.Controls.Add(this.viewPostNotification);
             this.panel3.Controls.Add(this.viewCourse2);
@@ -517,6 +515,8 @@
             this.panel3.Controls.Add(this.viewNotificationDetail1);
             this.panel3.Controls.Add(this.viewStudent1);
             this.panel3.Controls.Add(this.viewRoom);
+            this.panel3.Controls.Add(this.viewStatistic);
+            this.panel3.Controls.Add(this.viewAccountInfor);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(247, 0);
             this.panel3.Name = "panel3";
@@ -630,6 +630,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý trung tâm tin học";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdmin_FormClosed);
+            this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.panelSideBar.ResumeLayout(false);
             this.paneSidebarContent.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
